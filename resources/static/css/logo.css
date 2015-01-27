@@ -1,0 +1,40 @@
+@import url('common.css');
+
+.logo-img {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	margin-right: -50%;
+	width: 100px;
+	height: 94px;
+}
+
+.logo-small, .logo-text {
+    color: #f78181 !important;
+}
+
+.logo-small {
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	margin-right: -50%;
+	font-family: Bold;
+	font-size: 120%;
+}
+
+.logo-text {
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	margin-right: -50%;
+	font-family: Black;
+	font-size: 200%;
+}
+
+.container {
+	positoin: relative;
+	align-items: center;
+	padding-top: 50px;
+	width: 100px;
+	height: 100px;
+}
