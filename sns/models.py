@@ -13,6 +13,7 @@ class Area(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User)
+    contact = models.CharField(max_length=20, blank=True, null=True)
     area = models.ForeignKey(Area)
     image = models.ImageField(upload_to="/profile", default="default/avatar.png")
 
