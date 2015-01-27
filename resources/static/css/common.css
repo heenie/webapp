@@ -1,0 +1,87 @@
+@import url('font.css');
+@import url('normalize.css');
+
+html, body {
+	min-height: 100%;
+}
+
+body {
+	background-color: #fafafa;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+input {
+	position: relative;
+	border: none;
+}
+
+footer {
+	font-family: Light;
+	font-size: 80%;
+}
+
+#button {
+	background: #f3a1a1 !important;
+	width: 300px;
+	heignt: 40px;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	font-size: 105%;
+	font-family: Light;
+	text-align: center;
+}
+
+#form {
+	text-align:center;
+	position: relative;
+	width: 90%;
+	height: auto;
+	left: 50%;
+	margin-left: -45%;
+}
+
+#help {
+	color: #f78181;
+	font-size: 90%;
+	font-family: Regular;
+	text-align: center;
+}
+
+.css-page-box {
+	height: 100%;
+	background-color: #fafafa;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+	margin: 10px;
+}
+
+.header {
+	width: 100%;
+	height: 30px;
+	background-color: #F78181;
+	color: white;
+	font-family: Bold;
+	font-size: 90%;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+}

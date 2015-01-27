@@ -1,0 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+
+@font-face {
+font-family: Thin;
+src: url('../font/NSKR100.otf') format('opentype'),
+     url('../font/NSKR100.woff') format('woff');
+}
+@font-face {
+font-family: Light;
+src: url('../font/NSKR300.otf') format('opentype'),
+     url('../font/NSKR300.woff') format('woff');
+}
+@font-face {
+font-family: DemiLignt;
+src: url('../font/NSKR350.otf') format('opentype'),
+     url('../font/NSKR350.woff') format('woff');
+}
+@font-face {
+font-family: Regular;
+src: url('../font/NSKR400.otf') format('opentype'),
+     url('../font/NSKR400.woff') format('woff');
+}
+@font-face {
+font-family: Medium;
+src: url('../font/NSKR500.otf') format('opentype'),
+     url('../font/NSKR500.woff') format('woff');
+}
+@font-face {
+font-family: Bold;
+src: url('../font/NSKR700.otf') format('opentype'),
+     url('../font/NSKR700.woff') format('woff');
+}
+@font-face {
+font-family: Black;
+src: url('../font/NSKR900.otf') format('opentype'),
+     url('../font/NSKR900.woff') format('woff');
+}
+
+* { 
+  font-family: Regular;
+}
+
+.font-title {
+	font-size: 115%;
+	font-family: Bold;
+	color: black;
+}
+
+.font-extra {
+	font-size: 125%;
+	font-family: Black;
+	font-style: italic;
+}
+
+.font-version {
+	font-family: Light;
+	font-size: 80%;
+}
+
+.font-copyright {
+	font-family: Light;
+	font-size: 90%;
+}
