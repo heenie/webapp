@@ -1,9 +1,18 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import CreateView
+from sns.forms import JoinForm
 
-# Create your views here.
 
 def index(request):
     return render_to_response('index.html', None)
+
+
+class JoinView(CreateView):
+    template_name = "join.html"
+    model = User
+    form_class = JoinForm
+    success_url = "index"
