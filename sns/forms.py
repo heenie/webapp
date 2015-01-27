@@ -4,19 +4,19 @@ from sns.models import *
 
 
 class JoinForm(UserCreationForm):
-    contact = models.CharField(max_length=20, blank=True, null=True)
-    area = models.ForeignKey(Area, name='거주지역')
-    image = models.ImageField(upload_to="/profile", default="default/avatar.png")
+    phone = forms.CharField(max_length=20)
+    area = forms.ModelChoiceField(queryset=Area.objects)
+    image = forms.ImageField()
 
     class Meta:
         model = User
-        fieldsets = ("last_name", "first_name", "username", "password", "contact", "email", "area", "image")
+        fields = ("last_name", "first_name", "username", "password1", "password2", "phone", "email", "area", "image")
 
     def save(self, commit=True):
-        user = super(JoinForm, self).save(commit=True)
+        user = super(JoinForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
         user.save()
-        student = Student(user=user, contact=self.cleaned_data['contact'], area=self.area, image=self.image)
+        student = Student(user=user, contact=self.cleaned_data['phone'], area=self.cleaned_data['area'], image=self.cleaned_data['image'])
         student.save()
         return user
 
