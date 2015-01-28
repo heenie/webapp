@@ -5,6 +5,7 @@ from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm
+from django.contrib.auth import authenticate, login
 
 
 def index(request):
@@ -16,3 +17,14 @@ class JoinView(CreateView):
     model = User
     form_class = JoinForm
     success_url = "index"
+
+def login_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return render_to_response('index.html', None)
+        else: return render_to_response('login.html', None)
+    else: return  render_to_response('join.html', None)

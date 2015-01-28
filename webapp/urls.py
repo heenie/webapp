@@ -14,3 +14,4 @@ urlpatterns = patterns('',
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="web-login"),
 )
+# url(r'^login/$', 'django.contrib.auth.views.login'),
