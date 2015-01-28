@@ -5,6 +5,7 @@ from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm
+from django.contrib.auth import authenticate, login
 
 
 def index(request):
