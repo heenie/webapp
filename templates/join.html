@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<h1>회원가입</h1>
+{% extends "base.html" %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% block content %}
+    <div data-role="main" class="css-page-box">
+        {% include "logo.html" %}
+        <div data-role="logo" data-type="vertical">
+            <p align="center" style="font-size: 110%">
+                <b class="font-title">회원가입</b>
+            </p>
+        </div>
 
-<form action="{% url "join" %}" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <table>
-            <tr>
-                <td>{{ field.label }}</td>
-                <td>{{ field }}</td>
-            </tr>
-        </table>
-    {% endfor %}
-    <input type="submit" value="join" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
-</body>
-</html>
+        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+            <form action="{% url "join" %}" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <table>
+                        <tr>
+                            <td>{{ field.label }}</td>
+                            <td>{{ field }}</td>
+                            {% for error in field.errors %}
+                                <span class="warning">{{ error }}</span>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                {% endfor %}
+            <
+                <button type="submit" value="join">가입</button>
+                <input type="hidden" name="next" value="/" />
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

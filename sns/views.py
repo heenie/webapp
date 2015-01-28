@@ -5,7 +5,6 @@ from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm
-from django.contrib.auth import authenticate, login
 
 
 def index(request):
@@ -16,7 +15,7 @@ class JoinView(CreateView):
     template_name = "join.html"
     model = User
     form_class = JoinForm
-    success_url = "index"
+    success_url = "/"
 
 def login_view(request):
     username = request.POST['username']

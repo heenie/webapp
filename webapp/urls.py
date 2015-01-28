@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     url(r'^$', 'sns.views.index', name="index"),
     url(r'^join', JoinView.as_view(template_name="join.html"), name="join"),
 
-    url(r'^login/$', login, {'template_name': 'login.html'}, name="web-login"),
+    url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
 )
 # url(r'^login/$', 'django.contrib.auth.views.login'),

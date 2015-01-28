@@ -6,7 +6,7 @@ from sns.models import *
 class JoinForm(UserCreationForm):
     phone = forms.CharField(max_length=20)
     area = forms.ModelChoiceField(queryset=Area.objects)
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = User
