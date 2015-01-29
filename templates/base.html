@@ -15,19 +15,13 @@
 
 <body>
 <div data-role="page">
-    <div data-role="content">
-        {% block content_parent %}
-        <div>
-            {% block content %}
+    {% block content_parent %}
+    <div>
+        {% block content %}
 
-            {% endblock %}
-        </div>
         {% endblock %}
     </div>
-
-    <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        {% include "footer.html" %}
-    </div>
+    {% endblock %}
 </div>
 </body>
 </html>

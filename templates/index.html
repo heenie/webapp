@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div data-role="main" class="css-page-box">
-    {% include "logo.html" %}
-    <div data-role="logo" data-type="vertical">
-        <p align="center" style="font-size: 110%">
-            <b class="font-title">외부거지</b>들의 <b class="font-extra" style="font-style: italic">SNS</b><br>
-            <span class="font-version">2.0</span>
-        </p>
-    </div>
+<div data-role="content">
+    <div data-role="main" class="css-page-box">
+        {% include "logo.html" %}
+        <div data-role="logo" data-type="vertical">
+            <p align="center" style="font-size: 110%">
+                <b class="font-title">외부거지</b>들의 <b class="font-extra" style="font-style: italic">SNS</b><br>
+                <span class="font-version">2.0</span>
+            </p>
+        </div>
 
-    <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-        <form action="login">
-            <input id="button" class="login" type="submit" value="로그인">
-        </form>
-        <form action="join">
-            <input id="button" class="sign" type="submit" value="회원가입">
-        </form>
+        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+            <form action="login">
+                <input id="button" class="login" type="submit" value="로그인">
+            </form>
+            <form action="join">
+                <input id="button" class="sign" type="submit" value="회원가입">
+            </form>
+        </div>
     </div>
 </div>
 
+<div data-role="footer" data-position="fixed" data-fullscreen="true">
+    {% include "footer.html" %}
+</div>
 {% endblock %}
