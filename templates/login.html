@@ -16,8 +16,9 @@
                             <p class="font-version" style="text-align:center; color:lightpink; font-weight: bold; font-size: medium">[학번 또는 비밀번호를 확인해주세요]</p>
                         {% endif %}
                         <table border="0">
-                            <tr><th><label for="username">Username:</label></th><td>{{ form.username }}</td></tr>
-                            <tr><th><label for="password">Password:</label></th><td>{{ form.password }}</td></tr>
+                            {% load staticfiles %}
+                            <tr><th><a><img src="{% static "img/user60.png" %}" alt="id_img" width="50" height="50"</a></th><td>{{ form.username }}</td></tr>
+                            <tr><th><a><img src="{% static "img/private6.png" %}" alt="id_img" width="50" height="50"</a></th><td>{{ form.password }}</td></tr>
                         </table>
                         <input id="button" align="center" style="border:none; color:white; background: pink" type="submit" value="Login"/>
                         <input type="hidden" name="next" value="/admin"/>
