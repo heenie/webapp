@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^join', JoinView.as_view(template_name="join.html"), name="join"),
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
+    url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed")
 )
 # url(r'^login/$', 'django.contrib.auth.views.login'),
