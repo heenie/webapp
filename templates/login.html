@@ -1,9 +1,6 @@
     {% extends "base.html" %}
 
     {% block content %}
-        {% if form.errors %}
-            <p>Your username and password didn't match. Please try again</p>
-        {% endif %}
         <div data-role="main" class="css-page-box">
             {% include "logo.html" %}
             <div data-role="logo" data-type="vertical">
@@ -15,14 +12,17 @@
             <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
 
                     <form method="post" action=".">{% csrf_token %}
+                        {% if form.errors %}
+                            <p class="font-version" style="text-align:center; color:lightpink; font-weight: bold; font-size: medium">[학번 또는 비밀번호를 확인해주세요]</p>
+                        {% endif %}
                         <table border="0">
                             <tr><th><label for="username">Username:</label></th><td>{{ form.username }}</td></tr>
                             <tr><th><label for="password">Password:</label></th><td>{{ form.password }}</td></tr>
                         </table>
-                        <input type="submit" value="Login"/>
+                        <input id="button" align="center" style="border:none; color:white; background: pink" type="submit" value="Login"/>
                         <input type="hidden" name="next" value="/admin"/>
                     </form>
-                    <a href="/join">Register</a>
+                    <div align="center"><a style="color:lightpink" href="/join">[비밀번호를 까먹었어요]</a></div>
 
             </div>
         </div>
