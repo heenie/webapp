@@ -4,18 +4,40 @@ body {
 	background-color: #f78181 !important;
 }
 
+.css-page-body {
+	background-color: #f78181 !important;
+}
+
+.css-page-footer {
+	margin-top: 50px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
 .css-btn-box {
 	width: 300px;
 	margin: 0 auto !important;
 	padding-bottom: 50px;
 }
 
+.css-index-btn {
+	border: none !important;
+	color: #333 !important;
+    font-family: Light !important;
+	background-color: #f3a1a1 !important;
+	margin-bottom: 1px !important;
+}
+
 .login {
+    font-family: Light !important;
+    font-family: Light !important;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
 .sign {
+    font-family: Light !important;
+    font-family: Light !important;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
