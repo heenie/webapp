@@ -25,3 +25,5 @@ class JoinForm(UserCreationForm):
         student.save()
         return user
 
+
+
