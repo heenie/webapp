@@ -6,7 +6,6 @@ html, body {
 }
 
 body {
-	background-color: #fafafa;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	font-smoothing: antialiased;
@@ -84,37 +83,4 @@ footer {
 	align-items: center;
 	-webkit-box-orient: vertical;
 	-moz-box-orient: vertical;
-}
-
-.css-form {
-   clear: both;
-   position: relative;
-   width: 80%;
-   height: 40px;
-   left: 50%;
-   margin-left: -40%;
-   align-items: center;
-}
-
-.css-form img {
-   clear: both;
-   position: absolute;
-   top: 0;
-   left: 50%;
-   width: 40px;
-   height: 40px;
-   margin-left: -120px;
-}
-
-.css-form input {
-   background: white !important;
-   position: absolute;
-   left: 40px;
-   top: 0;
-   left: 50%;
-   border: none;
-   width: 200px;
-   height: 40px;
-   margin-left: -80px;
-   padding-left: 10px;
 }

@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "base_page.html" %}
 
 {% block content %}
     <div data-role="main" class="css-page-box">
         {% include "logo.html" %}
         <div data-role="logo" data-type="vertical">
             <p align="center" style="font-size: 110%">
-                <b class="font-title">회원가입</b>
+                <p class="font-title" align="center">회원가입</p>
             </p>
         </div>
 
@@ -14,19 +14,20 @@
                 {% csrf_token %}
                 {% for field in form %}
                     <table>
-                        <tr>
-                            <td>{{ field.label }}</td>
-                            <td>{{ field }}</td>
-                            {% for error in field.errors %}
-                                <span class="warning">{{ error }}</span>
-                            {% endfor %}
-                        </tr>
+                        <tr><td>{{ field.label }}</td></tr>
+                        <tr><td>{{ field }}</td></tr>
                     </table>
+                    {% for error in field.errors %}
+                        <span style="color: lightcoral">{{ error }}</span>
+                    {% endfor %}
                 {% endfor %}
-                <button type="submit" value="join">가입</button>
-                <input type="hidden" name="next" value="/" />
             </form>
+        <div align="center">
+        <input type="submit" id="button" value="가입" style="width:100px" />
+        <input type="hidden" name="next" value="/" />
         </div>
+        </div>
+
     </div>
 
 {% endblock %}

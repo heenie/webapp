@@ -12,6 +12,11 @@ class JoinForm(UserCreationForm):
         model = User
         fields = ("last_name", "first_name", "username", "password1", "password2", "phone", "is_public", "email", "area")
 
+    def __init__(self, *args, **kwargs):
+        super(JoinForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'text-field'
+
     def save(self, commit=False):
         user = super(JoinForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]

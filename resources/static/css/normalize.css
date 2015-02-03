@@ -244,19 +244,6 @@ figure {
     margin: 0;
 }
 
-
-/* =============================================================================
-   Forms
-   ========================================================================== */
-
-/*
- * Corrects margin displayed oddly in IE6/7
- */
-
-form {
-    margin: 0;
-}
-
 /*
  * Define consistent border, margin, and padding
  */

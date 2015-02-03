@@ -11,6 +11,8 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     return render_to_response('index.html', None)
 
+def newsfeed(request):
+    return render_to_response('newsfeed.html', None)
 
 class JoinView(CreateView):
     template_name = "join.html"
