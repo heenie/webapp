@@ -6,7 +6,6 @@ html, body {
 }
 
 body {
-	background-color: #fafafa;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	font-smoothing: antialiased;
@@ -20,6 +19,7 @@ input {
 footer {
 	font-family: Light;
 	font-size: 80%;
+    background: none !important;
 }
 
 #button {
@@ -30,7 +30,7 @@ footer {
 	cursor: pointer;
 	padding: 10px;
 	font-size: 105%;
-	font-family: Light;
+	font-family: Light !important;
 	text-align: center;
 }
 
@@ -69,7 +69,7 @@ footer {
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
-	display: -webkit-inline-box;
+	/*display: -webkit-inline-box;*/
 	display: -moz-inline-box;
 	display: -ms-inline-flexbox;
 	display: -webkit-inline-flex;
