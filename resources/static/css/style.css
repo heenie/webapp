@@ -9,7 +9,6 @@ body {
 }
 
 .css-page-footer {
-	margin-top: 50px;
 	border-bottom-right-radius: 30px;
 	border-bottom-left-radius: 30px;
 }
@@ -20,20 +19,12 @@ body {
 	padding-bottom: 50px;
 }
 
-.css-index-btn {
-	border: none !important;
-	color: #333 !important;
-    font-family: Light !important;
-	background-color: #f3a1a1 !important;
-	margin-bottom: 1px !important;
-}
-
 .login {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
 .sign {
-	border-bottom-left-radius: 10px;
+	border-bottom-left-radius: 10px !important;
 	border-bottom-right-radius: 10px;
 }
