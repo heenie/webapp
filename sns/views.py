@@ -5,7 +5,7 @@ from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
@@ -28,3 +28,7 @@ def login_view(request):
             return render_to_response('index.html', None)
         else: return render_to_response('login.html', None)
     else: return  render_to_response('join.html', None)
+
+def logout_view(request):
+    logout(request)
+    return render_to_response('index.html', None)
