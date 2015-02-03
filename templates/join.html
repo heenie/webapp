@@ -5,27 +5,23 @@
         {% include "logo.html" %}
         <div data-role="logo" data-type="vertical">
             <p align="center" style="font-size: 110%">
-                <p class="font-title" align="center">회원가입</p>
+            <p class="font-title" align="center">회원가입</p>
             </p>
         </div>
-
         <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
             <form action="{% url "join" %}" method="post">
                 {% csrf_token %}
                 {% for field in form %}
-                    <table>
-                        <tr><td>{{ field.label }}</td></tr>
-                        <tr><td>{{ field }}</td></tr>
-                    </table>
+                        {{ field }}
                     {% for error in field.errors %}
                         <span style="color: lightcoral">{{ error }}</span>
                     {% endfor %}
                 {% endfor %}
+                <div align="center">
+                    <input type="submit" id="button" value="가입" style="width:100px" />
+                    <input type="hidden" name="next" value="/" />
+                </div>
             </form>
-        <div align="center">
-        <input type="submit" id="button" value="가입" style="width:100px" />
-        <input type="hidden" name="next" value="/" />
-        </div>
         </div>
 
     </div>

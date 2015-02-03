@@ -4,7 +4,7 @@ from sns.models import *
 
 
 class JoinForm(UserCreationForm):
-    phone = forms.CharField(max_length=20, label='폰 번호')
+    phone = forms.CharField(max_length=20, label='휴대전화')
     is_public = forms.BooleanField(required=False, label='공개여부')
     area = forms.ModelChoiceField(queryset=Area.objects, label='거주지역')
 
@@ -15,7 +15,17 @@ class JoinForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(JoinForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'text-field'
+            if field_name == "last_name" or field_name == "first_name":
+                field.widget.attrs['class'] = 'short-text-field'
+            elif field_name == "phone":
+                field.widget.attrs['class'] = 'medium-text-field'
+            elif field_name == "is_public":
+                field.widget.attrs['class'] = 'check-box'
+            elif field_name == "area":
+                field.widget.attrs['class'] = 'drop-down'
+            else:
+                field.widget.attrs['class'] = 'text-field'
+            field.widget.attrs['placeholder'] = field.label
 
     def save(self, commit=False):
         user = super(JoinForm, self).save(commit=False)

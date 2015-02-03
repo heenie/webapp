@@ -87,6 +87,34 @@ footer {
 }
 
 .text-field {
-    width: 300px;
+    width: 290px;
+    height: 40px;
+    margin: 5px;
+}
+
+.short-text-field {
+    width: 140px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+}
+
+.medium-text-field {
+    width: 250px;
+    height: 40px;
+    margin: 5px;
+}
+
+.check-box {
+    vertical-align: middle;
+    width: 20px;
     height: 30px;
+    margin: 5px;
+}
+
+.drop-down {
+    width: 290px;
+    height: 40px;
+    margin: 5px;
 }
