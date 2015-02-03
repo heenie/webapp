@@ -16,9 +16,13 @@ input {
 	border: none;
 }
 
-footer {
+#footer {
 	font-family: Light;
 	font-size: 80%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 #button {
@@ -47,6 +51,11 @@ footer {
 	font-size: 90%;
 	font-family: Regular;
 	text-align: center;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
 }
 
 .css-page-box {
