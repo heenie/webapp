@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm
 from django.contrib.auth import authenticate, login, logout
+from django.template import RequestContext
+
 
 
 def index(request):
@@ -20,6 +22,9 @@ class JoinView(CreateView):
     form_class = JoinForm
     success_url = "/"
 
+def LoginTest(request):
+    return render_to_response('login_test.html', None, context_instance=RequestContext(request))
+
 def login_view(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -33,4 +38,12 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render_to_response('index.html', None)
+    return HttpResponseRedirect('/')
+
+def loginuser(request):
+    username=None
+    if request.user.is_authenticated():
+        username = request.user.username
+    else :
+        username = "logout"
+    return username

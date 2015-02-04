@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login
+from django.contrib.auth.views import login, logout
 from sns.views import JoinView
 
 urlpatterns = patterns('',
@@ -11,8 +11,11 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'sns.views.index', name="index"),
     url(r'^join', JoinView.as_view(template_name="join.html"), name="join"),
+    url(r'^logintest', 'sns.views.LoginTest', name="test"),
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
-    url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed")
+    url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
+
+    url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout")
 )
 # url(r'^login/$', 'django.contrib.auth.views.login'),

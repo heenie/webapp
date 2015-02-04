@@ -1,0 +1,20 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+    <div data-role="content">
+
+    </div>
+
+    <div>hello <p>{% if user.is_authenticated %}{{ user.student }}{% else %} 123 {% endif %}</p></div>
+    <form action="logout">
+        <input id="button" class="sign" type="submit" value="로그아웃">
+        <input type="hidden" name="next" value="/"/>
+    </form>
+
+
+    <div data-role="footer">
+
+    </div>
+
+{% endblock %}
+
