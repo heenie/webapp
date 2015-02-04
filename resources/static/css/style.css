@@ -8,11 +8,6 @@ body {
 	background-color: #f78181 !important;
 }
 
-.css-page-footer {
-	border-bottom-right-radius: 30px;
-	border-bottom-left-radius: 30px;
-}
-
 .css-btn-box {
 	width: 300px;
 	margin: 0 auto !important;
@@ -20,11 +15,13 @@ body {
 }
 
 .login {
+    font-family: Light !important;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
 
 .sign {
+    font-family: Light !important;
 	border-bottom-left-radius: 10px !important;
 	border-bottom-right-radius: 10px;
 }
