@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
 
 
-class SearchForm(forms.ModelForm):
+class SearchForm(forms.Form):
     search = forms.CharField(label="검색", required=False)
     category = forms.ModelChoiceField(queryset=Category.objects)
 
