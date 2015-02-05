@@ -1,18 +1,12 @@
 {% extends 'base.html' %}
 
-{% block page_content %}
+{% block content %}
     <div data-role="content">
 
     </div>
 
-    <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#" >글쓰기</a></li>
-                <li><a href="#" >마이페이지</a></li>
-                <li><a href="#" >정보 수정</a></li>
-            </ul>
-        </div>
+    <div data-role="footer">
+        {% include "navbar.html" %}
     </div>
 
 {% endblock %}
