@@ -16,7 +16,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=20, null=True, blank=True)
     is_public = models.BooleanField(default=False)
     area = models.ForeignKey(Area)
-    image = models.ImageField(upload_to="/profile", null=True, blank=True)
+    image = models.ImageField(upload_to="./profile", null=True, blank=True)
 
     def __str__(self):
         return self.get_name() + "(" + self.user.get_username() + ")"
@@ -51,7 +51,7 @@ class Article(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to="/image", null=True, blank=True)
+    image = models.ImageField(upload_to="./image", null=True, blank=True)
     article = models.ForeignKey("Article")
 
     def __str__(self):
