@@ -1,39 +1,39 @@
-{% extends "base_page.html" %}
+    {% extends "base_page.html" %}
 
-{% block page_content %}
-    <div data-role="main" class="css-page-box">
-        {% include "logo.html" %}
-        <div data-role="logo" data-type="vertical">
-            <p align="center" style="font-size: 110%">
-                <b class="font-title">로그인</b>
-            </p>
+    {% block page_content %}
+        <div data-role="main" class="css-page-box">
+            {% include "logo.html" %}
+            <div data-role="logo" data-type="vertical">
+                <p align="center" style="font-size: 110%">
+                    <b class="font-title">로그인</b>
+                </p>
+            </div>
+
+            <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+
+                    <form method="post" action=".">{% csrf_token %}
+                        {% if form.errors %}
+                            <p class="font-version" style="text-align:center; color:lightpink; font-weight: bold; font-size: medium">[학번 또는 비밀번호를 확인해주세요]</p>
+                        {% endif %}
+                        <div align="center">
+                        <table border="0">
+                            {% load staticfiles %}
+                            <tr><th><a><img src="{% static "img/user60.png" %}" alt="id_img" width="50" height="50"></a></th>
+                                <td><input type="{{ form.username.type }}" name="{{ form.username.name }}" style="border:none; padding-left:10px; width:200px; height:48px" placeholder="아이디"/></td>
+                            </tr>
+                            <tr><th><a><img src="{% static "img/private6.png" %}" alt="pw_img" width="50" height="50"></a></th>
+                                 <td><input type="{{ form.password.type }}" name="{{ form.password.name }}" style="border:none; padding-left:10px; width:200px; height:48px" placeholder="비밀번호"/></td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div align="center"><input id="button" align="center" style="margin-bottom:10px; margin-top:15px; border:none; color:white; background: pink; width:100px;" type="submit" value="Login"/></div>
+                        <input type="hidden" name="next" value="/logintest"/>
+                    </form>
+                    <div align="center"><a style="color:lightpink" href="/join">[비밀번호를 까먹었어요]</a></div>
+
+            </div>
         </div>
-
-        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-
-                <form method="post" action=".">{% csrf_token %}
-                    {% if form.errors %}
-                        <p class="font-version" style="text-align:center; color:lightpink; font-weight: bold; font-size: medium">[학번 또는 비밀번호를 확인해주세요]</p>
-                    {% endif %}
-                    <div align="center">
-                    <table border="0">
-                        {% load staticfiles %}
-                        <tr><th><a><img src="{% static "img/user60.png" %}" alt="id_img" width="50" height="50"></a></th>
-                            <td><input type="{{ form.username.type }}" name="{{ form.username.name }}" style="border:none; padding-left:10px; width:200px; height:48px" placeholder="아이디"/></td>
-                        </tr>
-                        <tr><th><a><img src="{% static "img/private6.png" %}" alt="id_img" width="50" height="50"></a></th>
-                             <td><input type="{{ form.password.type }}" name="{{ form.password.name }}" style="border:none; padding-left:10px; width:200px; height:48px" placeholder="비밀번호"/></td>
-                        </tr>
-                    </table>
-                    </div>
-                    <div align="center"><input id="button" align="center" style="margin-bottom:10px; margin-top:15px; border:none; color:white; background: pink; width:100px;" type="submit" value="Login"/></div>
-                    <input type="hidden" name="next" value="/logintest"/>
-                </form>
-                <div align="center"><a style="color:lightpink" href="/join">[비밀번호를 까먹었어요]</a></div>
-
-        </div>
-    </div>
-{% endblock %}
+    {% endblock %}
 
 
 

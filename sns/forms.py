@@ -3,6 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
 
 
+class WriteForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = '__all__'
+        exclude = ['datetime', 'student']
+
+
 class JoinForm(UserCreationForm):
     phone = forms.CharField(max_length=20, label='휴대전화')
     is_public = forms.BooleanField(required=False, label='공개여부')

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import login, logout, password_change, password_change_done
 from sns.views import JoinView, WriteView
 
 urlpatterns = patterns('',
@@ -17,6 +17,9 @@ urlpatterns = patterns('',
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
 
-    url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout")
+    url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout",),
+    url(r'^password_change/$', password_change, {'template_name': 'password_change.html', 'post_change_redirect' :'/password_change/done/'}),
+    url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
+
 )
 # url(r'^login/$', 'django.contrib.auth.views.login'),
