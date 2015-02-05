@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block page_content %}
-<div data-role="write" align="center">
+<div data-role="page">
     <form action="{% url "write" %}" method="post">
         {{ form.content }}
         {{ form.category }}

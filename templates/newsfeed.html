@@ -1,12 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'base_newsfeed.html' %}
 
-{% block content %}
+{% block page_content %}
     <div data-role="content">
 
     </div>
-
-    <div data-role="footer">
-        {% include "navbar.html" %}
-    </div>
-
+    {% include "newsfeed_footer.html" %}
 {% endblock %}
