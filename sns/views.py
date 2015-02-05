@@ -6,8 +6,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from sns.forms import JoinForm, WriteForm
 from sns.models import Article
+from sns.forms import JoinForm, SearchForm
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
+from sns.models import Article
 
 
 def index(request):
@@ -23,6 +25,17 @@ class JoinView(CreateView):
     model = User
     form_class = JoinForm
     success_url = "/"
+
+
+def search(request):
+    return render_to_response('newsfeed.html', None)
+
+# class SearchView(CreateView):
+#     template_name = "search.html"
+#     model = Article
+#     form_class = SearchForm
+#     success_url = "/"
+
 
 
 class WriteView(CreateView):
@@ -55,11 +68,9 @@ def login_view(request):
         else: return render_to_response('login.html', None)
     else: return  render_to_response('join.html', None)
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
-
 
 def loginuser(request):
     username=None
