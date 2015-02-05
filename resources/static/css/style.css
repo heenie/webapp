@@ -4,6 +4,23 @@ body {
 	background-color: #f78181 !important;
 }
 
+#write-content {
+    position: relative;
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+    border-color: #fff !important;
+}
+
+#id_category {
+    width: 100px !important;
+    font-family: Light;
+}
+
 .css-page-body {
 	background-color: #f78181 !important;
 }

@@ -1,15 +1,18 @@
-{% extends "base_newsfeed.html" %}
-{% load staticfiles %}
-
-{% block page_content %}
+{#{% extends 'base_newsfeed.html' %}#}
+{#{% block page_content %}#}
 <div data-role="page">
-    <form action="#" method="post">
-        {{ form.content }}
-        {{ form.category }}
+    <div data-role="header">
+        <h1>게시물 작성</h1>
+    </div>
+    <div data-role="content">
+        <form action="{% url "newsfeed" %}" method="post">
+            <textarea name="{{ form.content.name }}" placeholder="새 글"></textarea>
+{#            {{ form.content }}#}
+            {{ form.category }}
 
-        <input type="submit" id="button" value="글쓰기" />
-        <input type="hidden" name="next" value="/" />
-    </form>
+            <input type="submit" id="button" value="글쓰기" />
+            <input type="hidden" name="next" value="/" />
+        </form>
+    </div>
 </div>
-
-{% endblock %}
+{#{% endblock %}#}

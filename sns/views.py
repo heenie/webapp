@@ -29,7 +29,7 @@ class WriteView(CreateView):
     template_name = "write.html"
     model = Article
     form_class = WriteForm
-    success_url = "/newsfeed"
+    success_url = "/"
 
 
 def LoginTest(request):
