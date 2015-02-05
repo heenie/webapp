@@ -1,6 +1,6 @@
 {% extends "base_page.html" %}
 
-{% block page_content %}
+{% block content %}
 <div data-role="main" class="ui-content css-page-box">
     {% include "logo.html" %}
     <div data-role="logo" data-type="vertical">
@@ -10,7 +10,7 @@
         </p>
     </div>
 
-    <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+    <div data-type="vertical" class="css-btn-box">
         <form action="login">
             <input id="button" class="login" type="submit" value="로그인">
         </form>

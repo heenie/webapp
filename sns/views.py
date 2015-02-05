@@ -25,6 +25,12 @@ class JoinView(CreateView):
 def LoginTest(request):
     return render_to_response('login_test.html', None, context_instance=RequestContext(request))
 
+def password_change(request):
+    return render_to_response('password_change.html', None)
+
+def password_change_done(request):
+    return render_to_response('password_change_done.html', None)
+
 def login_view(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -40,10 +46,3 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-def loginuser(request):
-    username=None
-    if request.user.is_authenticated():
-        username = request.user.username
-    else :
-        username = "logout"
-    return username

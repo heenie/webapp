@@ -1,19 +1,27 @@
 {% extends 'base_page.html' %}
 
 {% block content %}
-    <div data-role="content">
+    <div data-role="main" class="css-page-box">
+        {% include "logo.html" %}
+        <div data-role="logo" data-type="vertical">
+            <p align="center" style="font-size: 110%">
+                <b class="font-title">테스트 화면</b>
+            </p>
+        </div>
 
-    </div>
-
-    <div>hello <p>{% if user.is_authenticated %}{{ user.student }}{% else %} 123 {% endif %}</p></div>
+    <div align="center"><p>{% if user.is_authenticated %}hello {{ user.student }}{% else %} 123 {% endif %}</p></div>
+    <div align="center">
     <form action="logout">
         <input id="button" class="sign" type="submit" value="로그아웃">
         <input type="hidden" name="next" value="/"/>
     </form>
+    </div>
 
+    <div align="center"><a style="color:lightpink" href="/password_change">[비밀번호를 바꾸려면 클릭!]</a></div>
 
     <div data-role="footer">
 
+    </div>
     </div>
 
 {% endblock %}
