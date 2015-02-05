@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', 'sns.views.index', name="index"),
     url(r'^join', JoinView.as_view(template_name="join.html"), name="join"),
     url(r'^write', WriteView.as_view(template_name="write.html"), name="write"),
+    # url(r'^article', ArticleView.as_view(template_name="article.html"), name="article"),
     url(r'^article', ArticleView.as_view(template_name="article.html"), name="article"),
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
 
