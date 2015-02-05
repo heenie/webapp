@@ -3,27 +3,12 @@
 {% block page_content %}
 {#    {% include "search.html" %}#}
 
-{#    <div data-role="main">#}
-{#        <div data-role="controlgroup">#}
-{#            <form action="{% url "newsfeed" %}" method="get">#}
-{#                {% for field in form %}#}
-{#                    {{ field }}#}
-{#                {% endfor %}#}
-{#                <input type="{{ form.search.type }}" name="{{ form.search.name }}" />#}
-{#                <input type="{{ form.category.type }}" name="{{ form.category.name }}" />#}
-{#                <input type="submit" id="button" value="검색" />#}
-{#                <input type="hidden" name="next" value="/" />#}
-{#            </form>#}
-{#        </div>#}
-{#    </div>#}
-    <div data-role="content" >
-{#        {% include "article.html" %}#}
-        <form action="#" method="get">
-            {% for field in form %}
-                {{ field }}
-            {% endfor %}
-
-            <input type="hidden" name="next" value="/" />
+    <div data-role="content">
+        <form action="" method="get">
+            {{ form.search }}
+            {{ form.category }}
+            <input type="submit" id="button" value="검색" />
+        <input type="hidden" name="next" value="/" />
         </form>
     </div>
 
