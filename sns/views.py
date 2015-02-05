@@ -22,6 +22,8 @@ class JoinView(CreateView):
     form_class = JoinForm
     success_url = "/"
 
+
+
 def LoginTest(request):
     return render_to_response('login_test.html', None, context_instance=RequestContext(request))
 
