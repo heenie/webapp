@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout, password_change_done, password_change
-from sns.views import JoinView
+from django.contrib.auth.views import login, logout
+from sns.views import JoinView, WriteView
 
 urlpatterns = patterns('',
     # Examples:
@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'sns.views.index', name="index"),
     url(r'^join', JoinView.as_view(template_name="join.html"), name="join"),
+    url(r'^write', WriteView.as_view(template_name="write.html"), name="write"),
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
