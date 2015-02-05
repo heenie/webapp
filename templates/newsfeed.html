@@ -5,8 +5,8 @@
 
     <div data-role="content">
         <form action="" method="get">
-            {{ form.search }}
-            {{ form.category }}
+            <input type="{{ form.search.type }}" name="{{ form.search.name }}" placeholder="겁색"/>
+            <input type="{{ form.category.type }}" name="{{ form.category.name }}"/>
             <input type="submit" id="button" value="검색" />
         <input type="hidden" name="next" value="/" />
         </form>
