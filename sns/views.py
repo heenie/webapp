@@ -4,17 +4,19 @@ from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
-from sns.forms import JoinForm
+from sns.forms import JoinForm, WriteForm
+from sns.models import Article
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
-
 
 
 def index(request):
     return render_to_response('index.html', None)
 
+
 def newsfeed(request):
     return render_to_response('newsfeed.html', None)
+
 
 class JoinView(CreateView):
     template_name = "join.html"
@@ -23,15 +25,24 @@ class JoinView(CreateView):
     success_url = "/"
 
 
+class WriteView(CreateView):
+    template_name = "write.html"
+    model = Article
+    form_class = WriteForm
+    success_url = "/newsfeed"
+
 
 def LoginTest(request):
     return render_to_response('login_test.html', None, context_instance=RequestContext(request))
 
+
 def password_change(request):
     return render_to_response('password_change.html', None)
 
+
 def password_change_done(request):
     return render_to_response('password_change_done.html', None)
+
 
 def login_view(request):
     username = request.POST['username']
@@ -44,7 +55,16 @@ def login_view(request):
         else: return render_to_response('login.html', None)
     else: return  render_to_response('join.html', None)
 
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
+def loginuser(request):
+    username=None
+    if request.user.is_authenticated():
+        username = request.user.username
+    else :
+        username = "logout"
+    return username
