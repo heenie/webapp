@@ -43,11 +43,11 @@ def search(request):
 #     form_class = SearchForm
 #     success_url = "/"
 
-def ArticleView(request):
-    # template_name = "article.html"
-    # model = Article
-    # form_class = ArticleForm
-    return render_to_response('article.html', None)
+class Article(CreateView):
+    template_name = "article.html"
+    model = Article
+    form_class = ArticleForm
+
 
 
 class WriteView(CreateView):
