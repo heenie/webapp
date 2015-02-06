@@ -18,7 +18,6 @@ urlpatterns = patterns('',
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     # url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
-    url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
     # url(r'^newsfeed', ArticleView.as_view(template_name="newsfeed.html"), name="newsfeed"),
     url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
     url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout",),
