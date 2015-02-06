@@ -4,22 +4,8 @@
 {#    {% include "search.html" %}#}
 
     <div data-role="content">
-        <form action="" method="get">
-            {{ form.search }}
-            {{ form.category }}
-            <input type="submit" id="button" value="검색" />
-        <input type="hidden" name="next" value="/" />
-        </form>
     </div>
 
-    <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#" >글쓰기</a></li>
-                <li><a href="#" >마이페이지</a></li>
-                <li><a href="#" >정보 수정</a></li>
-            </ul>
-        </div>
-    </div>
+    {% include "newsfeed_footer.html" %}
 
 {% endblock %}
