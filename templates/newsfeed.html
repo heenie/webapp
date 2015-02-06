@@ -1,30 +1,17 @@
 {% extends 'base_newsfeed.html' %}
 
 {% block page_content %}
-    <div data-role="main" class="css-page-box">
-        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-            <form action="{% url "newsfeed" %}" method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                    {{ field }}
-                {% endfor %}
-                {{ form.search }}
-                {{ form.category }}
-{#                {{ serach_form }}#}
-                <input type="submit" id="button" value="검색" />
-                <input type="hidden" name="next" value="/" />
-            </form>
-        </div>
+{#    {% include "search.html" %}#}
+    <div data-role="header">
+        <h1>header</h1>
+        {{ form.content }}
+        {{ form.category }}
     </div>
 
-    <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#" >글쓰기</a></li>
-                <li><a href="#" >마이페이지</a></li>
-                <li><a href="#" >정보 수정</a></li>
-            </ul>
-        </div>
+    <div data-role="content">
+
     </div>
+
+    {% include "newsfeed_footer.html" %}
 
 {% endblock %}

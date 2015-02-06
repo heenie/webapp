@@ -3,20 +3,14 @@ from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
 
 
-class SearchForm(forms.Form):
-    # CHOICES = [('', "필터안함"), (1, "도보"), (2, "통학버스")]
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = '__all__'
+        exclude = ['datetime', 'student']
 
-    search = forms.CharField(label="검색", required=False)
-    category = forms.ModelChoiceField(queryset=Category.objects, label="카테고리", required=True)
-    # category = forms.ChoiceField(choices=CHOICES)
-
-    # class Meta:
-    #     model = Category
-    #     fields = ("search", "category")
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super(SearchForm, self).__init__(*args, **kwargs)
-    #     self.fields['category'].queryset = Category.objects.all()
+    # search = forms.CharField(label='검색', required=False)
+    # category = forms.ModelChoiceField(queryset=Category.objects, label='분류')
 
 
 class WriteForm(forms.ModelForm):
