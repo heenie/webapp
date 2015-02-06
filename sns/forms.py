@@ -9,6 +9,7 @@ class SearchForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['datetime', 'student']
 
+
     # search = forms.CharField(label='검색', required=False)
     # category = forms.ModelChoiceField(queryset=Category.objects, label='분류')
 

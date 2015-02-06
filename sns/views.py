@@ -22,6 +22,7 @@ def index(request):
 
 class Newsfeed(ListView):
     template_name = "newsfeed.html"
+    context_object_name = "articles"
     model = Article
     # form_class = SearchForm
 
@@ -31,6 +32,8 @@ class Newsfeed(ListView):
         return context
 
 
+
+
 class JoinView(CreateView):
     template_name = "join.html"
     model = User
@@ -38,19 +41,9 @@ class JoinView(CreateView):
     success_url = "/"
 
 
-def search(request):
-    return render_to_response('newsfeed.html', None)
 
-# class SearchView(CreateView):
-#     template_name = "search.html"
-#     model = Article
-#     form_class = SearchForm
-#     success_url = "/"
-
-class Article(CreateView):
-    template_name = "article.html"
-    model = Article
-    form_class = ArticleForm
+def Article(request):
+    render_to_response('article.html', None)
 
 
 
