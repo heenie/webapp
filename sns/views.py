@@ -1,10 +1,10 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, View, DetailView
-from sns.forms import JoinForm, WriteForm, ArticleForm
+from django.views.generic import CreateView, ListView, DetailView, View
+from sns.forms import *
 from sns.models import Article
 from sns.forms import JoinForm, SearchForm
 from django.contrib.auth import authenticate, login, logout
@@ -15,17 +15,17 @@ from sns.models import Article
 def index(request):
     return render_to_response('index.html', None)
 
-def newsfeed(request):
-    return render_to_response('newsfeed.html', None)
 
-# class Newsfeed(View):
-#     template_name = "newsfeed.html"
-#     form_class = SearchForm
-#
-#     # def get(self, request):
-#     #     form = self.form_class()
-#     #     return render(request, self.template_name, {'form': form})
+class Newsfeed(CreateView):
+    template_name = "newsfeed.html"
+    # queryset = Article.objects.all()
+    # context_object_name = "articles"
+    form_class = SearchForm
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(Newsfeed, self).get_context_data(**kwargs)
+    #     context.update({"search_form": SearchForm(self.request.GET)})
+    #     return context
 
 class JoinView(CreateView):
     template_name = "join.html"
@@ -34,14 +34,11 @@ class JoinView(CreateView):
     success_url = "/"
 
 
-def search(request):
-    return render_to_response('newsfeed.html', None)
+class SearchView(View):
+    template_name = "header.html"
+    form_class = SearchForm
+    success_url = "/"
 
-# class SearchView(CreateView):
-#     template_name = "search.html"
-#     model = Article
-#     form_class = SearchForm
-#     success_url = "/"
 
 def ArticleView(request):
     # template_name = "article.html"

@@ -4,8 +4,19 @@ from sns.models import *
 
 
 class SearchForm(forms.Form):
-    search = forms.CharField(label='검색', required=False)
-    category = forms.ModelChoiceField(queryset=Category.objects, label='분류')
+    # CHOICES = [('', "필터안함"), (1, "도보"), (2, "통학버스")]
+
+    search = forms.CharField(label="검색", required=False)
+    category = forms.ModelChoiceField(queryset=Category.objects, label="카테고리", required=True)
+    # category = forms.ChoiceField(choices=CHOICES)
+
+    # class Meta:
+    #     model = Category
+    #     fields = ("search", "category")
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(SearchForm, self).__init__(*args, **kwargs)
+    #     self.fields['category'].queryset = Category.objects.all()
 
 
 class WriteForm(forms.ModelForm):
