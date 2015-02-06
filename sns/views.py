@@ -15,16 +15,20 @@ from sns.models import Article
 def index(request):
     return render_to_response('index.html', None)
 
-def newsfeed(request):
-    return render_to_response('newsfeed.html', None)
 
-# class Newsfeed(View):
-#     template_name = "newsfeed.html"
-#     form_class = SearchForm
-#
-#     # def get(self, request):
-#     #     form = self.form_class()
-#     #     return render(request, self.template_name, {'form': form})
+# def newsfeed(request):
+#     return render_to_response('newsfeed.html', None)
+
+
+class Newsfeed(CreateView):
+    template_name = "newsfeed.html"
+    model = Article
+    form_class = SearchForm
+
+
+    # def get(self, request):
+    #     form = self.form_class()
+    #     return render(request, self.template_name, {'form': form})
 
 
 class JoinView(CreateView):
