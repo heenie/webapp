@@ -349,8 +349,7 @@ legend,.ui-input-text input,.ui-input-search input{color:inherit;
 
 .ui-disabled,.ui-state-disabled,button[disabled],.ui-select .ui-btn.ui-state-disabled{filter:Alpha(Opacity=30);opacity:.3;cursor:default!important;pointer-events:none}
 
-.ui-btn:focus,.ui-btn.ui-focus{
-    outline:0}
+.ui-btn:focus,.ui-btn.ui-focus{outline:0}
 
 .ui-noboxshadow .ui-shadow,.ui-noboxshadow .ui-shadow-inset,.ui-noboxshadow .ui-overlay-shadow,.ui-noboxshadow .ui-shadow-icon.ui-btn:after,.ui-noboxshadow .ui-shadow-icon .ui-btn:after,.ui-noboxshadow .ui-focus,.ui-noboxshadow .ui-btn:focus,.ui-noboxshadow input:focus,.ui-noboxshadow .ui-panel{-webkit-box-shadow:none!important;-moz-box-shadow:none!important;box-shadow:none!important}
 .ui-noboxshadow .ui-btn:focus,.ui-noboxshadow .ui-focus{outline-width:1px;outline-style:auto}
@@ -360,8 +359,7 @@ legend,.ui-input-text input,.ui-input-search input{color:inherit;
 .ui-mobile a img,.ui-mobile fieldset{border-width:0}
 .ui-mobile fieldset{min-width:0}
 
-@-moz-document url-prefix(){.ui-mobile fieldset{
-    display:table-column;vertical-align:middle}}
+@-moz-document url-prefix(){.ui-mobile fieldset{display:table-column;vertical-align:middle}}
 
 .ui-mobile-viewport{margin:0;overflow-x:visible;-webkit-text-size-adjust:100%;-ms-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 
