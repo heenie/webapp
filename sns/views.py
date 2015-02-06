@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, View, DetailView
+from django.views.generic import CreateView, View, DetailView, ListView
 from sns.forms import JoinForm, WriteForm, ArticleForm
 from sns.models import Article
 from sns.forms import JoinForm, SearchForm
@@ -20,15 +20,15 @@ def index(request):
 #     return render_to_response('newsfeed.html', None)
 
 
-class Newsfeed(CreateView):
+class Newsfeed(ListView):
     template_name = "newsfeed.html"
     model = Article
-    form_class = SearchForm
+    # form_class = SearchForm
 
-
-    # def get(self, request):
-    #     form = self.form_class()
-    #     return render(request, self.template_name, {'form': form})
+    def get_context_data(self, **kwargs):
+        context = super(Newsfeed, self).get_context_data(**kwargs)
+        context.update({"filter_form": SearchForm(self.request.GET)})
+        return context
 
 
 class JoinView(CreateView):

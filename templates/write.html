@@ -1,36 +1,15 @@
-{#{% extends 'base_newsfeed.html' %}#}
-{#{% block page_content %}#}
-<div data-role="page">
-    <form action="{% url "newsfeed" %}" method="post">
-        <div data-role="header">
-            <h2>게시물 작성</h2>
-        </div>
-        <div data-role="content">
-            <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>
+{% extends "base_newsfeed.html" %}
+{% load staticfiles %}
 
-            <div class="write-select">
-                {{ form.category }}
-            </div>
-            <input type="hidden" name="next" value="/" />
-        </div>
-        <div data-role="footer" style="background-color: #f3a1a1 !important;">
-            <input type="submit" class="write-button" value="글쓰기" />
-        </div>
+{% block page_content %}
+<div data-role="page">
+    <form action="#" method="post">
+        {{ form.content }}
+        {{ form.category }}
+
+        <input type="submit" id="button" value="글쓰기" />
+        <input type="hidden" name="next" value="/" />
     </form>
-{#    <div data-role="header">#}
-{#        <h1>게시물 작성</h1>#}
-{#    </div>#}
-{#    <div data-role="content">#}
-{#        <form action="{% url "newsfeed" %}" method="post">#}
-{#            <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>#}
-{#            {{ form.content }}#}
-{##}
-{#            <div class="write-select">#}
-{#                {{ form.category }}#}
-{#            </div>#}
-{#            <input type="submit" id="button" value="글쓰기" />#}
-{#            <input type="hidden" name="next" value="/" />#}
-{#        </form>#}
-{#    </div>#}
 </div>
-{#{% endblock %}#}
+
+{% endblock %}
