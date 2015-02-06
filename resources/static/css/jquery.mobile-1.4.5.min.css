@@ -324,7 +324,9 @@ legend,.ui-input-text input,.ui-input-search input{color:inherit;
 .ui-body-b,.ui-page-theme-b .ui-body-inherit,html .ui-bar-b .ui-body-inherit,html .ui-body-b .ui-body-inherit,html body .ui-group-theme-b .ui-body-inherit,html .ui-panel-page-container-b{background-color:#2a2a2a;border-color:#1d1d1d;color:#fff;
     /*text-shadow:0 1px 0 #111*/
 }
-.ui-body-b{border-width:1px;border-style:solid}
+.ui-body-b{
+    border-width:1px;border-style:solid
+}
 
 .ui-page-theme-b a,html .ui-bar-b a,html .ui-body-b a,html body .ui-group-theme-b a{color:#2ad;font-weight:700}
 .ui-page-theme-b a:visited,html .ui-bar-b a:visited,html .ui-body-b a:visited,html body .ui-group-theme-b a:visited{color:#2ad}
