@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout, password_change, password_change_done
 from sns.views import *
+from django.contrib.auth.views import login, logout, password_change, password_change_done
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     # url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
+    # url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
     # url(r'^newsfeed', ArticleView.as_view(template_name="newsfeed.html"), name="newsfeed"),
     url(r'^newsfeed', 'sns.views.newsfeed', name="newsfeed"),
     url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout",),
