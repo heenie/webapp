@@ -42,11 +42,6 @@ class Newsfeed(ListView):
 
         return articles
 
-    def listing(request):
-        articles = Article.objects.all();
-
-        return render_to_response('newsfeed.html', {"articles": articles})
-
 
 class JoinView(CreateView):
     template_name = "join.html"
@@ -65,6 +60,25 @@ class WriteView(CreateView):
         form.instance.student = self.request.user.student
         return super(WriteView, self).form_valid(form)
 
+
+class MyPage(ListView):
+    template_name = "mypage.html"
+    context_object_name = "my_articles"
+
+    def get_context_data(self, **kwargs):
+        context = super(MyPage, self).get_context_data(**kwargs)
+        context.update({"search_form": SearchForm(self.request.GET)})
+        return context
+
+    def get_queryset(self):
+        category_param = self.request.GET.get('category')
+        content_param = self.request.GET.get('content')
+
+        articles = Article.objects.filter(student=self.request.user.student)
+        articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
+        articles = ArticleFilter(self.request.GET, queryset=articles)
+
+        return articles
 
 
 def LoginTest(request):
