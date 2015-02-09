@@ -1,12 +1,16 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from sns.views import *
 from django.contrib.auth.views import login, logout, password_change, password_change_done
+from webapp import settings
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'webapp.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'sns.views.index', name="index"),
@@ -24,5 +28,8 @@ urlpatterns = patterns('',
     url(r'^password_change/$', password_change, {'template_name': 'password_change.html', 'post_change_redirect' :'/password_change/done/'}),
     url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
 
+
+
 )
-# url(r'^login/$', 'django.contrib.auth.views.login'),
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
