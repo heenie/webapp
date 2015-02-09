@@ -1,30 +1,32 @@
 {% extends 'base_newsfeed.html' %}
 
 {% block page_content %}
-    {#    {% include "search.html" %}#}
     <div data-role="header">
         <h1>header</h1>
-        <form action="" method="get">
-            {% for field in search_form %}
-            {{ field }}
-            {% endfor %}
-            <button type="submit">filter</button>
-        </form>
+        {{ filter_form.content }}
+        {{ filter_form.category }}
     </div>
 
     <div data-role="content">
     {% for article in articles %}
-        <p>
-        <img src="{{ article.student.get_image.url }}" width="50" height="50" alt="default image"/>
-        {{ article.student }}
-        {{ article.datetime }}
-        {{ article.category }}
-        {{ article.content }}
-        </p>
+        <div style="width: 500px; height: 70px;">
+            <div style="float: left; width: 100px; height: 70px; text-align: center; vertical-align: middle">
+                <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+            </div>
+
+            <div style="float: left; width: 300px; height: 70px; vertical-align: middle">
+                {{ article.student }} <br>
+                {{ article.datetime }} <br>
+                {{ article.category }} <br>
+            </div>
+        </div>
+
+        <div style="clear: left; width: 500px; height: auto; margin: 20px">
+            {{ article.content }}
+        </div>
     {% endfor %}
     </div>
 
     {% include "newsfeed_footer.html" %}
-
 
 {% endblock %}
