@@ -20,7 +20,7 @@
             </div>
 
             <div style="float: left; width: 300px; height: 70px; vertical-align: middle">
-                {{ article.student }} <br>
+                <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
                 {{ article.datetime }} <br>
                 {{ article.category }} <br>
             </div>

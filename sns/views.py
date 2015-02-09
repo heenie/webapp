@@ -7,7 +7,7 @@ from django.views.generic import CreateView, View, DetailView, ListView
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import JoinForm, WriteForm, ArticleForm
-from sns.models import Article
+from sns.models import *
 from sns.forms import JoinForm, SearchForm
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
@@ -26,7 +26,6 @@ class Newsfeed(ListView):
     template_name = "newsfeed.html"
     queryset = Article.objects.all()
     context_object_name = "articles"
-    
 
     def get_context_data(self, **kwargs):
         context = super(Newsfeed, self).get_context_data(**kwargs)
@@ -66,16 +65,22 @@ class MyPage(ListView):
     template_name = "mypage.html"
     context_object_name = "my_articles"
 
+    # def get(self, request, *args, **kwargs):
+    #     student = Student.objects.get(id=kwargs['pk'])
+    #     return render(request, self.template_name, {'student': student})
+
     def get_context_data(self, **kwargs):
         context = super(MyPage, self).get_context_data(**kwargs)
         context.update({"search_form": SearchForm(self.request.GET)})
+        context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
         return context
 
     def get_queryset(self):
         category_param = self.request.GET.get('category')
         content_param = self.request.GET.get('content')
 
-        articles = Article.objects.filter(student=self.request.user.student).order_by('-datetime')
+        articles = Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime')
+        # articles = Article.objects.filter(student=self.request.user.student).order_by('-datetime')
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
 
