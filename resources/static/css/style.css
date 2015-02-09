@@ -6,6 +6,7 @@ body {
 
 .css-page-body {
 	background-color: #f78181 !important;
+    min-height: 100% !important;
 }
 
 .css-page-footer {
