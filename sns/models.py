@@ -66,3 +66,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
+
