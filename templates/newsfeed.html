@@ -14,13 +14,15 @@
 
     <div data-role="content">
     {% for article in articles %}
-        <p>
-        <img src="{{ article.student.get_image.url }}" width="50" height="50" alt="default image"/>
-        {{ article.student }}
-        {{ article.datetime }}
-        {{ article.category }}
-        {{ article.content }}
-        </p>
+        <form action="{% url "newsfeed" article.id %}" method="post">
+            <p>
+            <img src="{{ article.student.get_image.url }}" width="50" height="50" alt="default image"/>
+            {{ article.student }}
+            {{ article.datetime }}
+            {{ article.category }}
+            {{ article.content }}
+            </p>
+        </form>
     {% endfor %}
     </div>
 
