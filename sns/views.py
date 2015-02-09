@@ -15,6 +15,8 @@ from sns.models import Article
 def index(request):
     return render_to_response('index.html', None)
 
+def newsfeed(request):
+    return render_to_response('newsfeed.html', None)
 
 # def newsfeed(request):
 #     return render_to_response('newsfeed.html', None)
@@ -41,10 +43,17 @@ class JoinView(CreateView):
     success_url = "/"
 
 
+def search(request):
+    return render_to_response('newsfeed.html', None)
 
 def Article(request):
     render_to_response('article.html', None)
 
+def ArticleView(request):
+    # template_name = "article.html"
+    # model = Article
+    # form_class = ArticleForm
+    return render_to_response('article.html', None)
 
 
 class WriteView(CreateView):
