@@ -2,11 +2,12 @@
 
 {% block page_content %}
 {#    {% include "search.html" %}#}
-    <div data-role="header">
-        <h1>header</h1>
-        {{ filter_form.content }}
-        {{ filter_form.category }}
-    </div>
+    <div id="newsfeed-body">
+        <div data-role="header">
+            <h1>header</h1>
+    {#        {{ form.content }}#}
+    {#        {{ form.category }}#}
+        </div>
 
     <div data-role="content">
     {% for article in articles %}

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<div data-role="page" class="css-page-body">
+<div data-role="page" class="css-page-body" style="min-width: 350px">
     {% block page_content_parent %}
     <div id="wrapper">
         {% block page_content %}
@@ -20,6 +20,5 @@
     </div>
     {% endblock %}
 </div>
-{% include "footer.html" %}
 </body>
 </html>

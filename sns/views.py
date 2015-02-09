@@ -51,7 +51,12 @@ class WriteView(CreateView):
     template_name = "write.html"
     model = Article
     form_class = WriteForm
-    success_url = "/"
+    success_url = "/newsfeed"
+
+    def form_valid(self, form):
+        form.instance.student = self.request.user.student
+        return super(WriteView, self).form_valid(form)
+
 
 
 def LoginTest(request):
