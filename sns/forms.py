@@ -6,12 +6,7 @@ from sns.models import *
 class SearchForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = '__all__'
-        exclude = ['datetime', 'student']
-
-
-    # search = forms.CharField(label='검색', required=False)
-    # category = forms.ModelChoiceField(queryset=Category.objects, label='분류')
+        fields = ("category", "content")
 
 
 class WriteForm(forms.ModelForm):

@@ -4,12 +4,13 @@ from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, View, DetailView, ListView
+from sns.admin import ArticleModelAdmin
+from sns.filters import ArticleFilter
 from sns.forms import JoinForm, WriteForm, ArticleForm
-from sns.models import Article
 from sns.forms import JoinForm, SearchForm
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
-from sns.models import Article
+from sns.models import *
 
 
 def index(request):
@@ -22,16 +23,27 @@ def index(request):
 
 class Newsfeed(ListView):
     template_name = "newsfeed.html"
+    queryset = Article.objects.all()
     context_object_name = "articles"
-    model = Article
-    # form_class = SearchForm
 
     def get_context_data(self, **kwargs):
         context = super(Newsfeed, self).get_context_data(**kwargs)
-        context.update({"filter_form": SearchForm(self.request.GET)})
+        context.update({"search_form": SearchForm(self.request.GET)})
         return context
 
+    def get_queryset(self):
+        category_param = self.request.GET.get('category')
+        content_param = self.request.GET.get('content')
 
+        articles = ArticleModelAdmin(Article, None).get_search_results(self.request, self.queryset, content_param)[0]
+        articles = ArticleFilter(self.request.GET, queryset=articles)
+
+        return articles
+
+    def listing(request):
+        articles = Article.objects.all();
+
+        return render_to_response('newsfeed.html', {"articles": articles})
 
 
 class JoinView(CreateView):
@@ -39,12 +51,6 @@ class JoinView(CreateView):
     model = User
     form_class = JoinForm
     success_url = "/"
-
-
-
-def Article(request):
-    render_to_response('article.html', None)
-
 
 
 class WriteView(CreateView):
