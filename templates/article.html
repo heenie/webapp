@@ -1,39 +1,71 @@
 {% extends 'base_newsfeed.html' %}
-
+{% load staticfiles %}
 {% block page_content %}
+    <div data-role="header" class="newsfeed-header">
+        <table class="header-table">
+            <tr>
+                <th class="col-1">
+                    <div class="search-button">
+                        <a href="{% url "newsfeed" %}"><img src="{% static "img/logo.png" %}" height="30"/></a>
+                    </div>
+                </th>
+                <th class="col-9"></th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <div data-role="content">
+            <div class="div-article">
+                <div class="div-profile">
+                    <div class="div-image">
+                        <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+                    </div>
 
-    <div data-role="header">
-        <h1>header</h1>
-        <form action="" method="get">
-            {% for field in search_form %}
-            {{ field }}
+                    <div class="div-user">
+                        <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
+                        {{ article.datetime }} <br>
+                        {{ article.category }} <br>
+                    </div>
+                </div>
+            </div>
+            <div>
+                {{ article.content }}
+            </div>
+        </div>
+        <div>
+            {% for comment in article.get_comments %}
+                <div style="margin: 30px">
+                    <div style="width: 470px; ">
+                        <div style="float: left; width: 70px; text-align: center; vertical-align: middle">
+                            <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
+                        </div>
+
+                        <div style="float: left; width: 400px; font-size: 12px; margin-bottom: 20px" >
+                            <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
+                            {{ comment.content }}   <br>
+                            <p>{{ comment.datetime }}
+                            {% if comment.student == user.student %}<a href="{% url "comment-delete" comment.id %}">삭제</a>{% endif %}</p>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-            <button type="submit">filter</button>
-        </form>
-    </div>
-
-    <div data-role="content">
-    {% for article in articles %}
-        <div style="width: 500px; height: 70px;">
-            <div style="float: left; width: 100px; height: 70px; text-align: center; vertical-align: middle">
-                <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
-            </div>
-
-            <div style="float: left; width: 300px; height: 70px; vertical-align: middle">
-                {{ article.student }} <br>
-                {{ article.datetime }} <br>
-                {{ article.category }} <br>
-            </div>
+        </div>
+        <div>
+            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+                <table class="header-table" style="padding: 20px">
+                    <tr>
+                        <th class="col-9">
+                            {% csrf_token %}
+                            {{ form.content }}
+                        </th>
+                        <th class="col-1">
+                            <input type="submit" id="button" value="등록" />
+                            <input type="hidden" name="next" value="/" />
+                        </th>
+                    </tr>
+                </table>
+            </form>
         </div>
 
-        <div style="clear: left; width: 500px; height: auto; margin: 20px">
-            {{ article.content }}
-        </div>
-
-    {% endfor %}
     </div>
-
-    {% include "newsfeed_footer.html" %}
-
-
 {% endblock %}

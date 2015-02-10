@@ -3,15 +3,13 @@ from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, View, DetailView, ListView
+from django.views.generic import CreateView, View, DetailView, ListView, DeleteView
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
-from sns.forms import JoinForm, WriteForm, ArticleForm
+from sns.forms import *
 from sns.models import *
-from sns.forms import JoinForm, SearchForm
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
-from sns.models import Article
 
 
 def index(request):
@@ -37,6 +35,31 @@ class Newsfeed(ListView):
         articles = ArticleFilter(self.request.GET, queryset=articles)
 
         return articles
+
+
+class ArticleView(CreateView):
+    template_name = "article.html"
+    model = Comment
+    form_class = CommentForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleView, self).get_context_data(**kwargs)
+        context.update({"article": Article.objects.get(id=self.kwargs['pk'])})
+        return context
+
+    def form_valid(self, form):
+        form.instance.student = self.request.user.student
+        form.instance.article = Article.objects.get(id=self.kwargs['pk'])
+        return super(ArticleView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('article', kwargs={'pk': self.kwargs['pk']})
+
+
+class CommentDelete(DeleteView):
+    template_name = "comment_delete.html"
+    model = Comment
+    success_url = "/newsfeed"   #todo 뒤로 기능 (+article.html에 있는 뒤로 버튼)
 
 
 class JoinView(CreateView):
