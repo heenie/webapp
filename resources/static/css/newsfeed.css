@@ -58,9 +58,8 @@
     vertical-align: middle !important;
 }
 .search-button img {
-    top: 50%;
     left: 50%;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-left: -25px;
 }
 
