@@ -6,20 +6,22 @@
 
     <div data-role="content">
     {% for article in articles %}
-        <div class="div-profile">
-            <div class="div-image">
-                <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+        <div class="div-article">
+            <div class="div-profile">
+                <div class="div-image">
+                    <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+                </div>
+
+                <div class="div-user">
+                    <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
+                    {{ article.datetime }} <br>
+                    {{ article.category }} <br>
+                </div>
             </div>
 
-            <div class="div-user">
-                <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
-                {{ article.datetime }} <br>
-                {{ article.category }} <br>
+            <div class="div-content">
+                <a href="#" class="div-fill">{{ article.content }}</a>
             </div>
-        </div>
-
-        <div class="div-content">
-            <a href="#" class="div-fill">{{ article.content }}</a>
         </div>
     {% endfor %}
     </div>
