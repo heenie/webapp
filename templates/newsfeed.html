@@ -33,13 +33,14 @@
 
             <div style="float: left; width: 300px; height: 70px; vertical-align: middle">
                 <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
+{#                {{ article.student }} <br>#}
                 {{ article.datetime }} <br>
                 {{ article.category }} <br>
             </div>
         </div>
 
         <div style="clear: left; width: 500px; height: auto; margin: 20px">
-            {{ article.content }}
+            <a href="#" class="div-fill">{{ article.content }}</a>
         </div>
     {% endfor %}
     </div>

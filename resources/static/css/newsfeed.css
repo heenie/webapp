@@ -116,3 +116,9 @@
 .write-footer {
     border-color: transparent !important;
 }
+
+.div-fill {
+    display: block;
+    color: #333 !important;
+    text-decoration: none !important;
+}
