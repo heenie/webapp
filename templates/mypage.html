@@ -2,15 +2,7 @@
 
 {% block page_content %}
 
-    <div data-role="header">
-        <h1>header</h1>
-        <form action="" method="get">
-            {% for field in search_form %}
-                {{ field }}
-            {% endfor %}
-            <button type="submit">filter</button>
-        </form>
-    </div>
+    {% include "header.html" %}
 
     <div data-role="content">
             <div style="width: 500px; height: 150px;">
