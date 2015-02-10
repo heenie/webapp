@@ -20,7 +20,6 @@ urlpatterns = patterns('',
     # url(r'^article', ArticleView.as_view(template_name="article.html"), name="article"),
     # url(r'^article', ArticleView.as_view(template_name="article.html"), name="article"),
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
-
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     # url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
     # url(r'^newsfeed', ArticleView.as_view(template_name="newsfeed.html"), name="newsfeed"),

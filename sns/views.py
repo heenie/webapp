@@ -14,7 +14,6 @@ from django.template import RequestContext
 from sns.models import Article
 
 
-
 def index(request):
     return render_to_response('index.html', None)
 
