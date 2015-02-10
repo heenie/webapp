@@ -117,6 +117,33 @@
     border-color: transparent !important;
 }
 
+.div-profile {
+    width: 95%;
+    height: 70px;
+}
+
+.div-content {
+    clear: left;
+    width: 95%;
+    height: auto;
+    margin: 20px;
+}
+
+.div-image {
+    float: left;
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.div-user {
+    float: left;
+    width: 300px;
+    height: 70px;
+    vertical-align: middle
+}
+
 .div-fill {
     display: block;
     color: #333 !important;
