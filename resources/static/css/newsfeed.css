@@ -60,7 +60,7 @@
 .search-button img {
     left: 50%;
     margin-top: 10px;
-    margin-left: -25px;
+    cursor: pointer;
 }
 
 
