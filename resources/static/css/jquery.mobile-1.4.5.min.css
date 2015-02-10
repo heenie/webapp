@@ -231,7 +231,7 @@ legend,.ui-input-text input,.ui-input-search input{color:inherit;
 }
 .ui-btn{text-decoration:none!important}
 .ui-btn-active{cursor:pointer}
-.ui-corner-all{-webkit-border-radius:.3125em;border-radius:.3125em}
+/*.ui-corner-all{-webkit-border-radius:.3125em;border-radius:.3125em}*/
 .ui-btn-corner-all,.ui-btn.ui-corner-all,.ui-slider-track.ui-corner-all,.ui-flipswitch.ui-corner-all,.ui-li-count{-webkit-border-radius:.3125em;border-radius:.3125em}
 .ui-btn-icon-notext.ui-btn-corner-all,.ui-btn-icon-notext.ui-corner-all{-webkit-border-radius:1em;border-radius:1em}
 .ui-btn-corner-all,.ui-corner-all{-webkit-background-clip:padding;background-clip:padding-box}
@@ -285,7 +285,7 @@ legend,.ui-input-text input,.ui-input-search input{color:inherit;
 
 .ui-body-a,.ui-page-theme-a .ui-body-inherit,html .ui-bar-a .ui-body-inherit,html .ui-body-a .ui-body-inherit,html body .ui-group-theme-a .ui-body-inherit,html .ui-panel-page-container-a{
     background-color:#fff;
-    border-color:#ddd;
+    border-color:transparent;
     color:#333;
     /*text-shadow:0 1px 0 #f3f3f3*/
 }
