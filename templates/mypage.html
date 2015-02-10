@@ -13,19 +13,17 @@
     </div>
 
     <div data-role="content">
-        {% if user.is_authenticated %}
             <div style="width: 500px; height: 150px;">
                 <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">
-                    <img src="{{ user.student.get_image.url }}" width="120" height="120" alt="default image"/>
+                    <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>
                 </div>
 
                 <div style="float: left; width: 350px; height: 150px; vertical-align: middle">
-                    <p>이름(학번) : {{ user.student }}</p>
-                    <p>휴대전화 : {{ user.student.get_phone }}</p>
-                    <p>이메일 : {{ user.email }}</p>
+                    <p>이름(학번) : {{ student }}</p>
+                    <p>휴대전화 : {{ student.get_phone }}</p>
+                    <p>이메일 : {{ student.user.email }}</p>
                 </div>
             </div>
-        {% endif %}
         {% for article in my_articles %}
             <div style="width: 500px; height: 70px;">
                 <div style="float: left; width: 100px; height: 70px; text-align: center; vertical-align: middle">
