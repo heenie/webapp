@@ -2,27 +2,9 @@
 {% load staticfiles %}
 {% block page_content %}
     {% include "header.html" %}
-    <div>
+    <div id="newsfeed-body">
     {% for article in articles %}
-        <div data-role="content" class="div-article-box">
-            <div class="div-article">
-                <div class="div-profile">
-                    <div class="div-image">
-                        <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
-                    </div>
-
-                    <div class="div-user">
-                        <a href="{% url "mypage" article.student.id %}" class="div-user-id">{{ article.student }}</a> <br>
-                        {{ article.datetime }} <br>
-                        {{ article.category }} <br>
-                    </div>
-                </div>
-            </div>
-
-            <div class="div-content">
-                <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
-            </div>
-        </div>
+        {% include "article_box.html" with article=article %}
     {% endfor %}
     </div>
     {% include "newsfeed_footer.html" %}

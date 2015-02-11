@@ -110,7 +110,10 @@ html head+body .ui-body-a.ui-focus {
 }
 
 /*dark font*/
-.div-fill, .write-category #id_category-button, .write-button {
+.div-user-id,
+.div-fill,
+.write-category #id_category-button,
+.write-button {
     color: #333 !important;
 }
 
@@ -216,6 +219,9 @@ html body .ui-group-theme-a a:visited {
 /*newsfeed*/
 #newsfeed-body {
 	background-color: #f3f3f3;
+}
+.div-article-box {
+    background-color: #fff;
 }
 
 /*index*/

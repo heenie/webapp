@@ -1,0 +1,30 @@
+<div class="div-article-box">
+    <div class="div-article">
+        <div class="div-profile">
+            <table style="width:100%;">
+                <th class="div-image">
+                        <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+                </th>
+                <th class="div-user">
+                    <table style="width:100%">
+                        <th class="user">
+                            <a href="{% url "mypage" article.student.id %}" class="div-user-id">{{ article.student }}</a> <br>
+                        </th>
+                        <th class="time">
+                            {{ article.datetime }}
+                        </th>
+                    </table>
+                    <label style="float: left">{{ article.category }}</label>
+                </th>
+            </table>
+        </div>
+    </div>
+
+    <div class="div-content">
+        {% if url %}
+            <p class="div-fill">{{ article.content }}</p>
+        {% else %}
+            <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
+        {% endif %}
+    </div>
+</div>
