@@ -1,19 +1,42 @@
-{% extends "base_page.html" %}
+{% extends 'base_newsfeed.html' %}
 
 {% block page_content %}
-    <div data-role="main" class="css-page-box">
+<div class="write-main">
            <form action="{% url "comment-delete" comment.id %}" method="post">
-                {% csrf_token %}
-                <div align="center">
-                    <input type="submit" id="button" value="가입" style="width:100px" />
-                    <input type="hidden" name="next" value="/" />
-                </div>
-            </form>
+        {% csrf_token %}
+        <div data-role="header" class="write-header" data-position="inline">
+            <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+            <h1>댓글 삭제</h1>
         </div>
 
-    </div>
-
+        <div data-role="content">
+            <table class="write-table">
+                <tr>
+                    <th><div class="divider"></div></th>
+                    <th><div class="write-button" onclick="$(this).closest('form').submit()">삭제</div></th>
+                </tr>
+            </table>
+            <input type="hidden" name="next" value="/"/>
+        </div>
+    </form>
+</div>
 {% endblock %}
+
+{#{% extends "base_page.html" %}#}
+{##}
+{#{% block page_content %}#}
+{#    <div data-role="main" class="css-page-box">#}
+{#           <form action="{% url "comment-delete" comment.id %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                <div align="center">#}
+{#                    <input type="submit" id="button" value="가입" style="width:100px" />#}
+{#                    <input type="hidden" name="next" value="/" />#}
+{#                </div>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
 
 
 {#{% extends "base_newsfeed.html" %}#}
