@@ -4,7 +4,7 @@
     {% include "header.html" %}
     <div>
     {% for article in articles %}
-        <div data-role="content">
+        <div data-role="content" class="div-article-box">
             <div class="div-article">
                 <div class="div-profile">
                     <div class="div-image">
@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="div-user">
-                        <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
+                        <a href="{% url "mypage" article.student.id %}" class="div-user-id">{{ article.student }}</a> <br>
                         {{ article.datetime }} <br>
                         {{ article.category }} <br>
                     </div>
