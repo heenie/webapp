@@ -1,4 +1,6 @@
-/*main color*/
+/*
+ * main color
+ */
 .base-page-body,
 .css-page-body,
 .header,
@@ -40,7 +42,9 @@ html .ui-alt-icon .ui-radio-off:after,
     color: #ca98c9 !important;
 }
 
-/*main hover color*/
+/*
+ * main hover color
+ */
 .ui-page-theme-a .ui-btn:hover,
 html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
@@ -104,12 +108,13 @@ html head+body .ui-body-a.ui-focus {
     -moz-box-shadow:0 0 12px #b19cd9;
     box-shadow:0 0 12px #b19cd9
 }
-
 #help, .alert {
     color: #b19cd9;
 }
 
-/*dark font*/
+/*
+ * dark font
+ */
 .div-user-id,
 .div-fill,
 .write-category #id_category-button,
@@ -118,19 +123,22 @@ html head+body .ui-body-a.ui-focus {
 }
 
 
-/*white font*/
+/*
+ * bright color
+ */
+.comment-del {
+    color: #f3f3f3 !important;
+}
+
+/*
+ * white font
+ */
 #button,
 .header,
 .css-page-footer,
 .search-content {
    color: #fff !important;
 }
-/*.search-content:-ms-input-placeholder,*/
-/*.search-content::-moz-placeholder,*/
-/*.search-content:-moz-placeholder,*/
-/*.search-content::-webkit-input-placeholder {*/
-   /*color: #fff !important;*/
-/*}*/
 .ui-page-theme-a .ui-btn,
 html .ui-bar-a .ui-btn,
 html .ui-body-a .ui-btn,

@@ -1,14 +1,24 @@
-<div style="margin: 30px">
-    <div style="width: 470px; ">
-        <div style="float: left; width: 70px; text-align: center; vertical-align: middle">
-            <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
-        </div>
 
-        <div style="float: left; width: 400px; font-size: 12px; margin-bottom: 20px" >
-            <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
-            {{ comment.content }}   <br>
-            <p>{{ comment.datetime }}
-            {% if comment.student == user.student %}<a href="{% url "comment-delete" comment.id %}">삭제</a>{% endif %}</p>
-        </div>
+    <div class="comment-profile">
+        <table style="width:100%;">
+            <th class="comment-image">
+                <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
+            </th>
+            <th class="comment-user">
+                <table style="width:100%">
+                    <th class="user">
+                        <a href="{% url "mypage" comment.student.id %}" class="div-user-id comment-user-id">{{ article.student }}</a> <br>
+                    </th>
+                    <th class="time">
+                        {{ comment.datetime }}
+                    </th>
+                </table>
+                <label class="comment-content">{{ comment.content }}</label>
+
+                {% if comment.student == user.student %}
+                    <a href="{% url "comment-delete" comment.id %}" class="comment-del">x</a></a>
+                {% endif %}
+            </th>
+        </table>
     </div>
-</div>
+{#</div>#}

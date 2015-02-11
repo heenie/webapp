@@ -16,11 +16,14 @@
 
     {% include "article_box.html" with article=article url="#" %}
 
-    <div>
+    {% if article.get_comments %}
+        <div class="comment-box" id="newsfeed-body">
         {% for comment in article.get_comments %}
             {% include "comment_box.html" with comment=comment %}
         {% endfor %}
-    </div>
+        </div>
+    {% endif %}
+
     <div>
         <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
             <table class="header-table" style="padding: 20px">

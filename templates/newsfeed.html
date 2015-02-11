@@ -2,11 +2,13 @@
 {% load staticfiles %}
 {% block page_content %}
     {% include "header.html" %}
+
     <div id="newsfeed-body">
     {% for article in articles %}
         {% include "article_box.html" with article=article %}
     {% endfor %}
     </div>
+
     {% include "newsfeed_footer.html" %}
 
 {% endblock %}
