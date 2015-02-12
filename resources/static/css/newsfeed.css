@@ -189,8 +189,11 @@
 }
 .comment-content {
     float: left;
+    text-align: left;
     padding-left: 2px;
 }
 .comment-del {
     text-decoration: none;
+    margin-left: 2px;
+    font-size: 80%;
 }
