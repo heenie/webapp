@@ -4,11 +4,6 @@
 .css-page-body {
     min-height: 100% !important;
 }
-.css-btn-box {
-	width: 300px;
-	margin: 0 auto !important;
-	padding-bottom: 50px;
-}
 .login {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -35,7 +30,15 @@
     height:48px !important;
 }
 .login-btn {
-    margin-bottom: 10px;
+    width: 270px !important;
+}
+.css-submit {
     margin-top: 15px;
-    width: 250px !important;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+.drop-down {
+    width: 290px;
+    height: 40px;
+    margin: 5px;
 }

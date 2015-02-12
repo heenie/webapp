@@ -19,6 +19,7 @@ input {
 
 #page {
     min-width: 350px;
+    min-height: 100% !important;
 }
 
 #footer {
@@ -80,6 +81,11 @@ input {
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
 	margin: 10px;
 }
+.css-btn-box {
+	width: 300px;
+	margin: 0 auto !important;
+	padding-bottom: 50px;
+}
 
 .header {
 	width: 100%;
@@ -105,13 +111,11 @@ input {
 	-webkit-box-orient: vertical;
 	-moz-box-orient: vertical;
 }
-
 .text-field {
     width: 290px;
     height: 40px;
     margin: 5px;
 }
-
 .short-text-field {
     width: 140px;
     height: 40px;
@@ -119,23 +123,15 @@ input {
     margin-right: 0px;
     margin-bottom: 5px;
 }
-
 .medium-text-field {
     width: 250px;
     height: 40px;
     margin: 5px;
 }
-
 .check-box {
     vertical-align: middle;
     width: 20px;
     height: 30px;
-    margin: 5px;
-}
-
-.drop-down {
-    width: 290px;
-    height: 40px;
     margin: 5px;
 }
 .divider {
