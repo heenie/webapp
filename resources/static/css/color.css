@@ -108,8 +108,8 @@ html head+body .ui-body-a.ui-focus {
     -moz-box-shadow:0 0 12px #b19cd9;
     box-shadow:0 0 12px #b19cd9
 }
-#help, .alert {
-    color: #b19cd9;
+#help, .alert, .comment-del {
+    color: #b19cd9 !important;
 }
 
 /*
@@ -122,13 +122,6 @@ html head+body .ui-body-a.ui-focus {
     color: #333 !important;
 }
 
-
-/*
- * bright color
- */
-.comment-del {
-    color: #f3f3f3 !important;
-}
 
 /*
  * white font

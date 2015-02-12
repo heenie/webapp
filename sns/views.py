@@ -62,6 +62,11 @@ class CommentDelete(DeleteView):
     success_url = "/newsfeed"   #todo 뒤로 기능 (+article.html에 있는 뒤로 버튼)
 
 
+def comment_del(request, comment_id):
+    Comment.objects.filter(id=comment_id).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 class JoinView(CreateView):
     template_name = "join.html"
     model = User
