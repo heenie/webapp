@@ -13,59 +13,31 @@
             </tr>
         </table>
     </div>
+
+    {% include "article_box.html" with article=article url="#" %}
+
+    {% if article.get_comments %}
+        <div class="comment-box" id="newsfeed-body">
+        {% for comment in article.get_comments %}
+            {% include "comment_box.html" with comment=comment %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
     <div>
-        <div data-role="content">
-            <div class="div-article">
-                <div class="div-profile">
-                    <div class="div-image">
-                        <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
-                    </div>
-
-                    <div class="div-user">
-                        <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
-                        {{ article.datetime }} <br>
-                        {{ article.category }} <br>
-                    </div>
-                </div>
-            </div>
-            <div>
-                {{ article.content }}
-            </div>
-        </div>
-        <div>
-            {% for comment in article.get_comments %}
-                <div style="margin: 30px">
-                    <div style="width: 470px; ">
-                        <div style="float: left; width: 70px; text-align: center; vertical-align: middle">
-                            <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
-                        </div>
-
-                        <div style="float: left; width: 400px; font-size: 12px; margin-bottom: 20px" >
-                            <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
-                            {{ comment.content }}   <br>
-                            <p>{{ comment.datetime }}
-                            {% if comment.student == user.student %}<a href="{% url "comment-delete" comment.id %}">삭제</a>{% endif %}</p>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-        <div>
-            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
-                <table class="header-table" style="padding: 20px">
-                    <tr>
-                        <th class="col-9">
-                            {% csrf_token %}
-                            {{ form.content }}
-                        </th>
-                        <th class="col-1">
-                            <input type="submit" id="button" value="등록" />
-                            <input type="hidden" name="next" value="/" />
-                        </th>
-                    </tr>
-                </table>
-            </form>
-        </div>
-
+        <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+            <table class="header-table" style="padding: 20px">
+                <tr>
+                    <th class="col-9">
+                        {% csrf_token %}
+                        {{ form.content }}
+                    </th>
+                    <th class="col-1">
+                        <input type="submit" id="button" value="등록" />
+                        <input type="hidden" name="next" value="/" />
+                    </th>
+                </tr>
+            </table>
+        </form>
     </div>
 {% endblock %}
