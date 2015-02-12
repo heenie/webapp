@@ -3,39 +3,23 @@
 {% block page_content %}
 
     {% include "header.html" %}
-    <div style="width: 500px; height: 120px; margin: 30px">
-        <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">
-            <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>
-        </div>
 
-        <div style="float: left; width: 350px; height: 120px; vertical-align: middle">
-            <p>이름(학번) : {{ student }}</p>
-            <p>휴대전화 : {{ student.get_phone }}</p>
-            <p>이메일 : {{ student.user.email }}</p>
-        </div>
-    </div>
-    <div>
-        {% for article in my_articles %}
-            <div data-role="content">
-                <div class="div-article">
-                    <div class="div-profile">
-                        <div class="div-image">
-                            <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
-                        </div>
-
-                        <div class="div-user">
-                            {#                            <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>#}
-                            {{ article.student }}  <br>
-                            {{ article.datetime }} <br>
-                            {{ article.category }} <br>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="div-content">
-                    <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
-                </div>
+    <div id="newsfeed-body">
+        <div style="width: 500px; height: 120px; margin: 30px">
+            <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">
+                <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>
             </div>
+
+            <div style="float: left; width: 350px; height: 120px; vertical-align: middle">
+                <p>이름(학번) : {{ student }}</p>
+                <p>휴대전화 : {{ student.get_phone }}</p>
+                <p>이메일 : {{ student.user.email }}</p>
+            </div>
+        </div>
+        <div>
+
+        {% for article in my_articles %}
+            {% include "article_box.html" with article=article %}
         {% endfor %}
     </div>
 

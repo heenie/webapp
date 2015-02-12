@@ -1,4 +1,11 @@
 @import url('common.css');
+
+#newsfeed-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 100%;
+}
+
 /*
  * newsfeed header
  */
@@ -102,10 +109,6 @@
 /*
  * article
  */
-#newsfeed-body {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 .div-article-box {
     width: 97%;
     margin-left: 1.5%;
@@ -196,4 +199,13 @@
     text-decoration: none;
     margin-left: 2px;
     font-size: 80%;
+}
+
+/*
+ * setting
+ */
+.setting-body .css-btn-box div .ui-input-btn {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 3px;
 }

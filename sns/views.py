@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, View, DetailView, ListView, DeleteView
+from django.views.generic import *
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
@@ -109,6 +109,13 @@ class MyPage(ListView):
         articles = ArticleFilter(self.request.GET, queryset=articles)
 
         return articles
+
+
+class SettingView(UpdateView):
+    template_name = "setting.html"
+    model = User
+    form_class = JoinForm
+    success_url = "/mypage"
 
 
 def LoginTest(request):

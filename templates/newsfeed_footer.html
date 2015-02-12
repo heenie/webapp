@@ -11,12 +11,12 @@
             <li>
                 {% if page == "newsfeed" %}
                     <a href="{% url "mypage" user.student.id %}" >마이페이지</a>
-                {% elif page == "mypage" %}
+                {% else %}
                     <a href="{% url "newsfeed" %}">뉴스피드</a>
                 {% endif %}
             </li>
             <li>
-                <a href="#" >정보 수정</a>
+                <a href="{% url "setting" user.id %}" >설정</a>
             </li>
         </ul>
     </div>
