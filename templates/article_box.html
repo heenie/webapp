@@ -1,9 +1,18 @@
+{% load staticfiles %}
+
 <div class="div-article-box">
     <div class="div-article">
         <div class="div-profile">
             <table style="width:100%;">
                 <th class="div-image">
-                        <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
+                        <img src="
+                        {% if article.student.get_image %}
+                            {{ article.student.get_image.url }}
+                        {% else %}
+                            {% static "img/default_profile.jpg" %}
+                        {% endif %}
+{#                            {{ article.student.get_image.url }}#}
+                            " width="70" height="70" alt="default image"/>
                 </th>
                 <th class="div-user">
                     <table style="width:100%">

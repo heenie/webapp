@@ -28,7 +28,7 @@ class Student(models.Model):
         return self.phone if self.is_public else "010-xxxx-xxxx"
 
     def get_image(self):
-        return self.image if self.image else "default/avatar.png"
+        return self.image if self.image else None
 
 
 class Category(models.Model):

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<div class="profile-box">
+    {#<div style="width: 500px; height: 120px; margin: 30px">#}
+    <div class="profile-imgbox">
+        <img src="
+            {% if student.get_image %}
+                {{ student.get_image.url }}
+            {% else %}
+                {% static "img/default_profile.jpg" %}
+            {% endif %}
+        " width="120" height="120"/>
+    </div>
+
+    <div class="profile-info">
+        <p>이름(학번) : {{ student }}</p>
+        <p>휴대전화 : {{ student.get_phone }}</p>
+        <p>이메일 : {{ student.user.email }}</p>
+    </div>
+</div>

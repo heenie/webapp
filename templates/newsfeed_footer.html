@@ -1,23 +1,61 @@
 <div data-role="footer" data-position="fixed" data-fullscreen="true">
-    <div data-role="navbar">
-        <ul>
-            <li>
-{#                <a href="write" data-rel="dialog">글쓰기</a>#}
-{#                <form action="write">#}
-{#                    <input id="button" type="submit" value="글쓰기">#}
-{#                </form>#}
-                <a href="{% url "write" %}">글쓰기</a>
-            </li>
-            <li>
-                {% if page == "newsfeed" %}
-                    <a href="{% url "mypage" user.student.id %}" >마이페이지</a>
-                {% else %}
-                    <a href="{% url "newsfeed" %}">뉴스피드</a>
-                {% endif %}
-            </li>
-            <li>
-                <a href="{% url "setting" user.id %}" >설정</a>
-            </li>
-        </ul>
-    </div>
+    {% if page == "write" %}
+        <table class="write-table">
+            <tr>
+                <th class="write-category">{{ form.category }}</th>
+                <th><div class="divider"></div></th>
+                <th><div class="write-button" onclick="$(this).closest('form').submit()">글쓰기</div></th>
+            </tr>
+        </table>
+
+    {% else %}
+        <div data-role="navbar">
+            {% if page == "article" %}
+                <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <ul>
+                        <li>
+                            {{ form.content }}
+                        </li>
+                        <li>
+                            <input readonly class="comment" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
+                            <input type="hidden" name="next" value="/" />
+                        </li>
+                    </ul>
+                </form>
+
+            {% else %}
+                <ul>
+                    {% if page == "setting" %}
+                        <li>
+                            <a href="#">확인</a>
+                            {#                        <a href="#"><input type="submit" id="button" value="확인" class="css-submit"/></a>#}
+                        </li>
+                        <li>
+                            <a href="{% url "newsfeed" %}">취소</a>
+                        </li>
+
+                    {% else %}
+                        <li>
+                            {#                <a href="write" data-rel="dialog">글쓰기</a>#}
+                            {#                <form action="write">#}
+                            {#                    <input id="button" type="submit" value="글쓰기">#}
+                            {#                </form>#}
+                            <a href="{% url "write" %}">글쓰기</a>
+                        </li>
+                        <li>
+                            {% if page == "newsfeed" %}
+                                <a href="{% url "mypage" user.student.id %}" >마이페이지</a>
+                            {% else %}
+                                <a href="{% url "newsfeed" %}">뉴스피드</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="{% url "setting" user.id %}" >설정</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
 </div>

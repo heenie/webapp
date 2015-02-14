@@ -6,6 +6,10 @@
 .header,
 #button,
 .newsfeed-header,
+.ui-navbar form ul li,
+.ui-navbar form ul .ui-block-b .ui-input-text,
+.ui-navbar form ul .ui-block-b .ui-input-text .comment,
+.input-readonly,
 .login-icon {
     background-color: #ca98c9 !important;
 }
@@ -129,6 +133,8 @@ html head+body .ui-body-a.ui-focus {
 #button,
 .header,
 .css-page-footer,
+.input-readonly,
+.ui-navbar form ul .ui-block-b .ui-input-text .comment,
 .search-content {
    color: #fff !important;
 }
@@ -218,7 +224,7 @@ html body .ui-group-theme-a a:visited {
 }
 
 /*newsfeed*/
-#newsfeed-body {
+#newsfeed-body, .newsfeed-page {
 	background-color: #f3f3f3;
 }
 .div-article-box {
