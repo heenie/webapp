@@ -30,6 +30,7 @@ class Student(models.Model):
 
     def get_image(self):
         return self.image if self.image else "./profile/default_profile.jpg"
+        return self.image if self.image else None
 
 
 
@@ -70,3 +71,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
+

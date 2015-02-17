@@ -27,6 +27,7 @@
 </head>
 
 <body>
+<div data-role="page" id="page">
     {% if not user.is_authenticated %}
         <script language="javascript">
             <!--
@@ -44,5 +45,9 @@
     </div>
     {% endblock %}
 </div>
+
+{% block script %}
+{% endblock %}
+
 </body>
 </html>

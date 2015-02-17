@@ -21,25 +21,10 @@
                         <img src="{{ article.student.get_image.url }}" width="70" height="70" alt="default image"/>
                     </div>
 
-                    <div class="div-user">
-                        <a href="{% url "mypage" article.student.id %}">{{ article.student }}</a> <br>
-                        {{ article.datetime }} <br>
-                        {{ article.category }} <br>
-                    </div>
-                </div>
-            </div>
-            <div>
-                {{ article.content }}
-            </div>
-        </div>
-        <div>
-            {% for comment in article.get_comments %}
-                <div style="margin: 30px">
-                    <div style="width: 470px; ">
-                        <div style="float: left; width: 70px; text-align: center; vertical-align: middle">
-                            <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
-                        </div>
+    {% include "header.html" with page="article" %}
 
+    <div data-role="content">
+        {% include "article_box.html" with article=article url="#" %}
                         <div style="float: left; width: 400px; font-size: 12px; margin-bottom: 20px" >
                             <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
                             {{ comment.content }}   <br>
@@ -68,5 +53,14 @@
             </form>
         </div>
 
+        {% if article.get_comments %}
+            <div class="comment-box" id="newsfeed-body">
+                {% for comment in article.get_comments %}
+                    {% include "comment_box.html" with comment=comment %}
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
+
+    {% include "newsfeed_footer.html" with page="article" %}
 {% endblock %}

@@ -1,0 +1,23 @@
+<div class="comment-profile">
+    <table style="width:100%;">
+        <th class="comment-image">
+            <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
+        </th>
+        <th class="comment-user">
+            <table style="width:100%">
+                <th class="user">
+                    <a href="{% url "mypage" comment.student.id %}" class="div-user-id comment-user-id">{{ article.student }}</a> <br>
+                </th>
+                <th class="time">
+                    {{ comment.datetime }}
+                </th>
+            </table>
+            <label class="comment-content">
+                {{ comment.content }}
+                {% if comment.student == user.student %}
+                    <a href="{% url "comment-delete" comment.id %}" class="comment-del">x</a>
+                {% endif %}
+            </label>
+        </th>
+    </table>
+</div>

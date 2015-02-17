@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
+from django.views.generic import *
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
@@ -72,6 +73,11 @@ class SettingsView(UpdateView):
     #     context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
     #     return context
 
+def comment_del(request, comment_id):
+    Comment.objects.filter(id=comment_id).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 
 class JoinView(CreateView):
     template_name = "join.html"
@@ -122,6 +128,13 @@ class MyPage(ListView):
         articles = ArticleFilter(self.request.GET, queryset=articles)
 
         return articles
+
+
+class SettingView(UpdateView):
+    template_name = "setting.html"
+    model = User
+    form_class = JoinForm
+    # success_url = "/newsfeed"
 
 
 def LoginTest(request):
