@@ -12,9 +12,28 @@
 {#    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>#}
     <script src="{% static "js/jquery.mobile-1.4.5.min.js" %}"></script>
     <title>욉앱</title>
+    <script language="javascript">
+        <!--
+                function login_warning() {
+                    alert("로그인을 하십시오");
+                    location.href='/login'
+                }
+
+                function reload() {
+                    location.reload();
+                }
+        //-->
+    </script>
 </head>
 
 <body>
+    {% if not user.is_authenticated %}
+        <script language="javascript">
+            <!--
+                login_warning();
+            //-->
+        </script>
+    {% endif %}
 <div data-role="page" style="min-width: 350px">
 {#    {% include "search.html" %}#}
     {% block page_content_parent %}

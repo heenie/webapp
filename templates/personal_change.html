@@ -1,0 +1,31 @@
+{#{% extends "base_page.html" %}#}
+{#{% block title %}개인정보 변경{% endblock %}#}
+{#{% block head %}개인정보 변경{% endblock %}#}
+{#{% block page_content %}#}
+{##}
+{#    <div data-role="main" class="css-page-box">#}
+{#        {% include "logo.html" %}#}
+{#        <div data-role="logo" data-type="vertical">#}
+{#            <p align="center" style="font-size: 110%">#}
+{#            <p class="font-title" align="center">개인정보수정</p>#}
+{#            </p>#}
+{#        </div>#}
+{#        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">#}
+{#            <form action="{% url "personal" %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                {% for field in form %}#}
+{#                        {{ field }}#}
+{#                    {% for error in field.errors %}#}
+{#                        <span style="color: lightcoral">{{ error }}</span>#}
+{#                    {% endfor %}#}
+{#                {% endfor %}#}
+{#                <div align="center">#}
+{#                    <input type="submit" id="button" value="수정" style="width:100px" />#}
+{#                    <input type="hidden" name="next" value="/" />#}
+{#                </div>#}
+{#            </form>#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{#{% endblock %}#}

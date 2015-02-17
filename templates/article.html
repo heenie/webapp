@@ -6,7 +6,7 @@
             <tr>
                 <th class="col-1">
                     <div class="search-button">
-                        <a href="{% url "newsfeed" %}"><img src="{% static "img/logo.png" %}" height="30"/></a>
+{#                        <a href="{% url "newsfeed" %}"><img src="{% static "img/logo.png" %}" height="30"/></a>#}
                     </div>
                 </th>
                 <th class="col-9"></th>
@@ -44,7 +44,8 @@
                             <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
                             {{ comment.content }}   <br>
                             <p>{{ comment.datetime }}
-                            {% if comment.student == user.student %}<a href="{% url "comment-delete" comment.id %}">삭제</a>{% endif %}</p>
+{#                            {% if comment.student == user.student %}<a href="{% url "comment_delete" comment.id %}">삭제</a>{% endif %}</p>#}
+{#                            {% if comment.student == user.student %}<a href="{% url comment_delete comment.id %}">삭제</a>{% endif %}</p>#}
                         </div>
                     </div>
                 </div>

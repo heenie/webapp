@@ -1,6 +1,15 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 {% block page_content %}
+
+    {% if not user.is_authenticated %}
+        <script language="javascript">
+            <!--
+                login_warning();
+            //-->
+        </script>
+    {% endif %}
+
     {% include "header.html" %}
     <div>
     {% for article in articles %}

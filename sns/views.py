@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, View, DetailView, ListView, DeleteView
+from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
@@ -61,12 +61,30 @@ class CommentDelete(DeleteView):
     model = Comment
     success_url = "/newsfeed"   #todo 뒤로 기능 (+article.html에 있는 뒤로 버튼)
 
+class SettingsView(UpdateView):
+    template_name = "setting.html"
+    model = User
+    form_class = PersonalForm
+    success_url = "/setting"
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(SettingsView, self).get_context_data()
+    #     context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
+    #     return context
+
 
 class JoinView(CreateView):
     template_name = "join.html"
     model = User
     form_class = JoinForm
     success_url = "/"
+
+
+# class PersonalView(CreateView):
+#     template_name = "personal_change.html"
+#     model = User
+#     form_class = PersonalForm
+#     success_url = "/change"
 
 
 class WriteView(CreateView):
@@ -109,6 +127,9 @@ class MyPage(ListView):
 def LoginTest(request):
     return render_to_response('login_test.html', None, context_instance=RequestContext(request))
 
+
+# def Header(request):
+#     render_to_response('header.html', None, context_instance=RequestContext(request))
 
 def password_change(request):
     return render_to_response('password_change.html', None)

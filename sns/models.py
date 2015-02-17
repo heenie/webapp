@@ -25,10 +25,13 @@ class Student(models.Model):
         return self.user.last_name + self.user.first_name
 
     def get_phone(self):
-        return self.phone if self.is_public else "010-xxxx-xxxx"
+        phone = self.phone if self.is_public else "010-xxxx-xxxx"
+        return phone
 
     def get_image(self):
-        return self.image if self.image else "default/avatar.png"
+        return self.image if self.image else "./profile/default_profile.jpg"
+
+
 
 
 class Category(models.Model):
@@ -67,4 +70,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
-
