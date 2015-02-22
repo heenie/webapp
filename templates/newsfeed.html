@@ -13,9 +13,12 @@
     {% include "header.html" %}
 
     <div id="newsfeed-body">
-    {% for article in articles %}
-        {% include "article_box.html" with article=article %}
-    {% endfor %}
+{#        {% include "newsfeed_house.html" %}#}
+{#        {% include "newsfeed_car.html" %}#}
+{#        {% include "newsfeed_car2.html" %}#}
+        {% for article in articles %}
+            {% include "newsfeed_article.html" with article=article %}
+        {% endfor %}
     </div>
 
     {% include "newsfeed_footer.html" with page="newsfeed" %}

@@ -134,12 +134,3 @@ input {
     height: 30px;
     margin: 5px;
 }
-.divider {
-    width: 1px;
-    height: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-.input-readonly {
-
-}

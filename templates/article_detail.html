@@ -1,0 +1,69 @@
+{% extends 'base_newsfeed.html' %}
+{% load staticfiles %}
+{% block page_content %}
+
+    {% include "header.html" with page="article" %}
+
+    <div data-role="content">
+        <div class="detail-box">
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <div class="detail-user-image">
+                            <img src="
+                        {% if article.student.get_image %}
+                            {{ article.student.get_image.url }}
+                        {% else %}
+                            {% static "img/default_profile.jpg" %}
+                        {% endif %}
+                            " width="70" height="70" alt="default image"/>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student }}</a>
+                    </td>
+                    <td rowspan="2">
+                        <label class="article-time">{{ article.datetime }}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>{{ article.category }}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="article-content">
+                            <p class="div-fill">{{ article.content }}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        {% if article.get_comments %}
+            <div class="comment-box" id="newsfeed-body">
+                {% for comment in article.get_comments %}
+                    {% include "comment_box.html" with comment=comment %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+        <div data-role="navbar">
+            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        {{ form.content }}
+                    </li>
+                    <li>
+                        <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
+                        <input type="hidden" name="next" value="/" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+{% endblock %}

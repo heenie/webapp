@@ -8,11 +8,13 @@
 .newsfeed-header,
 .ui-navbar form ul li,
 .ui-navbar form ul .ui-block-b .ui-input-text,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment,
+.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
 .input-readonly,
+.ui-header form #id_category-button:hover,
 .login-icon {
     background-color: #ca98c9 !important;
 }
+.car-time div,
 .ui-page-theme-a .ui-btn,
 html .ui-bar-a .ui-btn,
 html .ui-body-a .ui-btn,
@@ -45,6 +47,15 @@ html .ui-alt-icon .ui-radio-off:after,
 .logo-text {
     color: #ca98c9 !important;
 }
+
+
+/*
+ * main light color
+ */
+.article-button {
+    background-color: #e7cde6;
+}
+
 
 /*
  * main hover color
@@ -119,7 +130,7 @@ html head+body .ui-body-a.ui-focus {
 /*
  * dark font
  */
-.div-user-id,
+.article-user-id,
 .div-fill,
 .write-category #id_category-button,
 .write-button {
@@ -134,7 +145,9 @@ html head+body .ui-body-a.ui-focus {
 .header,
 .css-page-footer,
 .input-readonly,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment,
+.article-button,
+.car-time div,
+.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
 .search-content {
    color: #fff !important;
 }
@@ -204,11 +217,6 @@ html body .ui-group-theme-a a:visited {
     color: #fff;
 }
 
-/*article*/
-.div-article {
-    border: 1px solid #fff;
-}
-
 /*write*/
 #write-content {
     border-color: #fff !important;
@@ -227,7 +235,7 @@ html body .ui-group-theme-a a:visited {
 #newsfeed-body, .newsfeed-page {
 	background-color: #f3f3f3;
 }
-.div-article-box {
+.article-box {
     background-color: #fff;
 }
 

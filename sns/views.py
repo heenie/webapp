@@ -39,7 +39,7 @@ class Newsfeed(ListView):
 
 
 class ArticleView(CreateView):
-    template_name = "article.html"
+    template_name = "article_detail.html"
     model = Comment
     form_class = CommentForm
 

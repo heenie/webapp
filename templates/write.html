@@ -5,10 +5,10 @@
         <form action="{% url "write" %}" method="post">
             {% csrf_token %}
             {% include "header.html" with page="write" %}
-{#            <div data-role="header" class="write-header" data-position="inline">#}
-{#                <a role="button" href="newsfeed" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>#}
-{#                <h1>게시글 작성</h1>#}
-{#            </div>#}
+            {#            <div data-role="header" class="write-header" data-position="inline">#}
+            {#                <a role="button" href="newsfeed" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>#}
+            {#                <h1>게시글 작성</h1>#}
+            {#            </div>#}
 
             <div data-role="content">
                 <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>
@@ -16,7 +16,15 @@
 
             <input type="hidden" name="next" value="/"/>
 
-            {% include "newsfeed_footer.html" with page="write" %}
+            <div data-role="footer" data-position="fixed" data-fullscreen="true">
+                <table class="write-table">
+                    <tr>
+                        <th class="write-category">{{ form.category }}</th>
+                        <th><div class="divider"></div></th>
+                        <th><div class="write-button" onclick="$(this).closest('form').submit()">글쓰기</div></th>
+                    </tr>
+                </table>
+            </div>
         </form>
     </div>
 {% endblock %}

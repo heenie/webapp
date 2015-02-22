@@ -70,6 +70,19 @@
                     </table>
 
                     {% include "newsfeed_footer.html" with page="setting" %}
+                    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+                        <div data-role="navbar">
+                            <ul>
+                                <li>
+                                    <a href="#">확인</a>
+                                    {#                        <a href="#"><input type="submit" id="button" value="확인" class="css-submit"/></a>#}
+                                </li>
+                                <li>
+                                    <a href="{% url "newsfeed" %}">취소</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
