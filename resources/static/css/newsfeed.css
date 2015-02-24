@@ -149,9 +149,7 @@
  */
 .article-box {
     width: 97%;
-    margin-left: 1.5%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 1.5% 10px 1.5%;
     border-radius: 5px;
 }
 .article-head {
@@ -161,6 +159,9 @@
     width: 100%;
     padding: 2px;
     border-spacing: 0px !important;
+}
+.article-foot {
+    padding: 10px;
 }
 .article-user-image {
     width: 70px;
@@ -191,17 +192,20 @@
     padding: 10px 30px 5px 20px;
     word-wrap: break-word;
 }
-.article-foot table {
+.article-comment-box {
     width: 100%;
-    padding: 0px 10px 0px 10px;
+    height: 20px;
+    text-align: right;
 }
 .article-comment {
     display: inline-flex;
-    float: right;
 }
 .article-comment .sm-icon {
     padding-left: 5px;
     padding-right: 5px;
+}
+.article-comment label {
+    margin: 0px !important;
 }
 .div-fill {
     display: block;
@@ -209,17 +213,48 @@
     text-decoration: none !important;
     word-wrap: break-word;
 }
+.article-box table {
+    width: 100%;
+    padding: 10px;
+}
+.article-box table tr .divider {
+    width: 2px;
+    height: 100%;
+    padding: 0px;
+    margin: 10px;
+}
 .article-car-box {
     display: flex;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+.article-box-button {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+}
+.article-box-button a {
+    text-decoration: none !important;
+}
+.article-box-car {
+    text-align: center;
+}
 .article-button {
     width: 10%;
     text-align: center;
     vertical-align: middle;
+    padding: 10px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+.article-button a {
+    text-decoration: none !important;
+}
+.article-car-box .divider {
+    width: 2px;
+    /*height: 100%;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .article-car table {
     width: 100%;
@@ -243,6 +278,13 @@
 }
 .car-bottom td {
     padding-top: 10px;
+}
+.article-main-image {
+    width: 25% !important;
+    text-align: center;
+}
+.article-bottom .article-comment-box {
+    margin: .4em 0 0 0;
 }
 
 
@@ -288,6 +330,9 @@
     width: 70px !important;
     height: 50px !important;
     text-align: center;
+}
+.comment-image img {
+    border-radius: 25px;
 }
 .comment-user {
     height: 50px !important;
@@ -368,8 +413,14 @@
  */
 .profile-box {
     margin: 30px;
-    width: 350px;
-    height: 120px;
+}
+.profile-box table {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.profile-box .profile-imgbox {
+    width: 100% !important;
 }
 .setting-imgbox,
 .profile-box .profile-imgbox {
@@ -377,13 +428,6 @@
     width: 140px;
     height: 120px;
     text-align: center;
-    vertical-align: middle;
-}
-.profile-box .profile-imgbox {
-    border-radius: 120px;
-}
-.profile-box .profile-info {
-    float: left;
     vertical-align: middle;
 }
 
@@ -453,6 +497,12 @@
  * icons
  */
 .sm-icon {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+}
+.has_image {
+    display: -webkit-box
+}
+.has_image img {
+    margin-right: 5px;
 }

@@ -2,7 +2,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
-# from django.contrib.staticfiles.templatetags.staticfiles import static
+from webapp import settings
 
 
 class Area(models.Model):
@@ -30,10 +30,7 @@ class Student(models.Model):
         return phone
 
     def get_image(self):
-        return self.image if self.image else "./profile/default_profile.jpg"
-        return self.image if self.image else None
-
-
+        return self.image if self.image else settings.DEFAULT_PROFILE
 
 
 class Category(models.Model):

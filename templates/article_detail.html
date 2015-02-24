@@ -2,7 +2,10 @@
 {% load staticfiles %}
 {% block page_content %}
 
-    {% include "header.html" with page="article" %}
+    <div data-role="header" class="newsfeed-header" data-position="inline">
+        <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+        <h1>게시글</h1>
+    </div>
 
     <div data-role="content">
         <div class="detail-box">
@@ -10,12 +13,7 @@
                 <tr>
                     <td rowspan="2">
                         <div class="detail-user-image">
-                            <img src="
-                        {% if article.student.get_image %}
-                            {{ article.student.get_image.url }}
-                        {% else %}
-                            {% static "img/default_profile.jpg" %}
-                        {% endif %}
+                            <img src="{% static article.student.get_image %}
                             " width="70" height="70" alt="default image"/>
                         </div>
                     </td>

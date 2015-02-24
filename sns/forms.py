@@ -97,5 +97,4 @@ class PersonalForm(UserCreationForm):
         user.save()
         student = Student(user=user, phone=self.cleaned_data['phone'], is_public=self.cleaned_data['is_public'], area=self.cleaned_data['area'])
         student.save()
-        return user        return user
-
+        return user

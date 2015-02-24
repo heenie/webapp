@@ -62,6 +62,7 @@ class CommentDelete(DeleteView):
     model = Comment
     success_url = "/newsfeed"   #todo 뒤로 기능 (+article.html에 있는 뒤로 버튼)
 
+
 class SettingsView(UpdateView):
     template_name = "setting.html"
     model = User
@@ -73,10 +74,10 @@ class SettingsView(UpdateView):
     #     context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
     #     return context
 
+
 def comment_del(request, comment_id):
     Comment.objects.filter(id=comment_id).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
 
 
 class JoinView(CreateView):
@@ -140,9 +141,6 @@ class SettingView(UpdateView):
 def LoginTest(request):
     return render_to_response('login_test.html', None, context_instance=RequestContext(request))
 
-
-# def Header(request):
-#     render_to_response('header.html', None, context_instance=RequestContext(request))
 
 def password_change(request):
     return render_to_response('password_change.html', None)

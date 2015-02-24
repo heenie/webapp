@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+<div data-role="header" class="newsfeed-header">
+    <form method="get">
+        <table class="header-table">
+            <tr>
+                <th class="col-2">{{ search_form.category }}</th>
+                <th>
+                    <input name="{{ search_form.content.name }}" placeholder="검색" class="search-content"/>
+                </th>
+                <th class="col-1">
+                    <div class="search-button">
+                        <img src="{% static "img/search.png" %}" height="30" onclick="$(this).closest('form').submit()"/>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>

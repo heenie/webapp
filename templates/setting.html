@@ -1,14 +1,9 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 {% block page_content %}
-
-    <form action="" method="post">{% csrf_token %}
-    {{ form.field }}
-    </form>
-
-
-    {% include "newsfeed_footer.html" %}
-
+{#    <script language="javascript">#}
+{#        reload();#}
+{#    </script>#}
     <div id="newsfeed-body">
         <div class="setting-body">
             {% include "logo.html" %}

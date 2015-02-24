@@ -1,20 +1,23 @@
 {% load staticfiles %}
 
 <div class="profile-box">
-    {#<div style="width: 500px; height: 120px; margin: 30px">#}
-    <div class="profile-imgbox">
-        <img src="
-            {% if student.get_image %}
-                {{ student.get_image.url }}
-            {% else %}
-                {% static "img/default_profile.jpg" %}
-            {% endif %}
-        " width="120" height="120"/>
-    </div>
-
-    <div class="profile-info">
-        <p>{{ student }}</p>
-        <p>{{ student.get_phone }}</p>
-        <p>{{ student.user.email }}</p>
-    </div>
+    <table>
+        <tr>
+            <td rowspan="2">
+                <div class="profile-imgbox">
+                    <img src="{% static student.get_image %}" width="120" height="120"/>
+                </div>
+            </td>
+            <td>
+                <label>{{ student }}</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="has_image">
+                <img src="{% static "img/person.png" %}" width="20"/>
+                <label>{{ student.get_phone }}</label>
+            </td>
+        </tr>
+    </table>
 </div>
+{#        <p>{{ student.user.email }}</p>#}

@@ -1,8 +1,9 @@
+{% load staticfiles %}
 <div class="comment-profile">
     <table>
         <tr>
             <td rowspan="2" class="comment-image">
-                <img src="{{ comment.student.get_image.url }}" width="50" height="50" alt="default image"/>
+                <img src="{% static comment.student.get_image %}" width="50" height="50" alt="default image"/>
             </td>
             <td>
                 <a href="{% url "mypage" comment.student.id %}" class="article-user-id comment-user-id">{{ article.student }}</a>
