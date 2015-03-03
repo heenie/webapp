@@ -1,14 +1,32 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 {% block page_content %}
-    {% include "header.html" %}
+
+{#    {% if not user.is_authenticated %}#}
+{#        <script language="javascript">#}
+{#            <!--#}
+{#                login_warning();#}
+{#            //-->#}
+{#        </script>#}
+{#    {% endif %}#}
+
+    {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-    {% for article in articles %}
-        {% include "article_box.html" with article=article %}
-    {% endfor %}
+        {% include "newsfeed_store2.html" %}
+        {% include "newsfeed_store.html" %}
+        {% include "newsfeed_house.html" %}
+        {% include "newsfeed_car.html" %}
+        {% include "newsfeed_car2.html" %}
+        {% for article in articles %}
+            {% include "newsfeed_article.html" with article=article %}
+        {% endfor %}
     </div>
 
     {% include "newsfeed_footer.html" with page="newsfeed" %}
 
+{% endblock %}
+
+{% block script %}
+    <script
 {% endblock %}

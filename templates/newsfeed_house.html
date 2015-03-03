@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<div class="article-box">
+    <table>
+        <tr>
+            <td rowspan="2" class="article-box-button">
+                <a href="#">양도</a>
+            </td>
+            <td rowspan="4" class="divider">
+            </td>
+            <td rowspan="4" class="article-main-image">
+                <img src="{% static "img/sample.jpg" %}" width="50"/>
+            </td>
+            <td>
+                <label>정투룸 (양덕동)</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="has_image">
+{#                <img src="{% static "img/person.png" %}" width="20"/>#}
+                <label>양도 : 45/100</label>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="article-box-button">
+                <a href="#">집순이</a>
+            </td>
+            <td>
+                <label>집순이 : 작은방 20/50, 큰방 25/50</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="article-bottom">
+                {% include "newsfeed_comment.html" %}
+            </td>
+        </tr>
+    </table>
+</div>

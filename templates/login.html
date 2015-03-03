@@ -8,9 +8,14 @@
             <b class="font-title">로그인</b>
         </p>
     </div>
+    <script language="javascript">
+    <!--
+        reload();
+    //-->
+    </script>
+
 
     <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-
             <form method="post" action=".">{% csrf_token %}
                 {% if form.errors %}
                     <p class="font-version" id="help" class="alert">[학번 또는 비밀번호를 확인해주세요]</p>

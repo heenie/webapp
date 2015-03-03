@@ -1,28 +1,102 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 {% block page_content %}
+{#    <script language="javascript">#}
+{#        reload();#}
+{#    </script>#}
+    <div id="newsfeed-body">
+        <div class="setting-body">
+            {% include "logo.html" %}
 
-    <div class="setting-body">
-        {% include "logo.html" %}
-        <div data-role="logo" data-type="vertical">
-            <p class="font-title" align="center">정보 수정</p>
-            </p>
-        </div>
+            <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+                <form action="{% url "setting" user.id %}" method="post">
+                    {% csrf_token %}
+                    <table style="border-spacing: 0px !important">
+                        <tr>
+                            <td colspan="2">
+                                <div class="setting-imgbox">
+                                    <img src="
+                                        {% if form.image %}
+                                            {{ form.image.url }}
+                                        {% else %}
+                                            {% static "img/default_profile.jpg" %}
+                                        {% endif %}
+                                    " width="120" height="120"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input readonly value="{{ form.last_name.value }} {{ form.first_name.value }}" class="input-readonly"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input readonly value="{{ form.username.value }}" class="input-readonly"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ form.password1 }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ form.password2 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="medium-text-field">{{ form.phone }}</td>
+                            {#                        <td class="check-box">{{ form.is_public }}</td>#}
+                        </tr>
+                        <tr>
+                            <td class="check-box">
+                                {{ form.is_public }}
+                                <label for="id_is_public">휴대폰 공개 여부</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ form.email }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{ form.area }}</td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" id="button" value="확인" class="css-submit"/>
+                                <input type="hidden" name="next" value="/" />
+                            </td>
+                        </tr>
+                    </table>
 
-        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-            {% csrf_token %}
-            {% for field in form %}
-                {{ field }}
-                {% for error in field.errors %}
-                    <span style="color: lightcoral">{{ error }}</span>
-                {% endfor %}
-            {% endfor %}
-
-            <input type="submit" id="button" value="확인" class="css-submit"/>
-            <input type="hidden" name="next" value="/" />
+                    {% include "newsfeed_footer.html" with page="setting" %}
+                    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+                        <div data-role="navbar">
+                            <ul>
+                                <li>
+                                    <a href="#">확인</a>
+                                    {#                        <a href="#"><input type="submit" id="button" value="확인" class="css-submit"/></a>#}
+                                </li>
+                                <li>
+                                    <a href="{% url "newsfeed" %}">취소</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    {% include "newsfeed_footer.html" with page="setting" %}
+    {#    {% include "newsfeed_footer.html" with page="setting" %}#}
 
+{% endblock %}
+
+{% block script %}
+    <script src="{% static "js/icheck.js" %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank')
+            $('label').removeClass();
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-red'
+            });
+        });
+    </script>
 {% endblock %}

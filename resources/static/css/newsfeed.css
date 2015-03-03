@@ -12,6 +12,16 @@
 .header-table {
     width: 100%;
 }
+.ui-header form .ui-select {
+    width: 150px !important;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-bottom: 3px solid #fff;
+}
+.ui-header form #id_category-button {
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
 .ui-header form .ui-select .ui-btn {
     padding-right: 40px;
     background-image: none !important;
@@ -23,11 +33,7 @@
     width: 50px !important;
 }
 .col-2 {
-    width: 200px !important;
-}
-.col-2 .ui-select div {
-    left: 50%;
-    margin-left: -75px;
+    width: 150px !important;
 }
 .search-content::-webkit-input-placeholder {
     color: #fff;
@@ -52,6 +58,32 @@
     left: 50%;
     margin-top: 10px;
     cursor: pointer;
+}
+
+
+/*
+ * newsfeed footer
+ */
+.ui-navbar form ul .ui-block-a {
+    width: 80% !important;
+}
+.ui-navbar form ul .ui-block-a div {
+    border-radius: 3px;
+}
+.ui-navbar form ul .ui-block-b {
+    width: 20% !important;
+    height: 100% !important;
+}
+.ui-navbar form ul .ui-block-b .ui-input-text .comment-write {
+    cursor: pointer;
+    text-align: center;
+}
+.ui-navbar form ul li .ui-input-text {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ui-navbar form ul li .ui-input-text input {
+    width: 100% !important;
 }
 
 
@@ -90,7 +122,7 @@
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
-.ui-select {
+.write-category .ui-select {
     width: 150px !important;
 }
 .write-table {
@@ -104,56 +136,76 @@
 .write-footer {
     border-color: transparent !important;
 }
+.write-table tr th .divider {
+    width: 1px;
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
 
 
 /*
  * article
  */
-.div-article-box {
+.article-box {
     width: 97%;
-    margin-left: 1.5%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 1.5% 10px 1.5%;
+    border-radius: 5px;
 }
-.div-article {
-    margin-bottom: 10px;
+.article-head {
+    padding: 10px 5px 5px 5px;
 }
-.div-profile {
-    margin: 10px;
-    height: 70px;
+.article-head table {
+    width: 100%;
+    padding: 2px;
+    border-spacing: 0px !important;
 }
-.div-image, .comment-image {
+.article-foot {
+    padding: 10px;
+}
+.article-user-image {
     width: 70px;
-    height: 70px;
+    height: 50px;
     text-align: center;
     vertical-align: middle;
 }
-.div-image img {
-    border-radius: 35px;
+.article-user-image img {
+    border-radius: 25px;
 }
-.div-user, .comment-user {
-    height: 70px;
-    padding-left: 20px;
-    vertical-align: middle;
-}
-.user {
-    float: left;
-}
-.time {
-    float: right;
-    font-family: Light;
-    font-size: 95%;
-}
-.div-user-id {
+.article-user-id {
     font-family: Bold;
     font-size: 110%;
     text-decoration: none !important;
 }
-.div-content {
+.article-time {
+    float: right;
+    font-family: Light;
+    font-size: 90%;
+}
+.extra .sm-icon {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.article-content {
     clear: left;
     height: auto;
-    padding: 5px 30px 30px 20px;
+    padding: 10px 30px 5px 20px;
     word-wrap: break-word;
+}
+.article-comment-box {
+    width: 100%;
+    height: 20px;
+    text-align: right;
+}
+.article-comment {
+    display: inline-flex;
+}
+.article-comment .sm-icon {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.article-comment label {
+    margin: 0px !important;
 }
 .div-fill {
     display: block;
@@ -161,6 +213,103 @@
     text-decoration: none !important;
     word-wrap: break-word;
 }
+.article-box table {
+    width: 100%;
+    padding: 10px;
+}
+.article-box table tr .divider {
+    width: 2px;
+    height: 100%;
+    padding: 0px;
+    margin: 10px;
+}
+.article-car-box {
+    display: flex;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.article-box-button {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+}
+.article-box-button a {
+    text-decoration: none !important;
+}
+.article-box-car {
+    text-align: center;
+}
+.article-button {
+    width: 10%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.article-button a {
+    text-decoration: none !important;
+}
+.article-car-box .divider {
+    width: 2px;
+    /*height: 100%;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.article-car table {
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+    border-spacing: 0px !important;
+    text-align: center;
+}
+.car-time {
+    padding-right: 0px !important;
+}
+.car-time div {
+    padding: 10px 0px 10px 0px;
+}
+.car-arrow {
+    width: 50px;
+    height: 70px;
+    padding: 0px;
+}
+.car-type {
+    font-style: italic;
+}
+.car-bottom td {
+    padding-top: 10px;
+}
+.article-main-image {
+    width: 25% !important;
+    text-align: center;
+}
+.article-bottom .article-comment-box {
+    margin: .4em 0 0 0;
+}
+
+
+/*
+ * article_detail
+ */
+.detail-box {
+    width: 98%;
+    margin-left: 1%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.detail-box table {
+    width: 100%;
+    border-spacing: 0px !important;
+}
+.detail-user-image {
+    height: 70px;
+    text-align: center;
+    vertical-align: middle;
+}
+.detail-user-image img {
+    border-radius: 35px;
+}
+
 
 /*
  * comment
@@ -174,12 +323,21 @@
 .comment-profile {
     margin: 5px;
 }
+.comment-profile table {
+    width: 100%;
+}
 .comment-image {
-    width: 50px !important;
+    width: 70px !important;
     height: 50px !important;
+    text-align: center;
+}
+.comment-image img {
+    border-radius: 25px;
 }
 .comment-user {
     height: 50px !important;
+    padding-left: 20px;
+    vertical-align: middle;
 }
 .comment-user-id {
     font-size: 97% !important;
@@ -204,8 +362,147 @@
 /*
  * setting
  */
-.setting-body .css-btn-box div .ui-input-btn {
-    margin-top: 15px;
+.setting-body {
+    margin: 0px 0px 0px 0px !important;
+}
+.setting-body .css-btn-box div table {
+    width: 300px;
+}
+.setting-body .css-btn-box div table tr td {
+    margin: 0px !important;
+}
+.setting-body .css-btn-box div table tr td .ui-input-btn {
+    margin-top: 30px;
     margin-bottom: 10px;
     border-radius: 3px;
+}
+.check-box label,
+.setting-body .css-btn-box div table tr td div {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+}
+.setting-body .css-btn-box div table tr .check-box div #id_is_public {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-top: 0px !important;
+}
+.setting-blank {
+    width: 238px;
+    background-color: #fff;
+    padding: 7px 30px 7px 30px;
+    display: inline-flex;
+}
+.check-box label {
+    height: 22px;
+    padding-right: 20px;
+}
+.setting-imgbox {
+    width: 100% !important;
+    padding: 5px 0px 5px 0px;
+}
+.profile-imgbox img,
+.setting-imgbox img {
+    border-radius: 60px;
+}
+
+
+
+/*
+ * profile
+ */
+.profile-box {
+    margin: 30px;
+}
+.profile-box table {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.profile-box .profile-imgbox {
+    width: 100% !important;
+}
+.setting-imgbox,
+.profile-box .profile-imgbox {
+    float: left;
+    width: 140px;
+    height: 120px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* iCheck plugin Square skin, red
+----------------------------------- */
+.icheckbox_square-red,
+.iradio_square-red {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(red.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-red {
+    background-position: 0 0;
+}
+    .icheckbox_square-red.hover {
+        background-position: -24px 0;
+    }
+    .icheckbox_square-red.checked {
+        background-position: -48px 0;
+    }
+    .icheckbox_square-red.disabled {
+        background-position: -72px 0;
+        cursor: default;
+    }
+    .icheckbox_square-red.checked.disabled {
+        background-position: -96px 0;
+    }
+
+.iradio_square-red {
+    background-position: -120px 0;
+}
+    .iradio_square-red.hover {
+        background-position: -144px 0;
+    }
+    .iradio_square-red.checked {
+        background-position: -168px 0;
+    }
+    .iradio_square-red.disabled {
+        background-position: -192px 0;
+        cursor: default;
+    }
+    .iradio_square-red.checked.disabled {
+        background-position: -216px 0;
+    }
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_square-red,
+    .iradio_square-red {
+        background-image: url(red@2x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}
+
+
+/*
+ * icons
+ */
+.sm-icon {
+    width: 20px;
+    height: 20px;
+}
+.has_image {
+    display: -webkit-box
+}
+.has_image img {
+    margin-right: 5px;
 }

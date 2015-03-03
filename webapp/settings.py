@@ -97,3 +97,5 @@ TEMPLATE_DIRS = (
 )
 
 FILE_CHARSET = 'utf-8'
+
+DEFAULT_PROFILE = 'img/default_profile.jpg'

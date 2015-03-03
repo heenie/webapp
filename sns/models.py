@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
+from webapp import settings
 
 
 class Area(models.Model):
@@ -25,10 +26,11 @@ class Student(models.Model):
         return self.user.last_name + self.user.first_name
 
     def get_phone(self):
-        return self.phone if self.is_public else "010-xxxx-xxxx"
+        phone = self.phone if self.is_public else "010-xxxx-xxxx"
+        return phone
 
     def get_image(self):
-        return self.image if self.image else "default/avatar.png"
+        return self.image if self.image else settings.DEFAULT_PROFILE
 
 
 class Category(models.Model):

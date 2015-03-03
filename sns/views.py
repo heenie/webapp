@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, render
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from django.views.generic import *
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
@@ -38,7 +39,7 @@ class Newsfeed(ListView):
 
 
 class ArticleView(CreateView):
-    template_name = "article.html"
+    template_name = "article_detail.html"
     model = Comment
     form_class = CommentForm
 
@@ -62,6 +63,18 @@ class CommentDelete(DeleteView):
     success_url = "/newsfeed"   #todo 뒤로 기능 (+article.html에 있는 뒤로 버튼)
 
 
+class SettingsView(UpdateView):
+    template_name = "setting.html"
+    model = User
+    form_class = PersonalForm
+    success_url = "/setting"
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(SettingsView, self).get_context_data()
+    #     context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
+    #     return context
+
+
 def comment_del(request, comment_id):
     Comment.objects.filter(id=comment_id).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -72,6 +85,13 @@ class JoinView(CreateView):
     model = User
     form_class = JoinForm
     success_url = "/"
+
+
+# class PersonalView(CreateView):
+#     template_name = "personal_change.html"
+#     model = User
+#     form_class = PersonalForm
+#     success_url = "/change"
 
 
 class WriteView(CreateView):
@@ -115,7 +135,7 @@ class SettingView(UpdateView):
     template_name = "setting.html"
     model = User
     form_class = JoinForm
-    success_url = "/mypage"
+    # success_url = "/newsfeed"
 
 
 def LoginTest(request):

@@ -61,3 +61,40 @@ class JoinForm(UserCreationForm):
         student.save()
         return user
 
+class SettingsForm(forms.ModelForm):
+        class Meta:
+            model = Student
+            fields = '__all__'
+
+
+class PersonalForm(UserCreationForm):
+    phone = forms.CharField(max_length=20, label='휴대전화')
+    is_public = forms.BooleanField(required=False, label='공개여부')
+    area = forms.ModelChoiceField(queryset=Area.objects, label='거주지역')
+    password = forms.CharField(max_length=100)
+
+    class Meta:
+        model = User
+        fields = ("phone", "is_public", "email", "area")
+        exclude = ['last_name', 'first_name', 'username', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super(PersonalForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field_name == "phone":
+                field.widget.attrs['class'] = 'medium-text-field'
+            elif field_name == "is_public":
+                field.widget.attrs['class'] = 'check-box'
+            elif field_name == "area":
+                field.widget.attrs['class'] = 'drop-down'
+            else:
+                field.widget.attrs['class'] = 'text-field'
+            field.widget.attrs['placeholder'] = field.label
+
+    def save(self, commit=False):
+        user = super(PersonalForm, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+        user.save()
+        student = Student(user=user, phone=self.cleaned_data['phone'], is_public=self.cleaned_data['is_public'], area=self.cleaned_data['area'])
+        student.save()
+        return user

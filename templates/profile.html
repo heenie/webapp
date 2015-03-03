@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<div class="profile-box">
+    <table>
+        <tr>
+            <td rowspan="2">
+                <div class="profile-imgbox">
+                    <img src="{% static student.get_image %}" width="120" height="120"/>
+                </div>
+            </td>
+            <td>
+                <label>{{ student }}</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="has_image">
+                <img src="{% static "img/person.png" %}" width="20"/>
+                <label>{{ student.get_phone }}</label>
+            </td>
+        </tr>
+    </table>
+</div>
+{#        <p>{{ student.user.email }}</p>#}

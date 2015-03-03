@@ -1,28 +1,29 @@
 {% extends 'base_newsfeed.html' %}
 
 {% block page_content %}
-<div class="write-main">
-    <form action="{% url "write" %}" method="post">
-        {% csrf_token %}
-        <div data-role="header" class="write-header" data-position="inline">
-            <a role="button" href="newsfeed" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
-            <h1>게시글 작성</h1>
-        </div>
+    <div class="write-main">
+        <form method="post">
+            {% csrf_token %}
+            <div data-role="header" class="write-header" data-position="inline">
+                <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+                <h1>게시글 작성</h1>
+            </div>
 
-        <div data-role="content">
-            <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>
-        </div>
+            <div data-role="content">
+                <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>
+            </div>
 
-        <div data-role="footer" class="write-footer" data-position="fixed" data-fullscreen="true">
-            <table class="write-table">
-                <tr>
-                    <th class="write-category">{{ form.category }}</th>
-                    <th><div class="divider"></div></th>
-                    <th><div class="write-button" onclick="$(this).closest('form').submit()">글쓰기</div></th>
-                </tr>
-            </table>
             <input type="hidden" name="next" value="/"/>
-        </div>
-    </form>
-</div>
+
+            <div data-role="footer" data-position="fixed" data-fullscreen="true">
+                <table class="write-table">
+                    <tr>
+                        <th class="write-category">{{ form.category }}</th>
+                        <th><div class="divider"></div></th>
+                        <th><div class="write-button" onclick="$(this).closest('form').submit()">글쓰기</div></th>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
 {% endblock %}
