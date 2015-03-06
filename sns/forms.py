@@ -61,6 +61,7 @@ class JoinForm(UserCreationForm):
         student.save()
         return user
 
+
 class SettingsForm(forms.ModelForm):
         class Meta:
             model = Student
