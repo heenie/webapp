@@ -250,3 +250,7 @@ html body .ui-group-theme-a a:visited {
 .divider {
     background-color: #e6e6e6 !important;
 }
+
+.light-font {
+    color: #fafafa;
+}

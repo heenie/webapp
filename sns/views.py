@@ -135,7 +135,7 @@ class SettingView(UpdateView):
     template_name = "setting.html"
     model = User
     form_class = JoinForm
-    # success_url = "/newsfeed"
+    success_url = "/newsfeed"
 
 
 def LoginTest(request):

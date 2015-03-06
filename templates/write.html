@@ -34,18 +34,6 @@
             $('#id_category').change(function() {
                 var selected = $('span').text();
                 alert(selected);
-{#                $.ajax({#}
-{#                    url: "/subject-fee",#}
-{#                    type: "POST",#}
-{#                    data: {"id_subject":selected},#}
-{#                    dataType: "json",#}
-{#                    success: function(json) {#}
-{#                        $('#discount_percent').val('');#}
-{#                        $('#discount_amount').val('');#}
-{#                        $('#original_fee').val(json.fee);#}
-{#                        $('#fee').val(json.fee);#}
-{#                    }#}
-{#                });#}
             });
         });
     </script>

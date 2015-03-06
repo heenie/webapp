@@ -2,7 +2,6 @@
 
 from django.contrib.auth.models import User
 from django.db import models
-from webapp import settings
 
 
 class Area(models.Model):
@@ -51,7 +50,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=20, null=True, blank=True)
     is_public = models.BooleanField(default=False)
     area = models.ForeignKey(Area)
-    image = models.ImageField(upload_to="./profile", null=True, blank=True)
+    image = models.ImageField(upload_to="profile", null=True, blank=True)
 
     def __str__(self):
         return self.get_name() + "(" + self.user.get_username() + ")"
@@ -64,7 +63,7 @@ class Student(models.Model):
         return phone
 
     def get_image(self):
-        return self.image if self.image else settings.DEFAULT_PROFILE
+        return self.image if self.image else "profile/default/avatar.png"
 
 
 class Category(models.Model):

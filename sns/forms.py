@@ -62,12 +62,6 @@ class JoinForm(UserCreationForm):
         return user
 
 
-class SettingsForm(forms.ModelForm):
-        class Meta:
-            model = Student
-            fields = '__all__'
-
-
 class PersonalForm(UserCreationForm):
     phone = forms.CharField(max_length=20, label='휴대전화')
     is_public = forms.BooleanField(required=False, label='공개여부')
