@@ -8,6 +8,7 @@
     {#    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>#}
     <link rel="stylesheet" type="text/css" href="{% static "css/newsfeed.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/jquery.mobile-1.4.5.min.css" %}"/>
+    <link rel='stylesheet' type='text/css' href="{% static "css/tabulous.css" %}"/>
     <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="{% static "js/jquery.mobile-1.4.5.min.js" %}"></script>
@@ -29,13 +30,10 @@
 
 <body>
 <div data-role="page" id="page" style="min-width: 350px">
-    {% block page_content_parent %}
-        <div id="wrapper">
-            {% block page_content %}
-
-            {% endblock %}
-        </div>
-    {% endblock %}
+    <div id="wrapper">
+        {% block page_content %}
+        {% endblock %}
+    </div>
 </div>
 
 {% block script %}

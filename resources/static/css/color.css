@@ -1,6 +1,7 @@
 /*
  * main color
  */
+#page,
 .base-page-body,
 .css-page-body,
 .header,
@@ -50,16 +51,17 @@ html .ui-alt-icon .ui-radio-off:after,
 
 
 /*
- * main light color
+ * main dark color
  */
-/*.article-button {*/
-    /*background-color: #e7cde6;*/
-/*}*/
+#tabs li a:hover,#tabs2 li a:hover,#tabs3 li a:hover,#tabs4 li a:hover,#tabs5 li a:hover {
+	background: #af6cae;
+}
 
 
 /*
  * main hover color
  */
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
 .ui-page-theme-a .ui-btn:hover,
 html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
@@ -105,7 +107,8 @@ html .ui-bar-b .ui-slider-track .ui-btn-active,
 html .ui-body-b .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-b .ui-btn-active {
-    background-color: #b19cd9;
+    /*background-color: #af6cae;*/
+    background-color: #bb82ba;
 }
 
 .ui-page-theme-a .ui-btn:focus,
@@ -119,16 +122,17 @@ html .ui-body-a .ui-focus,
 html body .ui-group-theme-a .ui-focus,
 html head+body .ui-btn-a.ui-focus,
 html head+body .ui-body-a.ui-focus {
-    -webkit-box-shadow:0 0 12px #b19cd9;
-    -moz-box-shadow:0 0 12px #b19cd9;
-    box-shadow:0 0 12px #b19cd9
+    -webkit-box-shadow:0 0 12px #bb82ba;
+    -moz-box-shadow:0 0 12px #bb82ba;
+    box-shadow:0 0 12px #bb82ba
 }
+.tabulous_active,
 #help, .alert, .comment-del {
-    color: #b19cd9 !important;
+    color: #bb82ba !important;
 }
 
 /*
- * dark font
+ * dark
  */
 .article-user-id,
 .div-fill,
@@ -140,7 +144,7 @@ html head+body .ui-body-a.ui-focus {
 
 
 /*
- * white font
+ * white
  */
 #button,
 .header,
@@ -151,7 +155,7 @@ html head+body .ui-body-a.ui-focus {
 .car-time div,
 .ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
 .search-content {
-   color: #fff !important;
+   color: white !important;
 }
 .ui-page-theme-a .ui-btn,
 html .ui-bar-a .ui-btn,
@@ -216,16 +220,21 @@ html body .ui-group-theme-a a,
 html .ui-bar-a a:visited,
 html .ui-body-a a:visited,
 html body .ui-group-theme-a a:visited {
-    color: #fff;
+    color: white;
+}
+#write-content {
+    border-color: white !important;
+}
+.tabulous_active,
+.write-header, .write-main {
+    background-color: white !important;
+}
+#tabs_container,
+.article-box {
+    background-color: white;
 }
 
-/*write*/
-#write-content {
-    border-color: #fff !important;
-}
-.write-header, .write-main {
-    background-color: #fff !important;
-}
+/* transparent */
 .write-footer {
     border-color: transparent !important;
 }
@@ -233,24 +242,21 @@ html body .ui-group-theme-a a:visited {
 	background-color: transparent !important;
 }
 
-/*newsfeed*/
-#newsfeed-body, .newsfeed-page {
-	background-color: #f3f3f3;
-}
-.article-box {
-    background-color: #fff;
-}
-
-/*index*/
-.css-page-box {
-	background-color: #fafafa;
-}
-
 /*divider*/
 .divider {
     background-color: #e6e6e6 !important;
 }
 
+/*
+ * gray
+ */
+.css-page-box {
+    background-color: #fafafa;
+}
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
 .light-font {
     color: #fafafa;
+}
+#newsfeed-body, .newsfeed-page {
+	background-color: #f3f3f3;
 }

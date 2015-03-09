@@ -10,6 +10,8 @@ class SearchForm(forms.ModelForm):
 
 
 class WriteForm(forms.ModelForm):
+    cate = Category.objects.all()
+
     class Meta:
         model = Article
         fields = '__all__'

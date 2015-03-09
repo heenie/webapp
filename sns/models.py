@@ -76,7 +76,7 @@ class Category(models.Model):
 class Article(models.Model):
     datetime = models.DateTimeField(auto_now=True)
     student = models.ForeignKey(Student)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, null=True)
     content = models.TextField()
     car = models.ForeignKey(Car, null=True)
     store = models.ForeignKey(Store, null=True)
