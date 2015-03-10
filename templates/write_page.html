@@ -15,9 +15,23 @@
                     </ul>
 
                     <div id="tabs_container">
-                        {% for tabs in form.cate %}
-                            <div id="{{ tabs.id }}">
-                                <p>{{ tabs.name }}</p>
+                        {% for tab in form.cate %}
+                            <div id="{{ tab.id }}">
+                                {% if tab.name == '부동산' %}
+                                    <p>부동산 내용</p>
+                                    {{ form.house }}
+                                    {{ form.house.title }}
+                                    {{ form.house.area }}
+                                    {{ form.house.sell_mon }}
+                                    {{ form.house.sell_deposit }}
+                                    {{ form.house.roommate }}
+                                    {{ form.house.room_mon }}
+                                    {{ form.house.room_deposit }}
+                                    {{ form.house.time }}
+                                    {{ form.house.memo }}
+                                {% else %}
+                                    <p>{{ tab.name }}</p>
+                                {% endif %}
                             </div>
                         {% endfor %}
                         <div id="default">
