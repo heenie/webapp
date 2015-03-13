@@ -1,9 +1,9 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 {% block page_content %}
-
-
-
+    {#    <script language="javascript">#}
+    {#        reload();#}
+    {#    </script>#}
     <div id="newsfeed-body">
         <script language="javascript">
             reload();
@@ -41,29 +41,21 @@
                             <td colspan="2">{{ form.password2 }}</td>
                         </tr>
                         <tr>
-                            <td class="medium-text-field">{{ form.phone }}</td>
-                            {#                        <td class="check-box">{{ form.is_public }}</td>#}
-                        </tr>
-                        <tr>
-                            <td class="check-box">
-                                {{ form.is_public }}
-                                <label for="id_is_public">휴대폰 공개 여부</label>
+                            <td class="medium-text-field">
+                                <div style="position: relative; overflow: inherit;">
+                                    {{ form.phone }}
+                                    <div class="check-box">
+                                        {{ form.is_public }}
+                                    </div>
+                                </div>
                             </td>
+                            {#                            <td class="check-box">{{ form.is_public }}</td>#}
                         </tr>
                         <tr>
                             <td colspan="2">{{ form.email }}</td>
                         </tr>
                         <tr>
                             <td colspan="2">{{ form.area }}</td>
-                        </tr>
-                        <tr>
-                            <td><br></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" id="button" value="확인" class="css-submit"/>
-                                <input type="hidden" name="next" value="/" />
-                            </td>
                         </tr>
                     </table>
 
@@ -72,8 +64,8 @@
                         <div data-role="navbar">
                             <ul>
                                 <li>
-                                    <a href="#">확인</a>
-                                    {#                        <a href="#"><input type="submit" id="button" value="확인" class="css-submit"/></a>#}
+                                    <input type="hidden" name="next" value="/" />
+                                    <a href="{% url "newsfeed" %}" onclick="$(this).closest('form').submit()">확인</a>
                                 </li>
                                 <li>
                                     <a href="{% url "newsfeed" %}">취소</a>
@@ -95,11 +87,11 @@
     <script src="{% static "js/icheck.js" %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank')
+            $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank');
             $('label').removeClass();
 
             $('input').iCheck({
-                checkboxClass: 'icheckbox_square-red'
+                checkboxClass: 'icheckbox_flat-pink'
             });
         });
     </script>

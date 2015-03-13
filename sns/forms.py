@@ -10,6 +10,8 @@ class SearchForm(forms.ModelForm):
 
 
 class WriteForm(forms.ModelForm):
+    cate = Category.objects.all()
+
     class Meta:
         model = Article
         fields = '__all__'
@@ -60,12 +62,6 @@ class JoinForm(UserCreationForm):
         student = Student(user=user, phone=self.cleaned_data['phone'], is_public=self.cleaned_data['is_public'], area=self.cleaned_data['area'])
         student.save()
         return user
-
-
-class SettingsForm(forms.ModelForm):
-        class Meta:
-            model = Student
-            fields = '__all__'
 
 
 class PersonalForm(UserCreationForm):

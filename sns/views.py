@@ -17,6 +17,10 @@ def index(request):
     return render_to_response('index.html', None)
 
 
+def write(request):
+    return render_to_response('write_page.html', None)
+
+
 class Newsfeed(ListView):
     template_name = "newsfeed.html"
     queryset = Article.objects.all()
@@ -94,15 +98,15 @@ class JoinView(CreateView):
 #     success_url = "/change"
 
 
-class WriteView(CreateView):
-    template_name = "write.html"
-    model = Article
-    form_class = WriteForm
-    success_url = "/newsfeed"
-
-    def form_valid(self, form):
-        form.instance.student = self.request.user.student
-        return super(WriteView, self).form_valid(form)
+# class WriteView(CreateView):
+#     template_name = "write.html"
+#     model = Article
+#     form_class = WriteForm
+#     success_url = "/newsfeed"
+#
+#     def form_valid(self, form):
+#         form.instance.student = self.request.user.student
+#         return super(WriteView, self).form_valid(form)
 
 
 class MyPage(ListView):
@@ -135,7 +139,14 @@ class SettingView(UpdateView):
     template_name = "setting.html"
     model = User
     form_class = JoinForm
-    # success_url = "/newsfeed"
+    success_url = "/newsfeed"
+
+
+class WritePageView(CreateView):
+    template_name = "write_page.html"
+    model = Article
+    form_class = WriteForm
+    success_url = "/newsfeed"
 
 
 def LoginTest(request):
