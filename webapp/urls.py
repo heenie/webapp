@@ -22,11 +22,9 @@ urlpatterns = patterns('',
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
-    url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout",),
+    url(r'^$', logout, {'template_name': 'index.html'}, name="logout",),
     url(r'^password_change/$', password_change, {'template_name': 'password_change.html', 'post_change_redirect' :'/password_change/done/'}),
     url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}, name="personal"),
-    # url(r'^personal_change', PersonalView.as_view(template_name="personal_change.html")),
-    # url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
     url(r'^setting/(?P<pk>\d+)$', SettingView.as_view(template_name="setting.html"), name="setting"),
 )
 urlpatterns += staticfiles_urlpatterns()
