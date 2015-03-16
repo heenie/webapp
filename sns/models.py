@@ -34,6 +34,7 @@ class Student(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    type = models.CharField(max_length=30, default="default")
 
     def __str__(self):
         return self.name
