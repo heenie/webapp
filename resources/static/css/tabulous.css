@@ -1,6 +1,45 @@
 a:active,a:focus {
 	outline: expression(hideFocus='true');
 }
+#write-container textarea {
+    background: transparent;
+    min-height: 200px;
+}
+
+
+#write-container table {
+    width: 100%;
+    border-spacing: 0px !important;
+}
+#write-container input,
+#write-container label {
+    height: 40px;
+    line-height: 40px !important;
+    vertical-align: middle;
+}
+#write-container input {
+    padding: 0 0 0 .4em !important;
+}
+#write-container label {
+    text-align: center;
+}
+.write-border,
+#write-container input {
+    font-family: Thin;
+}
+.write-img {
+    width: 40px;
+    text-align: center;
+}
+.write-title {
+    text-align: left !important;
+}
+.write-slash {
+    width: 20px;
+}
+.write-roommate {
+    cursor: pointer;
+}
 
 #tabs3 {
     position: absolute;
@@ -13,14 +52,12 @@ a:active,a:focus {
 
 #tabs li,#tabs2 li,#tabs3 li,#tabs4 li,#tabs5 li {
 	float: left;
-	/*margin-right: 2px;*/
 }
 
 #tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a {
 	display: block;
 	padding: 17px 30px;
 	text-decoration: none;
-    font-family: Thin;
 }
 
 #tabs_container {
@@ -31,28 +68,6 @@ a:active,a:focus {
 
 #tabs_container div {
 	margin-right: 40px;
-}
-
-.transition {
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-
-	-webkit-transition-delay: .3s;
-	-moz-transition-delay: .3s;
-	-o-transition-delay: .3s;
-	-ms-transition-delay: .3s;
-	transition-delay: .3s;
-}
-
-.make_transist {
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
 }
 
 .hidescale {
@@ -73,34 +88,6 @@ a:active,a:focus {
 	-o-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	opacity: 1;
-
-	-webkit-transition-delay: .3s;
-	-moz-transition-delay: .3s;
-	-o-transition-delay: .3s;
-	-ms-transition-delay: .3s;
-	transition-delay: .3s;
-}
-
-.hideleft {
-	-webkit-transform: translateX(-100%);
-	-moz-transform: translateX(-100%);
-	-o-transform: translateX(-100%);
-	-ms-transform: translateX(-100%);
-	transform: translateX(-100%);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	opacity: 0;
-}
-
-.showleft {
-	-webkit-transform: translateX(0px);
-	-moz-transform: translateX(0px);
-	-o-transform: translateX(0px);
-	-ms-transform: translateX(0px);
-	transform: translateX(0px);
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity=100);
 	opacity: 1;

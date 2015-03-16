@@ -11,40 +11,6 @@ class Area(models.Model):
         return self.name
 
 
-class Trade(models.Model):
-    total_fee = models.IntegerField(null=True, blank=True)
-    per_fee = models.IntegerField(null=True, blank=True)
-    time = models.DateTimeField(auto_now=False)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
-    memo = models.TextField()
-
-
-class Car(models.Model):
-    depart = models.CharField(max_length=50)
-    destination = models.CharField(max_length=50)
-    transportation = models.CharField(max_length=50)
-    trade = models.ForeignKey(Trade)
-
-
-class Store(models.Model):
-    title = models.CharField(max_length=50)
-    trade = models.ForeignKey(Trade)
-    link = models.CharField(max_length=200)
-
-
-class House(models.Model):
-    title = models.CharField(max_length=50)
-    area = models.ForeignKey(Area)
-    sell_mon = models.IntegerField(null=True, blank=True)
-    sell_deposit = models.IntegerField(null=True, blank=True)
-    roommate = models.BooleanField(default=False)
-    room_mon = models.IntegerField(null=True, blank=True)
-    room_deposit = models.IntegerField(null=True, blank=True)
-    time = models.DateTimeField(auto_now=False)
-    memo = models.TextField()
-
-
 class Student(models.Model):
     user = models.OneToOneField(User)
     phone = models.CharField(max_length=20, null=True, blank=True)
@@ -78,15 +44,48 @@ class Article(models.Model):
     student = models.ForeignKey(Student)
     category = models.ForeignKey(Category, null=True)
     content = models.TextField()
-    car = models.ForeignKey(Car, null=True)
-    store = models.ForeignKey(Store, null=True)
-    house = models.ForeignKey(House, null=True)
 
     def __str__(self):
         return "게시글" + str(self.id)
 
     def get_comments(self):
         return Comment.objects.filter(article=self)
+
+
+class Car(models.Model):
+    depart = models.CharField(max_length=5)
+    destination = models.CharField(max_length=50)
+    transportation = models.CharField(max_length=50)
+    fee = models.CharField(max_length=70, default=None)
+    time = models.CharField(max_length=70, default=None)
+    now_num = models.IntegerField(null=True, blank=True)
+    total_num = models.IntegerField(null=True, blank=True)
+    memo = models.TextField(null=True, blank=True)
+    article = models.OneToOneField(Article, default=None)
+
+
+class Store(models.Model):
+    title = models.CharField(max_length=50)
+    link = models.URLField(null=True)
+    fee = models.CharField(max_length=70, default=None)
+    time = models.CharField(max_length=70, default=None)
+    now_num = models.IntegerField(null=True, blank=True)
+    total_num = models.IntegerField(null=True, blank=True)
+    memo = models.TextField(null=True, blank=True)
+    article = models.OneToOneField(Article, default=None)
+
+
+class House(models.Model):
+    title = models.CharField(max_length=50)
+    area = models.ForeignKey(Area)
+    sell_mon = models.IntegerField(null=True, blank=True)
+    sell_deposit = models.IntegerField(null=True, blank=True)
+    roommate = models.BooleanField(default=False)
+    room_mon = models.IntegerField(null=True, blank=True)
+    room_deposit = models.IntegerField(null=True, blank=True)
+    time = models.DateTimeField(auto_now=False)
+    memo = models.TextField()
+    article = models.OneToOneField(Article, default=None)
 
 
 class Image(models.Model):
