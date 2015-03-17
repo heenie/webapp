@@ -86,6 +86,9 @@ input {
 	margin: 0 auto !important;
 	padding-bottom: 50px;
 }
+.css-btn-box table {
+    border-spacing: 0px !important;
+}
 
 .header {
 	width: 100%;
@@ -131,6 +134,52 @@ input {
 .check-box {
     vertical-align: middle;
     width: 20px;
-    height: 30px;
-    margin: 5px;
+}
+
+
+.transition {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
+}
+.make_transist {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+.hideleft {
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	-o-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+.showleft {
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	-o-transform: translateX(0px);
+	-ms-transform: translateX(0px);
+	transform: translateX(0px);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
 }

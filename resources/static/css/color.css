@@ -1,11 +1,13 @@
 /*
  * main color
  */
+#page,
 .base-page-body,
 .css-page-body,
 .header,
 #button,
 .newsfeed-header,
+.tabulous_active,
 .ui-navbar form ul li,
 .ui-navbar form ul .ui-block-b .ui-input-text,
 .ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
@@ -50,16 +52,18 @@ html .ui-alt-icon .ui-radio-off:after,
 
 
 /*
- * main light color
+ * main dark color
  */
-/*.article-button {*/
-    /*background-color: #e7cde6;*/
-/*}*/
+.tabulous_inactive:hover,
+#tabs li a:hover,#tabs2 li a:hover,#tabs3 li a:hover,#tabs4 li a:hover,#tabs5 li a:hover {
+	background: #af6cae !important;
+}
 
 
 /*
  * main hover color
  */
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
 .ui-page-theme-a .ui-btn:hover,
 html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
@@ -105,9 +109,12 @@ html .ui-bar-b .ui-slider-track .ui-btn-active,
 html .ui-body-b .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-b .ui-btn-active {
-    background-color: #b19cd9;
+    /*background-color: #af6cae;*/
+    background-color: #bb82ba;
 }
-
+.tabulous_inactive {
+    background-color: #bb82ba !important;
+}
 .ui-page-theme-a .ui-btn:focus,
 html .ui-bar-a .ui-btn:focus,
 html .ui-body-a .ui-btn:focus,
@@ -119,16 +126,41 @@ html .ui-body-a .ui-focus,
 html body .ui-group-theme-a .ui-focus,
 html head+body .ui-btn-a.ui-focus,
 html head+body .ui-body-a.ui-focus {
-    -webkit-box-shadow:0 0 12px #b19cd9;
-    -moz-box-shadow:0 0 12px #b19cd9;
-    box-shadow:0 0 12px #b19cd9
+    -webkit-box-shadow:0 0 12px #bb82ba;
+    -moz-box-shadow:0 0 12px #bb82ba;
+    box-shadow:0 0 12px #bb82ba
 }
 #help, .alert, .comment-del {
-    color: #b19cd9 !important;
+    color: #bb82ba !important;
 }
 
+
 /*
- * dark font
+ * main light
+ */
+.write-border,
+#write-container input,
+#search-table tr td .ui-select .ui-btn {
+    border: 1px solid #e2c4e1 !important;
+}
+.search-content input::-webkit-input-placeholder {
+    color: #e2c4e1;
+}
+.search-content input:-moz-placeholder {
+   color: #e2c4e1;
+   opacity:  1;
+}
+.search-content input::-moz-placeholder {
+   color: #e2c4e1;
+   opacity:  1;
+}
+.search-content input:-ms-input-placeholder {
+   color: #e2c4e1;
+}
+
+
+/*
+ * dark
  */
 .article-user-id,
 .div-fill,
@@ -140,7 +172,7 @@ html head+body .ui-body-a.ui-focus {
 
 
 /*
- * white font
+ * white
  */
 #button,
 .header,
@@ -149,10 +181,14 @@ html head+body .ui-body-a.ui-focus {
 .input-readonly,
 .article-button,
 .car-time div,
+.tabulous_active,
 .ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
 .search-content {
-   color: #fff !important;
+   color: white !important;
 }
+#write-container textarea,
+#write-container label,
+#write-container input,
 .ui-page-theme-a .ui-btn,
 html .ui-bar-a .ui-btn,
 html .ui-body-a .ui-btn,
@@ -216,16 +252,20 @@ html body .ui-group-theme-a a,
 html .ui-bar-a a:visited,
 html .ui-body-a a:visited,
 html body .ui-group-theme-a a:visited {
-    color: #fff;
+    color: white;
 }
-
-/*write*/
 #write-content {
-    border-color: #fff !important;
+    border-color: white !important;
 }
 .write-header, .write-main {
-    background-color: #fff !important;
+    background-color: white !important;
 }
+#tabs_container,
+.article-box {
+    background-color: white;
+}
+
+/* transparent */
 .write-footer {
     border-color: transparent !important;
 }
@@ -233,20 +273,40 @@ html body .ui-group-theme-a a:visited {
 	background-color: transparent !important;
 }
 
-/*newsfeed*/
-#newsfeed-body, .newsfeed-page {
-	background-color: #f3f3f3;
-}
-.article-box {
-    background-color: #fff;
-}
-
-/*index*/
-.css-page-box {
-	background-color: #fafafa;
-}
-
 /*divider*/
 .divider {
     background-color: #e6e6e6 !important;
+}
+
+/*
+ * gray
+ */
+.css-page-box {
+    background-color: #fafafa;
+}
+.tabulous_inactive,
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
+.light-font {
+    color: #fafafa;
+}
+#write-container textarea::-webkit-input-placeholder,
+#write-container input::-webkit-input-placeholder {
+    color: #fafafa;
+}
+#write-container textarea:-moz-placeholder,
+#write-container input:-moz-placeholder {
+   color: #fafafa;
+   opacity:  1;
+}
+#write-container textarea::-moz-placeholder,
+#write-container input::-moz-placeholder {
+   color: #fafafa;
+   opacity:  1;
+}
+#write-container textarea:-ms-input-placeholder,
+#write-container input:-ms-input-placeholder {
+   color: #fafafa;
+}
+#newsfeed-body, .newsfeed-page {
+	background-color: #f3f3f3;
 }

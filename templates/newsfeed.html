@@ -2,22 +2,20 @@
 {% load staticfiles %}
 {% block page_content %}
 
-{#    {% if not user.is_authenticated %}#}
-{#        <script language="javascript">#}
-{#            <!--#}
-{#                login_warning();#}
-{#            //-->#}
-{#        </script>#}
-{#    {% endif %}#}
+    {% if not user.is_authenticated %}
+        <script language="javascript">
+            <!--
+                login_warning();
+            //-->
+        </script>
+    {% endif %}
 
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% include "newsfeed_store2.html" %}
         {% include "newsfeed_store.html" %}
         {% include "newsfeed_house.html" %}
-{#        {% include "newsfeed_car.html" %}#}
-        {% include "newsfeed_car2.html" %}
+        {% include "newsfeed_car.html" %}
         {% for article in articles %}
             {% include "newsfeed_article.html" with article=article %}
         {% endfor %}
@@ -27,6 +25,29 @@
 
 {% endblock %}
 
-{#{% block script %}#}
-{#    <script#}
-{#{% endblock %}#}
+{% block script %}
+    <script language="javascript">
+        function search_show() {
+            $('#default').removeClass('showleft').addClass('make_transist').addClass('hideleft');
+            $('#search-table').addClass('make_transist').addClass('showleft');
+        }
+        function default_show() {
+            $('#search-table').removeClass('showleft').addClass('make_transist').addClass('hideleft');
+            $('#default').addClass('make_transist').addClass('showleft');
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#search-table').removeClass('showleft').addClass('hideleft');
+
+            $('#write-submit').click(function() {
+                var content =
+                        $('#depart').val() + ','
+                        + $('#destination').val() + ','
+                        + $('#memo').val();
+                $('#content').val(content);
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+{% endblock %}

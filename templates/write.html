@@ -27,3 +27,14 @@
         </form>
     </div>
 {% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#id_category').change(function() {
+                var selected = $('span').text();
+                alert(selected);
+            });
+        });
+    </script>
+{% endblock %}

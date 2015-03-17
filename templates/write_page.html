@@ -1,0 +1,89 @@
+{% extends 'base_newsfeed.html' %}
+{% load staticfiles %}
+
+{% block page_content %}
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <div data-role="content">
+                <div id="tabs3">
+                    <ul>
+                        {% for item in form.cate %}
+                            <li><a href="#{{ item.id }}" title="">{{ item.name }}</a></li>
+                        {% endfor %}
+                        <li><a href="#default" title="">기타</a></li>
+                    </ul>
+
+                    <div id="tabs_container">
+                        {% for tab in form.cate %}
+                            <div id="{{ tab.id }}">
+                                {% if tab.name == '부동산' %}
+                                    <p>부동산 내용</p>
+                                    {{ form.house }}
+                                    {{ form.house.title }}
+                                    {{ form.house.area }}
+                                    {{ form.house.sell_mon }}
+                                    {{ form.house.sell_deposit }}
+                                    {{ form.house.roommate }}
+                                    {{ form.house.room_mon }}
+                                    {{ form.house.room_deposit }}
+                                    {{ form.house.time }}
+                                    {{ form.house.memo }}
+                                {% else %}
+                                    <p>{{ tab.name }}</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div id="default">
+                            <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" name="next" value="/"/>
+
+            <div data-role="footer" data-position="fixed" data-fullscreen="true">
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="$(this).closest('form').submit()">글쓰기</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {#    <div class="write-main">#}
+    {#        <form method="post">#}
+    {#            {% csrf_token %}#}
+    {#            <div data-role="header" class="write-header" data-position="inline">#}
+    {#                <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>#}
+    {#                <h1>게시글 작성</h1>#}
+    {#            </div>#}
+    {##}
+    {#            <div data-role="content">#}
+    {#                <textarea name="{{ form.content.name }}" placeholder="새 글" id="write-content"></textarea>#}
+    {#            </div>#}
+    {##}
+    {#            <input type="hidden" name="next" value="/"/>#}
+    {##}
+    {#            <div data-role="footer" data-position="fixed" data-fullscreen="true">#}
+    {#                <table class="write-table">#}
+    {#                    <tr>#}
+    {#                        <th class="write-category">{{ form.category }}</th>#}
+    {#                        <th><div class="divider"></div></th>#}
+    {#                        <th><div class="write-button" onclick="$(this).closest('form').submit()">글쓰기</div></th>#}
+    {#                    </tr>#}
+    {#                </table>#}
+    {#            </div>#}
+    {#        </form>#}
+    {#    </div>#}
+{% endblock %}
+
+{% block script %}
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+    <script type="text/javascript" src="{% static "js/tabulous.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/js.js" %}"></script>
+{% endblock %}
