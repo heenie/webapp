@@ -108,6 +108,13 @@ class HouseForm(forms.ModelForm):
         exclude = ['article']
 
 
+class StoreForm(forms.ModelForm):
+    class Meta:
+        model = Store
+        fields = '__all__'
+        exclude = ['article', 'trade']
+
+
 class WriteForm(forms.ModelForm):
     cate = Category.objects.all()
     type = "default"

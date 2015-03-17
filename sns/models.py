@@ -72,12 +72,8 @@ class Car(models.Model):
 class Store(models.Model):
     title = models.CharField(max_length=50)
     link = models.URLField(null=True)
-    fee = models.CharField(max_length=100, default=None)
-    time = models.CharField(max_length=100, default=None)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
-    memo = models.TextField(null=True, blank=True)
-    article = models.OneToOneField(Article, default=None)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class House(models.Model):

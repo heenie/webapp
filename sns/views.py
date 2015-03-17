@@ -148,61 +148,90 @@ class WriteCarView(CreateView):
     template_name = "write_car.html"
     form_class = WriteForm
     trade_form_class = TradeForm
-    car_form_class = CarForm
+    extra_form_class = CarForm
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "car"
         trade_form = self.trade_form_class()
-        car_form = self.car_form_class()
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': car_form})
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         trade_form = self.trade_form_class(request.POST)
-        car_form = self.car_form_class(request.POST)
-        if form.is_valid():
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
             article.category = Category.objects.get(type="car")
             article.save()
-            if trade_form.is_valid():
-                trade = trade_form.save(commit=False)
-                trade.save()
-                if car_form.is_valid():
-                    car = car_form.save(commit=False)
-                    car.trade = trade
-                    car.article = article
-                    car.save()
-                    return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': car_form})
+            trade = trade_form.save(commit=False)
+            trade.save()
+            extra = extra_form.save(commit=False)
+            extra.trade = trade
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
 
 
 class WriteHouseView(CreateView):
     template_name = "write_house.html"
     form_class = WriteForm
-    house_form_class = HouseForm
+    extra_form_class = HouseForm
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "house"
-        house_form = self.house_form_class()
-        return render(request, self.template_name, {'form': form, 'house': house_form})
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'house': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
-        house_form = self.house_form_class(request.POST)
-        if form.is_valid():
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and extra_form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
             article.category = Category.objects.get(type="house")
             article.save()
-            if house_form.is_valid():
-                house = house_form.save(commit=False)
-                house.article = article
-                house.save()
-                return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'house': house_form})
+            extra = extra_form.save(commit=False)
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'house': extra_form})
+
+
+class WriteStoreView(CreateView):
+    template_name = "write_store.html"
+    form_class = WriteForm
+    trade_form_class = TradeForm
+    extra_form_class = StoreForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "store"
+        trade_form = self.trade_form_class()
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        trade_form = self.trade_form_class(request.POST)
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(type="store")
+            article.save()
+            trade = trade_form.save(commit=False)
+            trade.save()
+            extra = extra_form.save(commit=False)
+            extra.trade = trade
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
 
 
 def LoginTest(request):
