@@ -146,31 +146,34 @@ class WriteDefaultView(CreateView):
 class WriteCarView(CreateView):
     template_name = "write_car.html"
     form_class = WriteForm
+    trade_form_class = TradeForm
     car_form_class = CarForm
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "car"
+        trade_form = self.trade_form_class()
         car_form = self.car_form_class()
-        return render(request, self.template_name, {'form': form, 'car_form': car_form})
-        # return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': car_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        trade_form = self.trade_form_class(request.POST)
         car_form = self.car_form_class(request.POST)
-        # if form.is_valid() and formset.is_valid():
         if form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
             article.save()
-            if car_form.is_valid():
-                car = car_form.save(commit=False)
-                car.article = article
-                car.save()
-            return redirect("newsfeed")
-
-        # return render(request, self.template_name, {'form': form, 'car_form': car_form})
-        return render(request, self.template_name, {'form': form})
+            if trade_form.is_valid():
+                trade = trade_form.save(commit=False)
+                trade.save()
+                if car_form.is_valid():
+                    car = car_form.save(commit=False)
+                    car.trade = trade
+                    car.article = article
+                    car.save()
+                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': car_form})
 
 
 def LoginTest(request):

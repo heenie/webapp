@@ -53,16 +53,20 @@ class Article(models.Model):
         return Comment.objects.filter(article=self)
 
 
+class Trade(models.Model):
+    fee = models.CharField(max_length=70)
+    time = models.CharField(max_length=70)
+    now_num = models.IntegerField(null=True, blank=True)
+    total_num = models.IntegerField(null=True, blank=True)
+    memo = models.TextField(null=True, blank=True)
+
+
 class Car(models.Model):
     depart = models.CharField(max_length=5)
     destination = models.CharField(max_length=50)
     transportation = models.CharField(max_length=50)
-    fee = models.CharField(max_length=70, default=None)
-    time = models.CharField(max_length=70, default=None)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
-    memo = models.TextField(null=True, blank=True)
-    article = models.OneToOneField(Article, default=None)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class Store(models.Model):

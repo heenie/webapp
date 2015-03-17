@@ -9,15 +9,6 @@ class SearchForm(forms.ModelForm):
         fields = ("category", "content")
 
 
-class WriteForm(forms.ModelForm):
-    cate = Category.objects.all()
-
-    class Meta:
-        model = Article
-        fields = '__all__'
-        exclude = ['datetime', 'student']
-
-
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
@@ -97,13 +88,19 @@ class PersonalForm(UserCreationForm):
         return user
 
 
+class TradeForm(forms.ModelForm):
+    class Meta:
+        model = Trade
+        fields = '__all__'
+
+
 class CarForm(forms.ModelForm):
     cate = Category.objects.all()
 
     class Meta:
         model = Car
         fields = '__all__'
-        exclude = ['article']
+        exclude = ['article', 'trade']
 
 
 class WriteForm(forms.ModelForm):
