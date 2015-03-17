@@ -2,8 +2,11 @@
 {% load staticfiles %}
 
 {% block tab_container %}
-    <input required type="text" id="title" name="{{ form.title.name }}" placeholder="* 집 종류"/>
-    {{ form.area }}
+    {{ house.title }}
+    {% for error in house.title.errors %}<p>{{ error }}</p>{% endfor %}
+
+    {{ house.area }}
+    {% for error in house.area.errors %}<p>{{ error }}</p>{% endfor %}
 
     <table>
         <tr>
@@ -11,43 +14,55 @@
                 <img src="{% static "img/sell_house.png" %}" width="30"/>
             </td>
             <td>
-                <input required type="number" name="{{ form.sell_mon.name }}" placeholder="양도 월세"/>
+                {{ house.sell_mon }}
+                {% for error in house.sell_mon.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
             <td class="write-slash">
                 <label>/</label>
             </td>
             <td>
-                <input type="number" name="{{ form.sell_deposit.name }}" placeholder="양도 보증금"/>
+                {{ house.sell_deposit }}
+                {% for error in house.sell_deposit.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
         </tr>
         <tr>
             <td class="write-img">
-                <input type="hidden" id="id_roommate" name="{{ form.roommate.name }}" value="true"/>
+                <input type="hidden" id="id_roommate" name="{{ form.roommate.name }}"/>
                 <img src="{% static "img/female13.png" %}" width="30" class="write-roommate"/>
             </td>
             <td>
-                <input type="number" name="{{ form.room_mon.name }}" placeholder="방 월세"/>
+                {{ house.room_mon }}
+                {% for error in house.room_mon.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
             <td class="write-slash">
                 <label>/</label>
             </td>
             <td>
-                <input type="number" name="{{ form.room_deposit.name }}" placeholder="방 보증금"/>
+                {{ house.room_deposit }}
+                {% for error in house.room_deposit.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
         </tr>
     </table>
-    <input type="text" name="{{ form.time.name }}" placeholder="계약기간"/>
-    <div>
-        <textarea id="memo" name="{{ form.memo.name }}" placeholder="기타 사항" class="write-border"></textarea>
-    </div>
 
+    {{ house.time }}
+    {% for error in house.time.errors %}<p>{{ error }}</p>{% endfor %}
 
-    <input type="hidden" id="content" name="{{ formset.article.name }}"/>
+    {{ house.memo }}
+    {% for error in house.memo.errors %}<p>{{ error }}</p>{% endfor %}
+
+    <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
 {% endblock %}
 
 {% block sub_script %}
     <script type="text/javascript">
         $(document).ready(function(){
+            $('#id_title').attr('placeholder', '집 종류');
+            $('#id_time').attr('placeholder', '계약기간');
+            $('#id_sell_mon').attr('placeholder', '양도 월세');
+            $('#id_sell_deposit').attr('placeholder', '양도 보증금');
+            $('#id_room_mon').attr('placeholder', '룸메 월세');
+            $('#id_room_deposit').attr('placeholder', '룸메 보증금');
+
             $('.write-roommate').click(function() {
                 var prev = $('#id_roommate').val();
 
@@ -62,12 +77,11 @@
 
             $('#write-submit').click(function() {
                 var content =
-                        $('#title').val() + ','
+                        $('#id_title').val() + ','
                         + $('span').text() + ','
-                        + $('#memo').val();
-                $('#content').val(content);
-                alert($('#content').val());
-                {#                $(this).closest('form').submit();#}
+                        + $('#id_memo').val();
+                $('#id_content').val(content);
+                $('#write-submit').closest('form').submit();
             });
         });
     </script>

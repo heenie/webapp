@@ -18,10 +18,6 @@ def index(request):
     return render_to_response('index.html', None)
 
 
-def write(request):
-    return render_to_response('write_page.html', None)
-
-
 class Newsfeed(ListView):
     template_name = "newsfeed.html"
     queryset = Article.objects.all()
@@ -136,11 +132,16 @@ class WriteDefaultView(CreateView):
     template_name = "write_default.html"
     model = Article
     form_class = WriteForm
-    success_url = "/newsfeed"
 
-    def form_valid(self, form):
-        form.instance.student = self.request.user.student
-        return super(WriteDefaultView, self).form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(name="기타")
+            article.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form})
 
 
 class WriteCarView(CreateView):
@@ -163,6 +164,7 @@ class WriteCarView(CreateView):
         if form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
+            article.category = Category.objects.get(type="car")
             article.save()
             if trade_form.is_valid():
                 trade = trade_form.save(commit=False)
@@ -172,8 +174,35 @@ class WriteCarView(CreateView):
                     car.trade = trade
                     car.article = article
                     car.save()
-                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                    return redirect('newsfeed')
         return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': car_form})
+
+
+class WriteHouseView(CreateView):
+    template_name = "write_house.html"
+    form_class = WriteForm
+    house_form_class = HouseForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "house"
+        house_form = self.house_form_class()
+        return render(request, self.template_name, {'form': form, 'house': house_form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        house_form = self.house_form_class(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(type="house")
+            article.save()
+            if house_form.is_valid():
+                house = house_form.save(commit=False)
+                house.article = article
+                house.save()
+                return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'house': house_form})
 
 
 def LoginTest(request):

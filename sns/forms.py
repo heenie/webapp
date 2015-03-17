@@ -95,12 +95,17 @@ class TradeForm(forms.ModelForm):
 
 
 class CarForm(forms.ModelForm):
-    cate = Category.objects.all()
-
     class Meta:
         model = Car
         fields = '__all__'
         exclude = ['article', 'trade']
+
+
+class HouseForm(forms.ModelForm):
+    class Meta:
+        model = House
+        fields = '__all__'
+        exclude = ['article']
 
 
 class WriteForm(forms.ModelForm):
@@ -110,4 +115,4 @@ class WriteForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = '__all__'
-        exclude = ['datetime', 'student']
+        exclude = ['datetime', 'student', 'category']

@@ -41,10 +41,7 @@
         {% endif %}
     {% endfor %}
 
-    {% for field in form %}
-        {{ field }}
-        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-    {% endfor %}
+    <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
 {% endblock %}
 
 {% block sub_script %}
@@ -54,7 +51,6 @@
             $('#id_destination').attr('placeholder', '도착');
             $('#id_transportation').attr('placeholder', '예) 택시');
             $('#id_time').attr('placeholder', '출발 시간');
-
 
             $('#write-submit').click(function() {
                 var content =
