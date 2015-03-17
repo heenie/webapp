@@ -1,10 +1,11 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import  reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from django.views.generic import *
+from django.forms.formsets import formset_factory
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
@@ -98,17 +99,6 @@ class JoinView(CreateView):
 #     success_url = "/change"
 
 
-# class WriteView(CreateView):
-#     template_name = "write.html"
-#     model = Article
-#     form_class = WriteForm
-#     success_url = "/newsfeed"
-#
-#     def form_valid(self, form):
-#         form.instance.student = self.request.user.student
-#         return super(WriteView, self).form_valid(form)
-
-
 class MyPage(ListView):
     template_name = "mypage.html"
     context_object_name = "my_articles"
@@ -142,11 +132,45 @@ class SettingView(UpdateView):
     success_url = "/newsfeed"
 
 
-class WritePageView(CreateView):
-    template_name = "write_page.html"
+class WriteDefaultView(CreateView):
+    template_name = "write_default.html"
     model = Article
     form_class = WriteForm
     success_url = "/newsfeed"
+
+    def form_valid(self, form):
+        form.instance.student = self.request.user.student
+        return super(WriteDefaultView, self).form_valid(form)
+
+
+class WriteCarView(CreateView):
+    template_name = "write_car.html"
+    form_class = WriteForm
+    car_form_class = CarForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "car"
+        car_form = self.car_form_class()
+        return render(request, self.template_name, {'form': form, 'car_form': car_form})
+        # return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        car_form = self.car_form_class(request.POST)
+        # if form.is_valid() and formset.is_valid():
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.save()
+            if car_form.is_valid():
+                car = car_form.save(commit=False)
+                car.article = article
+                car.save()
+            return redirect("newsfeed")
+
+        # return render(request, self.template_name, {'form': form, 'car_form': car_form})
+        return render(request, self.template_name, {'form': form})
 
 
 def LoginTest(request):

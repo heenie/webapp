@@ -8,15 +8,18 @@
             <p class="font-title" align="center">회원가입</p>
             </p>
         </div>
+
         <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
-            <form action="{% url "join" %}" method="post">
+            <form method="post">
                 {% csrf_token %}
+
                 {% for field in form %}
-                        {{ field }}
+                    {{ field }}
                     {% for error in field.errors %}
                         <span style="color: lightcoral">{{ error }}</span>
                     {% endfor %}
                 {% endfor %}
+
                 <div align="center">
                     <input type="submit" id="button" value="가입" class="css-submit"/>
                     <input type="hidden" name="next" value="/" />
@@ -25,6 +28,6 @@
         </div>
     </div>
 
-{% include "footer.html" %}
+    {% include "footer.html" %}
 {% endblock %}
 
