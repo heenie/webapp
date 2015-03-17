@@ -1,0 +1,53 @@
+{% extends 'base_write.html' %}
+{% load staticfiles %}
+
+{% block tab_container %}
+    {% for field in form %}
+        {% if '_num' in field.name or field.name != 'memo' %}
+            {{ field }}
+            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+        {% endif %}
+    {% endfor %}
+
+{#    <input required type="text" name="{{ formset.fee.name }}" placeholder="* 가격 정보"/>#}
+{#    <input type="text" name="{{ formset.time.name }}" placeholder="마감 시간"/>#}
+{#    <input type="url" id="link" name="{{ form.link.name }}" placeholder="링크"/>#}
+
+    <table>
+        <tr>
+            <td colspan="2">
+                {{ form.now_num }}
+                {% for error in form.now_num.errors %}<p>{{ error }}</p>{% endfor %}
+            </td>
+            <td colspan="2">
+                {{ form.total_num }}
+                {% for error in form.total_num.errors %}<p>{{ error }}</p>{% endfor %}
+            </td>
+        </tr>
+    </table>
+
+    {{ form.memo }}
+    {% for error in form.memo.errors %}<p>{{ error }}</p>{% endfor %}
+
+    <input type="hidden" id="content" name="{{ formset.article.name }}"/>
+{% endblock %}
+
+{% block sub_script %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#id_title').attr('placeholder', '물품');
+            $('#id_link').attr('placeholder', '출처');
+            $('#id_fee').attr('placeholder', '가격 정보');
+            $('#id_time').attr('placeholder', '제한 시간');
+
+            $('#write-submit').click(function() {
+                var content =
+                        $('#title').val() + ','
+                        + $('#link').val() + ','
+                        + $('#memo').val();
+                $('#content').val(content);
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base_newsfeed.html' %}
+{% load staticfiles %}
+
+{% block page_content %}
+    <div>
+        <div data-role="header" data-fullscreen="true">
+            <div data-role="navbar">
+                <ul class="write-header">
+                    {% for item in form.cate %}
+                        <li><a href="/write-{{ item.type }}" class="
+                        {% if form.type == item.type %}
+                            tabulous_active
+                        {% else %}
+                            tabulous_inactive
+                        {% endif %}">{{ item.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div data-role="content" id="write-container">
+                {% block tab_container %}
+                {% endblock %}
+            </div>
+
+            <input type="hidden" name="next" value="/"/>
+
+            <div data-role="footer" data-fullscreen="true">
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <a href="{% url "newsfeed" %}">
+                                <img src="{% static "img/cross37.png" %}" width="30"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="write-submit">
+                                <img src="{% static "img/correct7.png" %}" width="30"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+    <script type="text/javascript" src="{% static "js/tabulous.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/js.js" %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.ui-select').addClass('write-border');
+            $('textarea').addClass('write-border');
+
+            $('#id_form-0-fee').attr('placeholder', '가격 정보');
+            $('#id_form-0-now_num').attr('placeholder', '현재 인원');
+            $('#id_form-0-total_num').attr('placeholder', '총 인원');
+            $('#id_form-0-memo').attr('placeholder', '기타 사항').addClass('write-border');
+        });
+    </script>
+    {% block sub_script %}
+    {% endblock %}
+{% endblock %}
