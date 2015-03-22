@@ -11,18 +11,21 @@
                 <img src="{% static "img/sample.jpg" %}" width="50"/>
             </td>
             <td>
-                <label>정투룸 (양덕동)</label>
+                <label>{{ article.title }}</label>
             </td>
         </tr>
         <tr>
             <td class="has_image">
 {#                <img src="{% static "img/person.png" %}" width="20"/>#}
-                <label>양도 : 45/100</label>
+                <label>양도 : {{ article.sell_mon }} / {{ article.sell_deposit }}</label>
             </td>
         </tr>
         <tr>
             <td rowspan="2" class="article-box-button">
-                <a href="#">집순이</a>
+                <a href="#">
+                    {% if article.roommate %}집순이
+                    {% else %}집돌이
+                    {% endif %}</a>
             </td>
             <td>
                 <label>집순이 : 작은방 20/50, 큰방 25/50</label>

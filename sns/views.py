@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, render, redirect
-from django.http import Http404, HttpResponseRedirect
-from django.core.urlresolvers import  reverse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from django.views.generic import *
@@ -12,6 +12,7 @@ from sns.forms import *
 from sns.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
+import json
 
 
 def index(request):
@@ -166,8 +167,10 @@ class WriteCarView(CreateView):
             article.student = self.request.user.student
             article.category = Category.objects.get(type="car")
             article.save()
+
             trade = trade_form.save(commit=False)
             trade.save()
+
             extra = extra_form.save(commit=False)
             extra.trade = trade
             extra.article = article

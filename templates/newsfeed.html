@@ -13,11 +13,8 @@
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% include "newsfeed_store.html" %}
-        {% include "newsfeed_house.html" %}
-        {% include "newsfeed_car.html" %}
         {% for article in articles %}
-            {% include "newsfeed_article.html" with article=article %}
+            {% include "newsfeed_"|add:article.category.type|add:".html" with article=article %}
         {% endfor %}
     </div>
 
