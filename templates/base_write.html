@@ -2,6 +2,21 @@
 {% load staticfiles %}
 
 {% block page_content %}
+    <script language="javascript">
+        var type;
+
+        {% if form.type == 'car' %}
+            type = '1';
+        {% elif form.type == 'house' %}
+            type = '2';
+        {% elif form.type == 'store' %}
+            type = '3';
+        {% else %}
+            type = '0';
+        {% endif %}
+
+        page_reload(type);
+    </script>
     <div>
         <div data-role="header" data-fullscreen="true">
             <div data-role="navbar">
@@ -50,9 +65,6 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
     <script type="text/javascript" src="{% static "js/tabulous.js" %}"></script>
     <script type="text/javascript" src="{% static "js/js.js" %}"></script>
-    <script language="javascript">
-        reload();
-    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.ui-select').addClass('write-border');
@@ -62,6 +74,7 @@
             $('#id_now_num').attr('placeholder', '현재 인원');
             $('#id_total_num').attr('placeholder', '총 인원');
             $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
+
         });
     </script>
     {% block sub_script %}

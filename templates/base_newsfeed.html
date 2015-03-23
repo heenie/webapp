@@ -20,9 +20,9 @@
             location.href='/login'
         }
 
-        function reload() {
-            if(!window.location.hash) {
-                window.location = window.location + '#loaded';
+        function page_reload(location) {
+            if(!window.location.hash || window.location.href.indexOf('#'+location) == -1) {
+                window.location = window.location + '#'+ location;
                 window.location.reload();
             }
         }

@@ -3,19 +3,14 @@
 
 {% block page_content %}
     <script language="javascript">
-        {#            reload();#}
+        page_reload('edit');
     </script>
     <div id="newsfeed-body">
         <div class="setting-body">
             {% include "logo.html" %}
-
             <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
                 <form method="post">
                     {% csrf_token %}
-                    {% for field in form %}
-                        {{ field }}
-                        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-                    {% endfor %}
                     <table>
                         <tr>
                             <td colspan="2">
@@ -25,20 +20,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input readonly value="{{ form.user.last_name.value }} {{ form.first_name.value }}" class="input-readonly"/></td>
+                            <td colspan="2"><input readonly value="{{ form.last_name.value }} {{ form.first_name.value }}" class="input-readonly"/></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input readonly value="{{ form.get_name }}" class="input-readonly"/></td>
+                            <td colspan="2"><input readonly value="{{ form.username.value }}" class="input-readonly"/></td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{ form.password1 }}</td>
+                            <td colspan="2" class="white-input">{{ form.password1 }}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{ form.password2 }}</td>
+                            <td colspan="2" class="white-input">{{ form.password2 }}</td>
                         </tr>
                         <tr>
                             <td class="medium-text-field">
-                                <div style="position: relative; overflow: inherit;">
+                                <div style="position: relative; overflow: inherit;" class="white-input">
                                     {{ form.phone }}
                                     <div class="check-box">
                                         {{ form.is_public }}
@@ -48,7 +43,7 @@
                             {#                            <td class="check-box">{{ form.is_public }}</td>#}
                         </tr>
                         <tr>
-                            <td colspan="2">{{ form.email }}</td>
+                            <td colspan="2" class="white-input">{{ form.email }}</td>
                         </tr>
                         <tr>
                             <td colspan="2">{{ form.area }}</td>

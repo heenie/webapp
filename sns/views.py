@@ -36,7 +36,6 @@ class Newsfeed(ListView):
         articles = Article.objects.all().order_by('-datetime')
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
-
         return articles
 
 
