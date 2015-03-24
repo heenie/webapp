@@ -1,24 +1,22 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render_to_response, render
-from django.http import Http404, HttpResponseRedirect
-from django.core.urlresolvers import  reverse
+from django.shortcuts import render_to_response, render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from django.views.generic import *
+from django.forms.formsets import formset_factory
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
 from sns.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
+import json
 
 
 def index(request):
     return render_to_response('index.html', None)
-
-
-def write(request):
-    return render_to_response('write_page.html', None)
 
 
 class Newsfeed(ListView):
@@ -38,7 +36,6 @@ class Newsfeed(ListView):
         articles = Article.objects.all().order_by('-datetime')
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
-
         return articles
 
 
@@ -98,17 +95,6 @@ class JoinView(CreateView):
 #     success_url = "/change"
 
 
-# class WriteView(CreateView):
-#     template_name = "write.html"
-#     model = Article
-#     form_class = WriteForm
-#     success_url = "/newsfeed"
-#
-#     def form_valid(self, form):
-#         form.instance.student = self.request.user.student
-#         return super(WriteView, self).form_valid(form)
-
-
 class MyPage(ListView):
     template_name = "mypage.html"
     context_object_name = "my_articles"
@@ -142,11 +128,112 @@ class SettingView(UpdateView):
     success_url = "/newsfeed"
 
 
-class WritePageView(CreateView):
-    template_name = "write_page.html"
+class WriteDefaultView(CreateView):
+    template_name = "write_default.html"
     model = Article
     form_class = WriteForm
-    success_url = "/newsfeed"
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(name="기타")
+            article.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form})
+
+
+class WriteCarView(CreateView):
+    template_name = "write_car.html"
+    form_class = WriteForm
+    trade_form_class = TradeForm
+    extra_form_class = CarForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "car"
+        trade_form = self.trade_form_class()
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        trade_form = self.trade_form_class(request.POST)
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(type="car")
+            article.save()
+
+            trade = trade_form.save(commit=False)
+            trade.save()
+
+            extra = extra_form.save(commit=False)
+            extra.trade = trade
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
+
+
+class WriteHouseView(CreateView):
+    template_name = "write_house.html"
+    form_class = WriteForm
+    extra_form_class = HouseForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "house"
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'house': extra_form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and extra_form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(type="house")
+            article.save()
+            extra = extra_form.save(commit=False)
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'house': extra_form})
+
+
+class WriteStoreView(CreateView):
+    template_name = "write_store.html"
+    form_class = WriteForm
+    trade_form_class = TradeForm
+    extra_form_class = StoreForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.type = "store"
+        trade_form = self.trade_form_class()
+        extra_form = self.extra_form_class()
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        trade_form = self.trade_form_class(request.POST)
+        extra_form = self.extra_form_class(request.POST)
+        if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
+            article = form.save(commit=False)
+            article.student = self.request.user.student
+            article.category = Category.objects.get(type="store")
+            article.save()
+            trade = trade_form.save(commit=False)
+            trade.save()
+            extra = extra_form.save(commit=False)
+            extra.trade = trade
+            extra.article = article
+            extra.save()
+            return redirect('newsfeed')
+        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
 
 
 def LoginTest(request):

@@ -9,15 +9,6 @@ class SearchForm(forms.ModelForm):
         fields = ("category", "content")
 
 
-class WriteForm(forms.ModelForm):
-    cate = Category.objects.all()
-
-    class Meta:
-        model = Article
-        fields = '__all__'
-        exclude = ['datetime', 'student']
-
-
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
@@ -95,3 +86,40 @@ class PersonalForm(UserCreationForm):
         student = Student(user=user, phone=self.cleaned_data['phone'], is_public=self.cleaned_data['is_public'], area=self.cleaned_data['area'])
         student.save()
         return user
+
+
+class TradeForm(forms.ModelForm):
+    class Meta:
+        model = Trade
+        fields = '__all__'
+
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = '__all__'
+        exclude = ['article', 'trade']
+
+
+class HouseForm(forms.ModelForm):
+    class Meta:
+        model = House
+        fields = '__all__'
+        exclude = ['article']
+
+
+class StoreForm(forms.ModelForm):
+    class Meta:
+        model = Store
+        fields = '__all__'
+        exclude = ['article', 'trade']
+
+
+class WriteForm(forms.ModelForm):
+    cate = Category.objects.all()
+    type = "default"
+
+    class Meta:
+        model = Article
+        fields = '__all__'
+        exclude = ['datetime', 'student', 'category']

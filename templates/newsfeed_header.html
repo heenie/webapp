@@ -1,19 +1,40 @@
 {% load staticfiles %}
 
-<div data-role="header" class="newsfeed-header">
-    <form method="get">
-        <table class="header-table">
-            <tr>
-                <th class="col-2">{{ search_form.category }}</th>
-                <th>
-                    <input name="{{ search_form.content.name }}" placeholder="검색" class="search-content"/>
-                </th>
-                <th cla-ss="col1">
-                    <div class="search-button">
-                        <img src="{% static "img/search.png" %}" height="30" onclick="$(this).closest('form').submit()"/>
+<form method="get">
+    <div data-role="header" data-fullscreen="true">
+        <div data-role="navbar">
+            <ul id="default">
+                <li>
+                    <div class="header-button">
+                        <img src="{% static "img/zoom22.png" %}" width="30" onclick="search_show()"/>
                     </div>
-                </th>
-            </tr>
-        </table>
-    </form>
-</div>
+                </li>
+                <li>
+                    <div class="header-button">
+                        <img src="{% static "img/chat26.png" %}" width="30" onclick=""/>
+                    </div>
+                </li>
+                <li>
+                    <div class="header-button">
+                        <img src="{% static "img/menu18.png" %}" width="30" onclick=""/>
+                    </div>
+                </li>
+            </ul>
+            <table id="search-table">
+                <tr>
+                    <td>
+                        <div class="header-button">
+                            <img src="{% static "img/arrow395.png" %}" width="30" onclick="default_show()"/>
+                        </div>
+                    </td>
+                    <td class="search-category">
+                        {{ search_form.category }}
+                    </td>
+                    <td class="search-content">
+                        <input name="{{ search_form.content.name }}" placeholder="필요한 것을 검색해보세요 !"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Area(models.Model):
-    name = models.CharField(max_length=30, default="")
+    name = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
@@ -34,6 +34,7 @@ class Student(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    type = models.CharField(max_length=30, default="default")
 
     def __str__(self):
         return self.name
@@ -50,6 +51,42 @@ class Article(models.Model):
 
     def get_comments(self):
         return Comment.objects.filter(article=self)
+
+
+class Trade(models.Model):
+    fee = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
+    now_num = models.IntegerField(null=True, blank=True)
+    total_num = models.IntegerField(null=True, blank=True)
+    memo = models.TextField(null=True, blank=True)
+
+
+class Car(models.Model):
+    depart = models.CharField(max_length=50)
+    destination = models.CharField(max_length=50)
+    transportation = models.CharField(max_length=50)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
+
+
+class Store(models.Model):
+    title = models.CharField(max_length=50)
+    link = models.URLField(null=True)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
+
+
+class House(models.Model):
+    title = models.CharField(max_length=50)
+    area = models.ForeignKey(Area)
+    sell_mon = models.IntegerField(null=True, blank=True)
+    sell_deposit = models.IntegerField(null=True, blank=True)
+    roommate = models.BooleanField(default=True)
+    room_mon = models.IntegerField(null=True, blank=True)
+    room_deposit = models.IntegerField(null=True, blank=True)
+    time = models.CharField(max_length=100)
+    memo = models.TextField()
+    article = models.OneToOneField(Article, default=None)
 
 
 class Image(models.Model):
