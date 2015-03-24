@@ -34,9 +34,18 @@ class Newsfeed(ListView):
         content_param = self.request.GET.get('content')
 
         articles = Article.objects.all().order_by('-datetime')
+        list
+
+        for article in articles:
+            list = Car.objects.get(article=article)
+            list = House.objects.get(article=article)
+
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
         return articles
+
+    def get_car(self, art_id):
+        return Car.objects.get(article__id=art_id)
 
 
 class ArticleView(CreateView):

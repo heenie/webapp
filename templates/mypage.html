@@ -1,30 +1,30 @@
 {% extends 'base_newsfeed.html' %}
 
 {% block page_content %}
-
-    {% include "newsfeed_header.html" %}
+    <script language="javascript">
+        var type = 'per';
+        page_reload(type);
+    </script>
 
     <div id="newsfeed-body">
         {% include "profile.html" %}
-{#        <div style="width: 500px; height: 120px; margin: 30px">#}
-{#            <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">#}
-{#                <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>#}
-{#            </div>#}
-{##}
-{#            <div style="float: left; width: 350px; height: 120px; vertical-align: middle">#}
-{#                <p>이름(학번) : {{ student }}</p>#}
-{#                <p>휴대전화 : {{ student.get_phone }}</p>#}
-{#                <p>이메일 : {{ student.user.email }}</p>#}
-{#            </div>#}
-{#        </div>#}
+        {#        <div style="width: 500px; height: 120px; margin: 30px">#}
+        {#            <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">#}
+        {#                <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>#}
+        {#            </div>#}
+        {##}
+        {#            <div style="float: left; width: 350px; height: 120px; vertical-align: middle">#}
+        {#                <p>이름(학번) : {{ student }}</p>#}
+        {#                <p>휴대전화 : {{ student.get_phone }}</p>#}
+        {#                <p>이메일 : {{ student.user.email }}</p>#}
+        {#            </div>#}
+        {#        </div>#}
         <div>
+            {% for article in my_articles %}
+                {% include "newsfeed_articles.html" with articles=my_articles %}
+            {% endfor %}
+        </div>
 
-        {% for article in my_articles %}
-            {% include "newsfeed_article.html" with article=article %}
-        {% endfor %}
+        {% include "newsfeed_footer.html" with page="mypage" %}
     </div>
-
-    {% include "newsfeed_footer.html" with page="mypage" %}
-
-
 {% endblock %}

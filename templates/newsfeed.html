@@ -8,12 +8,15 @@
         </script>
     {% endif %}
 
+    <script language="javascript">
+        var type = 'home';
+        page_reload(type);
+    </script>
+
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% for article in articles %}
-            {% include "newsfeed_"|add:article.category.type|add:".html" with article=article %}
-        {% endfor %}
+        {% include "newsfeed_articles.html" with articles=articles %}
     </div>
 
     {% include "newsfeed_footer.html" with page="newsfeed" %}
