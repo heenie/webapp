@@ -123,6 +123,21 @@ class MyPage(ListView):
         context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
         return context
 
+    def get_list(self):
+        articles = Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime')
+        array = []
+
+        for article in articles:
+            if Car.objects.filter(article=article).exists():
+                array.append(Car.objects.get(article=article))
+            elif House.objects.filter(article=article).exists():
+                array.append(House.objects.get(article=article))
+            elif Store.objects.filter(article=article).exists():
+                array.append(Store.objects.get(article=article))
+            else:
+                array.append(article)
+        return zip(articles, array)
+
     def get_queryset(self):
         category_param = self.request.GET.get('category')
         content_param = self.request.GET.get('content')
@@ -131,7 +146,6 @@ class MyPage(ListView):
         # articles = Article.objects.filter(student=self.request.user.student).order_by('-datetime')
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
-
         return articles
 
 

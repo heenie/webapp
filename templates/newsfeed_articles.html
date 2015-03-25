@@ -1,3 +1,0 @@
-{% for article, item in view.get_list %}
-    {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
-{% endfor %}

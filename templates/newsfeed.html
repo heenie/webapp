@@ -16,7 +16,9 @@
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% include "newsfeed_articles.html" with articles=articles %}
+        {% for article, item in view.get_list %}
+            {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
+        {% endfor %}
     </div>
 
     {% include "newsfeed_footer.html" with page="newsfeed" %}
