@@ -1,8 +1,3 @@
-{% for article in articles %}
-{#    {% if article.category.type == 'car' %}#}
-{#        {{ views.get_car }}#}
-{#        {% include "newsfeed_car.html" with article=article %}#}
-{#    {% else %}#}
-    {% include "newsfeed_"|add:article.category.type|add:".html" with article=article %}
-{#    {% endif %}#}
+{% for article, item in view.get_list %}
+    {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
 {% endfor %}

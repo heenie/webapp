@@ -12,7 +12,6 @@ from sns.forms import *
 from sns.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
-import json
 
 
 def index(request):
@@ -29,23 +28,29 @@ class Newsfeed(ListView):
         context.update({"search_form": SearchForm(self.request.GET)})
         return context
 
+    def get_list(self):
+        articles = Article.objects.all().order_by('-datetime')
+        array = []
+
+        for article in articles:
+            if Car.objects.filter(article=article).exists():
+                array.append(Car.objects.get(article=article))
+            elif House.objects.filter(article=article).exists():
+                array.append(House.objects.get(article=article))
+            elif Store.objects.filter(article=article).exists():
+                array.append(Store.objects.get(article=article))
+            else:
+                array.append(article)
+        return zip(articles, array)
+
     def get_queryset(self):
         category_param = self.request.GET.get('category')
         content_param = self.request.GET.get('content')
 
         articles = Article.objects.all().order_by('-datetime')
-        list
-
-        for article in articles:
-            list = Car.objects.get(article=article)
-            list = House.objects.get(article=article)
-
         articles = ArticleModelAdmin(Article, None).get_search_results(self.request, articles, content_param)[0]
         articles = ArticleFilter(self.request.GET, queryset=articles)
         return articles
-
-    def get_car(self, art_id):
-        return Car.objects.get(article__id=art_id)
 
 
 class ArticleView(CreateView):
