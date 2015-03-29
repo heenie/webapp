@@ -52,6 +52,12 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
+        # def get_main_image(self):
+        #     if self.entryfile_set.all().exists():
+        #         return self.entryfile_set.all()[0].file
+        #     else:
+        #         return None
+
 
 class Trade(models.Model):
     fee = models.CharField(max_length=100)
@@ -89,12 +95,17 @@ class House(models.Model):
     article = models.OneToOneField(Article, default=None)
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to="./image", null=True, blank=True)
-    article = models.ForeignKey("Article")
+# class Image(models.Model):
+#     image = models.ImageField(upload_to="./image", null=True, blank=True)
+#     article = models.ForeignKey("Article")
+#
+#     def __str__(self):
+#         return "사진" + str(self.id) + "(" + str(self.article) + ")"
 
-    def __str__(self):
-        return "사진" + str(self.id) + "(" + str(self.article) + ")"
+
+class Image(models.Model):
+    image = models.FileField(upload_to="img", null=True, blank=True)
+    article = models.ForeignKey(Article, null=True)
 
 
 class Comment(models.Model):
@@ -105,3 +116,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
+
+
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')

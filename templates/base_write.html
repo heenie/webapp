@@ -4,7 +4,6 @@
 {% block page_content %}
     <script language="javascript">
         var type;
-
         {% if form.type == 'car' %}
             type = '1';
         {% elif form.type == 'house' %}
@@ -14,7 +13,6 @@
         {% else %}
             type = '0';
         {% endif %}
-
         page_reload(type);
     </script>
     <div>
@@ -69,12 +67,10 @@
         $(document).ready(function(){
             $('.ui-select').addClass('write-border');
             $('textarea').addClass('write-border');
-
             $('#id_fee').attr('placeholder', '가격 정보');
             $('#id_now_num').attr('placeholder', '현재 인원');
             $('#id_total_num').attr('placeholder', '총 인원');
             $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
-
         });
     </script>
     {% block sub_script %}

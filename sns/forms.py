@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
+from sns.multi import MultiFileField
 
 
 class SearchForm(forms.ModelForm):
@@ -116,10 +117,17 @@ class StoreForm(forms.ModelForm):
 
 
 class WriteForm(forms.ModelForm):
+    # files = MultiFileField(max_num=10, min_num=0, maximum_file_size=1024*1024*5)
+    # file = forms.FileField()
     cate = Category.objects.all()
+    len = len(cate)
     type = "default"
 
     class Meta:
         model = Article
         fields = '__all__'
         exclude = ['datetime', 'student', 'category']
+
+
+class DocumentForm(forms.Form):
+    docfile = MultiFileField(max_num=10, min_num=0, maximum_file_size=1024*1024*5)

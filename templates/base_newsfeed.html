@@ -14,12 +14,10 @@
     <title>욉앱</title>
 
     <script language="javascript">
-
         function login_warning() {
             alert("로그인을 하십시오");
             location.href='/login'
         }
-
         function page_reload(location) {
             if(!window.location.hash || window.location.href.indexOf('#'+location) == -1) {
                 window.location = window.location + '#'+ location;

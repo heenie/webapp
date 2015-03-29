@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, UpdateView,  View, DetailView, ListView, DeleteView
 from django.views.generic import *
-from django.forms.formsets import formset_factory
 from sns.admin import ArticleModelAdmin
 from sns.filters import ArticleFilter
 from sns.forms import *
@@ -158,18 +157,25 @@ class SettingView(UpdateView):
 
 class WriteDefaultView(CreateView):
     template_name = "write_default.html"
-    model = Article
-    form_class = WriteForm
+
+    def get(self, request, *args, **kwargs):
+        article_form = WriteForm()
+        form = DocumentForm()
+        return render(request, 'write_default.html', {'form': article_form, 'doc': form})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        article_form = WriteForm(request.POST)
+        form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.student = self.request.user.student
+            article = article_form.save(commit=False)
+            article.student = request.user.student
             article.category = Category.objects.get(name="기타")
             article.save()
-            return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form})
+            for file in request.FILES.getlist('docfile'):
+                file = Image(image=file, article=article)
+                file.save()
+            return redirect('/newsfeed')
+        return render_to_response('write_default.html', {'form': article_form, 'doc': form}, context_instance=RequestContext(request))
 
 
 class WriteCarView(CreateView):
@@ -210,6 +216,7 @@ class WriteHouseView(CreateView):
     template_name = "write_house.html"
     form_class = WriteForm
     extra_form_class = HouseForm
+    success_url = "/newsfeed"
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -237,6 +244,7 @@ class WriteStoreView(CreateView):
     form_class = WriteForm
     trade_form_class = TradeForm
     extra_form_class = StoreForm
+    success_url = "/newsfeed"
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
