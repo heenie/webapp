@@ -30,7 +30,6 @@ class Newsfeed(ListView):
     def get_list(self):
         articles = Article.objects.all().order_by('-datetime')
         array = []
-
         for article in articles:
             if Car.objects.filter(article=article).exists():
                 array.append(Car.objects.get(article=article))
@@ -157,17 +156,19 @@ class SettingView(UpdateView):
 
 class WriteDefaultView(CreateView):
     template_name = "write_default.html"
+    form_class = WriteForm
+    doc_form_class = DocumentForm
 
     def get(self, request, *args, **kwargs):
-        article_form = WriteForm()
-        form = DocumentForm()
-        return render(request, 'write_default.html', {'form': article_form, 'doc': form})
+        form = self.form_class()
+        doc_form = self.doc_form_class()
+        return render(request, self.template_name, {'form': form, 'doc': doc_form})
 
     def post(self, request, *args, **kwargs):
-        article_form = WriteForm(request.POST)
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            article = article_form.save(commit=False)
+        form = self.form_class(request.POST)
+        doc_form = self.doc_form_class(request.POST, request.FILES)
+        if doc_form.is_valid():
+            article = form.save(commit=False)
             article.student = request.user.student
             article.category = Category.objects.get(name="기타")
             article.save()
@@ -175,24 +176,27 @@ class WriteDefaultView(CreateView):
                 file = Image(image=file, article=article)
                 file.save()
             return redirect('/newsfeed')
-        return render_to_response('write_default.html', {'form': article_form, 'doc': form}, context_instance=RequestContext(request))
+        return render_to_response(self.template_name, {'form': form, 'doc': doc_form}, context_instance=RequestContext(request))
 
 
 class WriteCarView(CreateView):
     template_name = "write_car.html"
     form_class = WriteForm
+    doc_form_class = DocumentForm
     trade_form_class = TradeForm
     extra_form_class = CarForm
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "car"
+        doc_form = self.doc_form_class()
         trade_form = self.trade_form_class()
         extra_form = self.extra_form_class()
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'car': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        doc_form = self.doc_form_class(request.POST, request.FILES)
         trade_form = self.trade_form_class(request.POST)
         extra_form = self.extra_form_class(request.POST)
         if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
@@ -200,48 +204,58 @@ class WriteCarView(CreateView):
             article.student = self.request.user.student
             article.category = Category.objects.get(type="car")
             article.save()
-
+            for file in request.FILES.getlist('docfile'):
+                file = Image(image=file, article=article)
+                file.save()
+            return redirect('/newsfeed')
             trade = trade_form.save(commit=False)
             trade.save()
-
             extra = extra_form.save(commit=False)
             extra.trade = trade
             extra.article = article
             extra.save()
             return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'car': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'car': extra_form})
 
 
 class WriteHouseView(CreateView):
     template_name = "write_house.html"
     form_class = WriteForm
+    doc_form_class = DocumentForm
     extra_form_class = HouseForm
     success_url = "/newsfeed"
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "house"
+        doc_form = self.doc_form_class()
         extra_form = self.extra_form_class()
-        return render(request, self.template_name, {'form': form, 'house': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'house': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        doc_form = self.doc_form_class(request.POST, request.FILES)
         extra_form = self.extra_form_class(request.POST)
         if form.is_valid() and extra_form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
             article.category = Category.objects.get(type="house")
             article.save()
+            for file in request.FILES.getlist('docfile'):
+                file = Image(image=file, article=article)
+                file.save()
+            return redirect('/newsfeed')
             extra = extra_form.save(commit=False)
             extra.article = article
             extra.save()
             return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'house': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'house': extra_form})
 
 
 class WriteStoreView(CreateView):
     template_name = "write_store.html"
     form_class = WriteForm
+    doc_form_class = DocumentForm
     trade_form_class = TradeForm
     extra_form_class = StoreForm
     success_url = "/newsfeed"
@@ -249,12 +263,14 @@ class WriteStoreView(CreateView):
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         form.type = "store"
+        doc_form = self.doc_form_class()
         trade_form = self.trade_form_class()
         extra_form = self.extra_form_class()
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'store': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        doc_form = self.doc_form_class(request.POST, request.FILES)
         trade_form = self.trade_form_class(request.POST)
         extra_form = self.extra_form_class(request.POST)
         if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
@@ -262,6 +278,10 @@ class WriteStoreView(CreateView):
             article.student = self.request.user.student
             article.category = Category.objects.get(type="store")
             article.save()
+            for file in request.FILES.getlist('docfile'):
+                file = Image(image=file, article=article)
+                file.save()
+            return redirect('/newsfeed')
             trade = trade_form.save(commit=False)
             trade.save()
             extra = extra_form.save(commit=False)
@@ -269,7 +289,7 @@ class WriteStoreView(CreateView):
             extra.article = article
             extra.save()
             return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'trade': trade_form, 'store': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'store': extra_form})
 
 
 def LoginTest(request):

@@ -117,8 +117,6 @@ class StoreForm(forms.ModelForm):
 
 
 class WriteForm(forms.ModelForm):
-    # files = MultiFileField(max_num=10, min_num=0, maximum_file_size=1024*1024*5)
-    # file = forms.FileField()
     cate = Category.objects.all()
     len = len(cate)
     type = "default"

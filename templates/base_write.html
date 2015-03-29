@@ -30,7 +30,7 @@
                 </ul>
             </div>
         </div>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
             <div data-role="content" id="write-container">
                 {% block tab_container %}
