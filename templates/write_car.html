@@ -5,7 +5,7 @@
     <table>
         <tr>
             <td>
-                {{ car_form.depart }}
+                {{ car.depart }}
                 {% for error in car_form.depart.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
             <td class="write-img">
@@ -15,31 +15,35 @@
                 <img src="{% static "img/car_arrow4.png" %}" width="30"/>
             </td>
             <td>
-                {{ car_form.destination }}
+                {{ car.destination }}
                 {% for error in car_form.destination.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                {{ car_form.now_num }}
+                {{ trade.now_num }}
                 {% for error in form.now_num.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
             <td colspan="2">
-                {{ car_form.total_num }}
+                {{ trade.total_num }}
                 {% for error in form.total_num.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
         </tr>
     </table>
 
-    {% for field in form %}
-        {{ field }}
-        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+    {{ car.transportation }}
+    {% for error in car.transportation.errors %}<p>{{ error }}</p>{% endfor %}
+
+    {% for field in trade %}
+        {% if not '_num' in field.name %}
+            {{ field }}
+            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+        {% endif %}
     {% endfor %}
-    <p>car form</p>
-    {% for field in car_form %}
-        {{ field }}
-        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-    {% endfor %}
+
+    {% include "write_doc.html" with doc=doc %}
+
+    <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
 {% endblock %}
 
 {% block sub_script %}
@@ -49,7 +53,6 @@
             $('#id_destination').attr('placeholder', '도착');
             $('#id_transportation').attr('placeholder', '예) 택시');
             $('#id_time').attr('placeholder', '출발 시간');
-
 
             $('#write-submit').click(function() {
                 var content =

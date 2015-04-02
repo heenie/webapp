@@ -1,21 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
+from sns.multi import MultiFileField
 
 
 class SearchForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ("category", "content")
-
-
-class WriteForm(forms.ModelForm):
-    cate = Category.objects.all()
-
-    class Meta:
-        model = Article
-        fields = '__all__'
-        exclude = ['datetime', 'student']
 
 
 class ArticleForm(forms.ModelForm):
@@ -97,20 +89,43 @@ class PersonalForm(UserCreationForm):
         return user
 
 
-class CarForm(forms.ModelForm):
-    cate = Category.objects.all()
+class TradeForm(forms.ModelForm):
+    class Meta:
+        model = Trade
+        fields = '__all__'
 
+
+class CarForm(forms.ModelForm):
     class Meta:
         model = Car
+        fields = '__all__'
+        exclude = ['article', 'trade']
+
+
+class HouseForm(forms.ModelForm):
+    class Meta:
+        model = House
         fields = '__all__'
         exclude = ['article']
 
 
+class StoreForm(forms.ModelForm):
+    class Meta:
+        model = Store
+        fields = '__all__'
+        exclude = ['article', 'trade']
+
+
 class WriteForm(forms.ModelForm):
     cate = Category.objects.all()
+    len = len(cate)
     type = "default"
 
     class Meta:
         model = Article
         fields = '__all__'
-        exclude = ['datetime', 'student']
+        exclude = ['datetime', 'student', 'category']
+
+
+class DocumentForm(forms.Form):
+    docfile = MultiFileField(max_num=10, min_num=0, maximum_file_size=1024*1024*5)

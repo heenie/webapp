@@ -2,6 +2,19 @@
 {% load staticfiles %}
 
 {% block page_content %}
+    <script language="javascript">
+        var type;
+        {% if form.type == 'car' %}
+            type = '1';
+        {% elif form.type == 'house' %}
+            type = '2';
+        {% elif form.type == 'store' %}
+            type = '3';
+        {% else %}
+            type = '0';
+        {% endif %}
+        page_reload(type);
+    </script>
     <div>
         <div data-role="header" data-fullscreen="true">
             <div data-role="navbar">
@@ -17,7 +30,7 @@
                 </ul>
             </div>
         </div>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
             <div data-role="content" id="write-container">
                 {% block tab_container %}
@@ -54,11 +67,10 @@
         $(document).ready(function(){
             $('.ui-select').addClass('write-border');
             $('textarea').addClass('write-border');
-
-            $('#id_form-0-fee').attr('placeholder', '가격 정보');
-            $('#id_form-0-now_num').attr('placeholder', '현재 인원');
-            $('#id_form-0-total_num').attr('placeholder', '총 인원');
-            $('#id_form-0-memo').attr('placeholder', '기타 사항').addClass('write-border');
+            $('#id_fee').attr('placeholder', '가격 정보');
+            $('#id_now_num').attr('placeholder', '현재 인원');
+            $('#id_total_num').attr('placeholder', '총 인원');
+            $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
         });
     </script>
     {% block sub_script %}

@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Area(models.Model):
-    name = models.CharField(max_length=30, default="")
+    name = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
@@ -52,28 +52,34 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
+        # def get_main_image(self):
+        #     if self.entryfile_set.all().exists():
+        #         return self.entryfile_set.all()[0].file
+        #     else:
+        #         return None
 
-class Car(models.Model):
-    depart = models.CharField(max_length=5)
-    destination = models.CharField(max_length=50)
-    transportation = models.CharField(max_length=50)
-    fee = models.CharField(max_length=70, default=None)
-    time = models.CharField(max_length=70, default=None)
+
+class Trade(models.Model):
+    fee = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
     now_num = models.IntegerField(null=True, blank=True)
     total_num = models.IntegerField(null=True, blank=True)
     memo = models.TextField(null=True, blank=True)
-    article = models.OneToOneField(Article, default=None)
+
+
+class Car(models.Model):
+    depart = models.CharField(max_length=50)
+    destination = models.CharField(max_length=50)
+    transportation = models.CharField(max_length=50)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class Store(models.Model):
     title = models.CharField(max_length=50)
     link = models.URLField(null=True)
-    fee = models.CharField(max_length=70, default=None)
-    time = models.CharField(max_length=70, default=None)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
-    memo = models.TextField(null=True, blank=True)
-    article = models.OneToOneField(Article, default=None)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class House(models.Model):
@@ -81,20 +87,25 @@ class House(models.Model):
     area = models.ForeignKey(Area)
     sell_mon = models.IntegerField(null=True, blank=True)
     sell_deposit = models.IntegerField(null=True, blank=True)
-    roommate = models.BooleanField(default=False)
+    roommate = models.BooleanField(default=True)
     room_mon = models.IntegerField(null=True, blank=True)
     room_deposit = models.IntegerField(null=True, blank=True)
-    time = models.DateTimeField(auto_now=False)
+    time = models.CharField(max_length=100)
     memo = models.TextField()
     article = models.OneToOneField(Article, default=None)
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to="./image", null=True, blank=True)
-    article = models.ForeignKey("Article")
+# class Image(models.Model):
+#     image = models.ImageField(upload_to="./image", null=True, blank=True)
+#     article = models.ForeignKey("Article")
+#
+#     def __str__(self):
+#         return "사진" + str(self.id) + "(" + str(self.article) + ")"
 
-    def __str__(self):
-        return "사진" + str(self.id) + "(" + str(self.article) + ")"
+
+class Image(models.Model):
+    image = models.FileField(upload_to="img", null=True, blank=True)
+    article = models.ForeignKey(Article, null=True)
 
 
 class Comment(models.Model):
@@ -105,3 +116,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
+
+
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')

@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="article-box">
+    <div class="article-head">
+        {% include "article_info.html" with article=article type="article" size=50 %}
+    </div>
+
+    <div class="article-content">
+        {% if url %}
+            <p class="div-fill">{{ article.content }}</p>
+        {% else %}
+            <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
+        {% endif %}
+    </div>
+
+    <div class="article-foot">
+        {% include "newsfeed_comment.html" with article=article %}
+    </div>
+</div>

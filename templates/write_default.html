@@ -2,10 +2,14 @@
 {% load staticfiles %}
 
 {% block tab_container %}
-    {% for field in form %}
-        {{ field }}
-        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-    {% endfor %}
+    <div>
+        {% for field in form %}
+            {{ field }}
+            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+        {% endfor %}
+
+        {% include "write_doc.html" with doc=doc %}
+    </div>
 {% endblock %}
 
 {% block sub_script %}
