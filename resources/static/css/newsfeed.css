@@ -122,8 +122,10 @@ table {
 }
 .div-fill {
     display: block;
-    font-weight: 400 !important;
+    font-size: 105%;
+    font-weight: normal !important;
     text-decoration: none !important;
+    text-align: center;
     word-wrap: break-word;
 }
 .article-comment {
