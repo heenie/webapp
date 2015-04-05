@@ -6,6 +6,11 @@
         page_reload(type);
     </script>
 
+    <div data-role="header" class="newsfeed-header" data-position="inline">
+        <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+        <h1>{{ student }}</h1>
+    </div>
+
     <div id="newsfeed-body">
         {% include "profile.html" %}
         {#        <div style="width: 500px; height: 120px; margin: 30px">#}
