@@ -8,9 +8,7 @@
 #button,
 .newsfeed-header,
 .tabulous_active,
-.ui-navbar form ul li,
-.ui-navbar form ul .ui-block-b .ui-input-text,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
+.ui-navbar,
 .input-readonly,
 .ui-header form #id_category-button:hover,
 .login-icon {
@@ -165,6 +163,7 @@ html head+body .ui-body-a.ui-focus {
  */
 .article-title a,
 .article-user-id a,
+.comment-user-id a,
 .div-fill,
 .article-box table tr td a,
 .write-category #id_category-button,
@@ -184,9 +183,8 @@ html head+body .ui-body-a.ui-focus {
 .article-button,
 .car-time div,
 .tabulous_active,
-.comment-input div input,
 .comment-submit div input,
-.search-content {
+.light-placeholder {
    color: white !important;
 }
 #write-container textarea,
@@ -292,6 +290,8 @@ html body .ui-group-theme-a a:visited {
 .light-font {
     color: #fafafa;
 }
-#newsfeed-body, .newsfeed-page {
+#newsfeed-body,
+.newsfeed-page,
+.comment-box {
 	background-color: #f3f3f3;
 }

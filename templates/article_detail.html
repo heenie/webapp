@@ -15,7 +15,7 @@
         <div class="detail-box">
             <table>
                 <tr>
-                    <td rowspan="2" class="detail-user-image">
+                    <td rowspan="2" class="detail-user-image user-image">
                         <div class="image">
                             <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="70"/>
                         </div>
@@ -39,7 +39,7 @@
             </div>
 
             {% if article.get_comments %}
-                <div class="comment-box" id="newsfeed-body">
+                <div class="comment-box">
                     {% for comment in article.get_comments %}
                         {% include "comment_box.html" with comment=comment %}
                     {% endfor %}
@@ -49,25 +49,27 @@
     </div>
 
     <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td class="comment-image">
-                        <div class="image">
-                            <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40"/>
-                        </div>
-                    </td>
-                    <td class="comment-input">
-                        {{ form.content }}
-                    </td>
-                    <td class="comment-submit">
-                        <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
-                        <input type="hidden" name="next" value="/" />
-                    </td>
-                </tr>
-            </table>
-        </form>
+        <div data-role="navbar">
+            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="comment-image user-image">
+                            <div class="image">
+                                <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40"/>
+                            </div>
+                        </td>
+                        <td class="comment-input">
+                            {{ form.content }}
+                        </td>
+                        <td class="comment-submit">
+                            <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
+                            <input type="hidden" name="next" value="/" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
 {% endblock %}
 
