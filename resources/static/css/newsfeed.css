@@ -323,15 +323,6 @@ tr .medium-text-field .ui-input-text {
     border-style: solid;
     border-color: transparent;
 }
-.setting-imgbox {
-    width: 100% !important;
-    padding: 5px 0px 5px 0px;
-}
-.profile-imgbox img,
-.setting-imgbox img {
-    border-radius: 60px;
-}
-
 
 
 /*
@@ -345,16 +336,14 @@ tr .medium-text-field .ui-input-text {
     margin-left: 25%;
     margin-right: 25%;
 }
-.profile-box .profile-imgbox {
-    width: 100% !important;
-}
-.setting-imgbox,
-.profile-box .profile-imgbox {
-    float: left;
-    width: 140px;
+.profile-imgbox {
     height: 120px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
+}
+.profile-imgbox .image {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
 }
 
 
