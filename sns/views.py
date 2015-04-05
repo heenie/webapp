@@ -56,6 +56,10 @@ class ArticleView(CreateView):
     model = Comment
     form_class = CommentForm
 
+    def get_user_image(self):
+        user = Student.objects.get(user=self.request.user)
+        return user.get_image()
+
     def get_context_data(self, **kwargs):
         context = super(ArticleView, self).get_context_data(**kwargs)
         context.update({"article": Article.objects.get(id=self.kwargs['pk'])})
@@ -207,7 +211,6 @@ class WriteCarView(CreateView):
             for file in request.FILES.getlist('docfile'):
                 file = Image(image=file, article=article)
                 file.save()
-            return redirect('/newsfeed')
             trade = trade_form.save(commit=False)
             trade.save()
             extra = extra_form.save(commit=False)
@@ -222,6 +225,7 @@ class WriteHouseView(CreateView):
     template_name = "write_house.html"
     form_class = WriteForm
     doc_form_class = DocumentForm
+    trade_form_class = TradeForm
     extra_form_class = HouseForm
     success_url = "/newsfeed"
 
@@ -229,14 +233,16 @@ class WriteHouseView(CreateView):
         form = self.form_class()
         form.type = "house"
         doc_form = self.doc_form_class()
+        trade_form = self.trade_form_class()
         extra_form = self.extra_form_class()
-        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'house': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'house': extra_form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         doc_form = self.doc_form_class(request.POST, request.FILES)
+        trade_form = self.trade_form_class(request.POST)
         extra_form = self.extra_form_class(request.POST)
-        if form.is_valid() and extra_form.is_valid():
+        if form.is_valid() and trade_form.is_valid() and extra_form.is_valid():
             article = form.save(commit=False)
             article.student = self.request.user.student
             article.category = Category.objects.get(type="house")
@@ -244,12 +250,14 @@ class WriteHouseView(CreateView):
             for file in request.FILES.getlist('docfile'):
                 file = Image(image=file, article=article)
                 file.save()
-            return redirect('/newsfeed')
+            trade = trade_form.save(commit=False)
+            trade.save()
             extra = extra_form.save(commit=False)
+            extra.trade = trade
             extra.article = article
             extra.save()
             return redirect('newsfeed')
-        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'house': extra_form})
+        return render(request, self.template_name, {'form': form, 'doc': doc_form, 'trade': trade_form, 'house': extra_form})
 
 
 class WriteStoreView(CreateView):
@@ -281,7 +289,6 @@ class WriteStoreView(CreateView):
             for file in request.FILES.getlist('docfile'):
                 file = Image(image=file, article=article)
                 file.save()
-            return redirect('/newsfeed')
             trade = trade_form.save(commit=False)
             trade.save()
             extra = extra_form.save(commit=False)

@@ -1,42 +1,38 @@
+{% extends 'newsfeed_article.html' %}
 {% load staticfiles %}
-<div class="article-box">
-    <div class="article-head">
-        {% include "article_info.html" with article=article.article size=50 %}
-    </div>
 
+{% block content %}
     <table class="article-box-car">
         <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">{{ article.trade.now_num }} / {{ article.trade.total_num }}</a>
+            <td class="article-title">
+                <a href="{% url "article" article.id %}">{{ article.depart }}</a>
             </td>
-            <td rowspan="4" class="divider">
+            <td class="car-arrow">
+                <img src="{% static "img/car_arrow3.png" %}" width="30"/>
             </td>
-            <td rowspan="3">
-                <label>{{ article.depart }}</label>
+            <td class="car-arrow">
+                <img src="{% static "img/car_arrow3.png" %}" width="30"/>
             </td>
-            <td rowspan="3" class="car-arrow">
-                <img src="{% static "img/car_arrow3.png" %}" width="50"/>
-            </td>
-            <td rowspan="3">
-                <label>150223 14:00<br>{{ article.transportation }}</label>
-            </td>
-            <td rowspan="3" class="car-arrow">
-                <img src="{% static "img/car_arrow3.png" %}" width="50"/>
-            </td>
-            <td rowspan="3">
-                <label>{{ article.destination }}</label>
-            </td>
-        </tr>
-        <tr></tr>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">JOIN</a>
+            <td class="article-title">
+                <a href="{% url "article" article.id %}">{{ article.destination }}</a>
             </td>
         </tr>
         <tr>
-            <td colspan="5" class="article-bottom">
-                {% include "newsfeed_comment.html" %}
+            <td colspan="4">
+                <label>{{ article.trade.time }} ( {{ article.transportation }} )</label>
             </td>
+{#            <td>#}
+{#                <label>{{ article.trade.time }}</label>#}
+{#            </td>#}
+{#            <td class="car-arrow">#}
+{#                <img src="{% static "img/clock97.png" %}" width="20"/>#}
+{#            </td>#}
+{#            <td class="car-arrow">#}
+{#                <img src="{% static "img/sportive36.png" %}" width="20"/>#}
+{#            </td>#}
+{#            <td>#}
+{#                <label>{{ article.transportation }}</label>#}
+{#            </td>#}
         </tr>
     </table>
-</div>
+{% endblock %}

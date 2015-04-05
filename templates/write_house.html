@@ -2,53 +2,16 @@
 {% load staticfiles %}
 
 {% block tab_container %}
-    {{ house.title }}
-    {% for error in house.title.errors %}<p>{{ error }}</p>{% endfor %}
 
-    {{ house.area }}
-    {% for error in house.area.errors %}<p>{{ error }}</p>{% endfor %}
+    {% for field in house %}
+        {{ field }}
+        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+    {% endfor %}
 
-    <table>
-        <tr>
-            <td class="write-img">
-                <img src="{% static "img/sell_house.png" %}" width="30"/>
-            </td>
-            <td>
-                {{ house.sell_mon }}
-                {% for error in house.sell_mon.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-            <td class="write-slash">
-                <label>/</label>
-            </td>
-            <td>
-                {{ house.sell_deposit }}
-                {% for error in house.sell_deposit.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-        </tr>
-        <tr>
-            <td class="write-img">
-                <input type="hidden" id="id_roommate" name="{{ form.roommate.name }}"/>
-                <img src="{% static "img/female13.png" %}" width="30" class="write-roommate"/>
-            </td>
-            <td>
-                {{ house.room_mon }}
-                {% for error in house.room_mon.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-            <td class="write-slash">
-                <label>/</label>
-            </td>
-            <td>
-                {{ house.room_deposit }}
-                {% for error in house.room_deposit.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-        </tr>
-    </table>
-
-    {{ house.time }}
-    {% for error in house.time.errors %}<p>{{ error }}</p>{% endfor %}
-
-    {{ house.memo }}
-    {% for error in house.memo.errors %}<p>{{ error }}</p>{% endfor %}
+    {% for field in trade %}
+        {{ field }}
+        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+    {% endfor %}
 
     {% include "write_doc.html" with doc=doc %}
 
@@ -58,24 +21,7 @@
 {% block sub_script %}
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#id_title').attr('placeholder', '집 종류');
             $('#id_time').attr('placeholder', '계약기간');
-            $('#id_sell_mon').attr('placeholder', '양도 월세');
-            $('#id_sell_deposit').attr('placeholder', '양도 보증금');
-            $('#id_room_mon').attr('placeholder', '룸메 월세');
-            $('#id_room_deposit').attr('placeholder', '룸메 보증금');
-
-            $('.write-roommate').click(function() {
-                var prev = $('#id_roommate').val();
-
-                if (prev == "true") {
-                    $('#id_roommate').val(false);
-                    $('.write-roommate').attr('src', '{% static "img/circle28.png" %}')
-                } else {
-                    $('#id_roommate').val(true);
-                    $('.write-roommate').attr('src', '{% static "img/female13.png" %}')
-                }
-            });
 
             $('#write-submit').click(function() {
                 var content =

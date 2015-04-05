@@ -19,26 +19,14 @@
                 {% for error in car_form.destination.errors %}<p>{{ error }}</p>{% endfor %}
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-                {{ trade.now_num }}
-                {% for error in form.now_num.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-            <td colspan="2">
-                {{ trade.total_num }}
-                {% for error in form.total_num.errors %}<p>{{ error }}</p>{% endfor %}
-            </td>
-        </tr>
     </table>
 
     {{ car.transportation }}
     {% for error in car.transportation.errors %}<p>{{ error }}</p>{% endfor %}
 
     {% for field in trade %}
-        {% if not '_num' in field.name %}
-            {{ field }}
-            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-        {% endif %}
+        {{ field }}
+        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
     {% endfor %}
 
     {% include "write_doc.html" with doc=doc %}

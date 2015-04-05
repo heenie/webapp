@@ -43,7 +43,7 @@ class Category(models.Model):
 class Article(models.Model):
     datetime = models.DateTimeField(auto_now=True)
     student = models.ForeignKey(Student)
-    category = models.ForeignKey(Category, null=True)
+    category = models.ForeignKey(Category)
     content = models.TextField()
 
     def __str__(self):
@@ -62,8 +62,6 @@ class Article(models.Model):
 class Trade(models.Model):
     fee = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
     memo = models.TextField(null=True, blank=True)
 
 
@@ -85,27 +83,13 @@ class Store(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
-    sell_mon = models.IntegerField(null=True, blank=True)
-    sell_deposit = models.IntegerField(null=True, blank=True)
-    roommate = models.BooleanField(default=True)
-    room_mon = models.IntegerField(null=True, blank=True)
-    room_deposit = models.IntegerField(null=True, blank=True)
-    time = models.CharField(max_length=100)
-    memo = models.TextField()
-    article = models.OneToOneField(Article, default=None)
-
-
-# class Image(models.Model):
-#     image = models.ImageField(upload_to="./image", null=True, blank=True)
-#     article = models.ForeignKey("Article")
-#
-#     def __str__(self):
-#         return "사진" + str(self.id) + "(" + str(self.article) + ")"
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class Image(models.Model):
-    image = models.FileField(upload_to="img", null=True, blank=True)
-    article = models.ForeignKey(Article, null=True)
+    image = models.FileField(upload_to='documents/%Y/%m/%d', null=True, blank=True)
+    article = models.ForeignKey(Article)
 
 
 class Comment(models.Model):
@@ -116,7 +100,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
-
-
-class Document(models.Model):
-    docfile = models.FileField(upload_to='documents/%Y/%m/%d')

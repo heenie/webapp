@@ -106,7 +106,7 @@ class HouseForm(forms.ModelForm):
     class Meta:
         model = House
         fields = '__all__'
-        exclude = ['article']
+        exclude = ['article', 'trade']
 
 
 class StoreForm(forms.ModelForm):
