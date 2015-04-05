@@ -144,22 +144,18 @@ html head+body .ui-body-a.ui-focus {
 #search-table tr td .ui-select .ui-btn {
     border: 1px solid #e2c4e1 !important;
 }
-.comment-input input::-webkit-input-placeholder,
-.search-content input::-webkit-input-placeholder {
+.light-placeholder::-webkit-input-placeholder {
     color: #e2c4e1;
 }
-.comment-input input:-moz-placeholder,
-.search-content input:-moz-placeholder {
+.light-placeholder:-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.comment-input input::-moz-placeholder,
-.search-content input::-moz-placeholder {
+.light-placeholder::-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.comment-input input:-ms-input-placeholder,
-.search-content input:-ms-input-placeholder {
+.light-placeholder:-ms-input-placeholder {
    color: #e2c4e1;
 }
 
@@ -188,7 +184,8 @@ html head+body .ui-body-a.ui-focus {
 .article-button,
 .car-time div,
 .tabulous_active,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
+.comment-input div input,
+.comment-submit div input,
 .search-content {
    color: white !important;
 }
@@ -294,24 +291,6 @@ html body .ui-group-theme-a a:visited {
 #tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
 .light-font {
     color: #fafafa;
-}
-#write-container textarea::-webkit-input-placeholder,
-#write-container input::-webkit-input-placeholder {
-    color: #fafafa;
-}
-#write-container textarea:-moz-placeholder,
-#write-container input:-moz-placeholder {
-   color: #fafafa;
-   opacity:  1;
-}
-#write-container textarea::-moz-placeholder,
-#write-container input::-moz-placeholder {
-   color: #fafafa;
-   opacity:  1;
-}
-#write-container textarea:-ms-input-placeholder,
-#write-container input:-ms-input-placeholder {
-   color: #fafafa;
 }
 #newsfeed-body, .newsfeed-page {
 	background-color: #f3f3f3;

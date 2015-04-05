@@ -16,7 +16,9 @@
             <table>
                 <tr>
                     <td rowspan="2" class="detail-user-image">
-                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="70" height="70"/>
+                        <div class="image">
+                            <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="70"/>
+                        </div>
                     </td>
                     <td class="article-user-id">
                         <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student }}</a>
@@ -47,30 +49,32 @@
     </div>
 
     <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <div data-role="navbar">
-            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <ul>
-                    <li class="comment-image">
-                        <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40" height="40"/>
-                    </li>
-                    <li class="comment-input">
+        <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td class="comment-image">
+                        <div class="image">
+                            <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40"/>
+                        </div>
+                    </td>
+                    <td class="comment-input">
                         {{ form.content }}
-                    </li>
-                    <li class="comment-submit">
+                    </td>
+                    <td class="comment-submit">
                         <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
                         <input type="hidden" name="next" value="/" />
-                    </li>
-                </ul>
-            </form>
-        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 {% endblock %}
 
 {% block script %}
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#id_content').attr('placeholder', '댓글을 입력해보세요 !');
+            $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
         });
     </script>
 {% endblock %}

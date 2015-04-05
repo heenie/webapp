@@ -1,10 +1,27 @@
 @import url('common.css');
 
+table {
+    width: 100%;
+    border-spacing: 0px !important;
+}
+
 #newsfeed-body {
     padding-top: 5px;
     padding-bottom: 5px;
     height: 100%;
     min-height: 600px;
+}
+.comment-image,
+.detail-user-image,
+.article-user-image {
+    text-align: center;
+    vertical-align: middle;
+}
+.comment-image .image,
+.detail-user-image .image,
+.article-user-image .image {
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 /*
@@ -68,14 +85,10 @@
 .article-user-image {
     height: 50px;
     padding: 10px;
-    text-align: center;
-    vertical-align: middle;
 }
 .article-user-image .image {
     width: 50px;
     height: 50px;
-    overflow: hidden;
-    vertical-align: middle;
     border-radius: 25px;
 }
 .sm-icon {
@@ -185,26 +198,27 @@
     border-spacing: 0px !important;
 }
 .detail-user-image {
-    width: 90px;
     height: 70px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
 }
-.detail-user-image img {
+.detail-user-image .image {
+    width: 70px;
+    height: 70px;
     border-radius: 35px;
 }
-.detail-content {
-
+.comment-image {
+    width: 60px;
+    height: 40px;
+    padding: 10px;
 }
-.comment-input {
-    width: 80% !important;
-}
-.comment-input div {
+.comment-image .image {
+    width: 40px;
+    height: 40px;
     margin-left: 10px;
-    margin-right: 10px;
+    border-radius: 20px;
 }
 .comment-submit {
-    width: 10% !important;
+    width: 60px;
 }
 .comment-submit div input {
     text-align: center;
@@ -226,13 +240,6 @@
 }
 .comment-profile table {
     width: 100%;
-}
-.comment-image {
-    width: 10% !important;
-    text-align: center;
-}
-.comment-image img {
-    border-radius: 25px;
 }
 .comment-user {
     height: 50px !important;

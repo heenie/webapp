@@ -65,8 +65,10 @@
     <script type="text/javascript" src="{% static "js/js.js" %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            $('input').addClass('light-placeholder');
+            $('textarea').addClass('write-border light-placeholder');
+
             $('.ui-select').addClass('write-border');
-            $('textarea').addClass('write-border');
             $('#id_title').attr('placeholder', '제목');
             $('#id_fee').attr('placeholder', '가격 정보');
             $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
