@@ -51,10 +51,7 @@ class Article(models.Model):
         return "게시글" + str(self.id)
 
     def get_datetime(self):
-        if (self.datetime.date() + timedelta(days=1)) == date.today():
-            return timesince(self.datetime) + " 전"
-        else:
-            return self.datetime.date() + timedelta(days=1)
+        return get_date(self.datetime)
 
     def get_comments(self):
         return Comment.objects.filter(article=self)
@@ -107,3 +104,16 @@ class Comment(models.Model):
 
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
+
+    def get_datetime(self):
+        return get_date(self.datetime)
+
+
+def get_date(time):
+    if(time.date() + timedelta(days=1)) == date.today():
+        diff = timesince(time)
+        if diff == '0분':
+            return '방금 전'
+        return '%s 전' % timesince(time).split(',')[0]
+    else:
+        return time.date() + timedelta(days=1)

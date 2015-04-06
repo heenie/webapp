@@ -24,7 +24,7 @@
                         <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student }}</a>
                     </td>
                     <td rowspan="2">
-                        <label class="article-time">{{ article.datetime }}</label>
+                        <label class="article-time">{{ article.get_datetime }}</label>
                     </td>
                 </tr>
                 <tr>

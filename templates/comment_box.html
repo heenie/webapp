@@ -11,7 +11,7 @@
                 <a href="{% url "mypage" comment.student.id %}">{{ article.student }}</a>
             </td>
             <td>
-                <label class="article-time">{{ comment.datetime }}</label>
+                <label class="article-time">{{ comment.get_datetime }}</label>
             </td>
         </tr>
         <tr>
