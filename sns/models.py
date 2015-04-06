@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+from datetime import datetime, date, timedelta
+from django.utils.timesince import timesince
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -48,6 +49,12 @@ class Article(models.Model):
 
     def __str__(self):
         return "게시글" + str(self.id)
+
+    def get_datetime(self):
+        if (self.datetime.date() + timedelta(days=1)) == date.today():
+            return timesince(self.datetime) + " 전"
+        else:
+            return self.datetime.date() + timedelta(days=1)
 
     def get_comments(self):
         return Comment.objects.filter(article=self)
