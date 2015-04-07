@@ -1,9 +1,23 @@
 @import url('common.css');
 
+table {
+    width: 100%;
+    border-spacing: 0px !important;
+}
+
 #newsfeed-body {
     padding-top: 5px;
     padding-bottom: 5px;
     height: 100%;
+    min-height: 600px;
+}
+.user-image {
+    text-align: center;
+    vertical-align: middle;
+}
+.user-image .image {
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 /*
@@ -13,9 +27,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 50px;
-    border-spacing: 0px !important;
 }
 #search-table tr td {
     padding: 0px;
@@ -51,56 +63,64 @@
 /*
  * article
  */
-.article-box {
+.newsfeed-article-box {
     width: 97%;
     margin: 10px 1.5% 10px 1.5%;
     border-radius: 5px;
-}
-.article-head {
-    padding: 10px 5px 5px 5px;
-}
-.article-head table {
-    width: 100%;
-    padding: 2px;
-    border-spacing: 0px !important;
-}
-.article-foot {
-    padding: 10px;
+    display: inline-flex;
 }
 .article-user-image {
     width: 70px;
     height: 50px;
-    overflow: hidden;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
 }
-.article-user-image img {
+.article-user-image .image {
+    width: 50px;
+    height: 50px;
     border-radius: 25px;
 }
+.sm-icon {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.article-arrow {
+    width: 20px;
+    padding-right: 0px !important;
+}
+.article-content {
+    width: 100%;
+}
+.article-content,
+.detail-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .article-user-id {
+    padding-top: 16px;
+}
+.article-user-id a {
     font-family: Bold;
     font-size: 110%;
     text-decoration: none !important;
 }
 .article-time {
     float: right;
+    text-align: right;
     font-family: Light;
     font-size: 90%;
 }
-.extra .sm-icon {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.article-content {
+.article-paragraph {
     clear: left;
-    height: auto;
-    padding: 10px 30px 5px 20px;
     word-wrap: break-word;
+    padding-bottom: 16px;
 }
-.article-comment-box {
-    width: 100%;
-    height: 20px;
-    text-align: right;
+.div-fill {
+    display: block;
+    font-size: 105%;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    text-align: center;
+    word-wrap: break-word;
 }
 .article-comment {
     display: inline-flex;
@@ -112,85 +132,46 @@
 .article-comment label {
     margin: 0px !important;
 }
-.div-fill {
-    display: block;
-    font-weight: 400 !important;
-    text-decoration: none !important;
-    word-wrap: break-word;
-}
-.article-box table {
-    width: 100%;
-    padding: 10px;
-}
-.article-box table tr .divider {
-    width: 2px;
-    height: 100%;
-    padding: 0px;
-    margin: 10px;
-}
-.article-car-box {
-    display: flex;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-.article-box-button {
-    width: 80px;
-    text-align: center;
-    vertical-align: middle;
-}
-.article-box-button a {
-    text-decoration: none !important;
-}
 .article-box-car {
     text-align: center;
 }
-.article-button {
-    width: 10%;
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-.article-button a {
-    text-decoration: none !important;
-}
-.article-car-box .divider {
-    width: 2px;
-    /*height: 100%;*/
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.article-car table {
-    width: 100%;
-    padding: 10px 10px 0px 10px;
-    border-spacing: 0px !important;
-    text-align: center;
-}
-.car-time {
-    padding-right: 0px !important;
-}
-.car-time div {
-    padding: 10px 0px 10px 0px;
+.article-box-car tr td {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .car-arrow {
-    width: 50px;
-    height: 70px;
+    width: 35px;
     padding: 0px;
 }
-.car-type {
-    font-style: italic;
+.article-title {
+    font-size: 110%;
 }
-.car-bottom td {
-    padding-top: 10px;
-}
-.article-main-image {
-    width: 25% !important;
+.image-td, .link, .fee {
     text-align: center;
 }
-.article-bottom .article-comment-box {
-    margin: .4em 0 0 0;
+.image-td img {
+    padding-left: 10px;
+    padding-right: 10px;
 }
+.link a {
+    font-family: Light;
+    font-style: italic;
+}
+.article-title a, .link a {
+    font-weight: normal !important;
+    text-decoration: none !important;
+}
+/*.article-head {*/
+    /*padding: 10px 5px 5px 5px;*/
+/*}*/
+/*.article-head table {*/
+    /*width: 100%;*/
+    /*padding: 2px;*/
+    /*border-spacing: 0px !important;*/
+/*}*/
+/*.article-foot {*/
+    /*padding: 10px;*/
+/*}*/
 
 
 /*
@@ -202,17 +183,33 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.detail-box table {
-    width: 100%;
-    border-spacing: 0px !important;
-}
 .detail-user-image {
+    width: 90px;
     height: 70px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
 }
-.detail-user-image img {
+.detail-user-image .image {
+    width: 70px;
+    height: 70px;
     border-radius: 35px;
+}
+.comment-image {
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+}
+.comment-image .image {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+.comment-submit {
+    width: 60px;
+}
+.comment-submit div input {
+    text-align: center;
+    cursor: pointer;
 }
 
 
@@ -228,24 +225,21 @@
 .comment-profile {
     margin: 5px;
 }
-.comment-profile table {
-    width: 100%;
-}
-.comment-image {
-    width: 70px !important;
-    height: 50px !important;
-    text-align: center;
-}
-.comment-image img {
-    border-radius: 25px;
-}
 .comment-user {
     height: 50px !important;
     padding-left: 20px;
     vertical-align: middle;
 }
-.comment-user-id {
-    font-size: 97% !important;
+.comment-user-image {
+    width: 70px !important;
+    height: 50px !important;
+    text-align: center;
+}
+.comment-user-image img {
+    border-radius: 25px;
+}
+.comment-user-id a {
+    text-decoration: none !important;
 }
 .comment-user table .user {
     font-size: 95%;
@@ -316,15 +310,6 @@ tr .medium-text-field .ui-input-text {
     border-style: solid;
     border-color: transparent;
 }
-.setting-imgbox {
-    width: 100% !important;
-    padding: 5px 0px 5px 0px;
-}
-.profile-imgbox img,
-.setting-imgbox img {
-    border-radius: 60px;
-}
-
 
 
 /*
@@ -338,16 +323,14 @@ tr .medium-text-field .ui-input-text {
     margin-left: 25%;
     margin-right: 25%;
 }
-.profile-box .profile-imgbox {
-    width: 100% !important;
-}
-.setting-imgbox,
-.profile-box .profile-imgbox {
-    float: left;
-    width: 140px;
+.profile-imgbox {
     height: 120px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 10px;
+}
+.profile-imgbox .image {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
 }
 
 
@@ -357,12 +340,6 @@ tr .medium-text-field .ui-input-text {
 .sm-icon {
     width: 20px;
     height: 20px;
-}
-.has_image {
-    display: -webkit-box
-}
-.has_image img {
-    margin-right: 5px;
 }
 
 

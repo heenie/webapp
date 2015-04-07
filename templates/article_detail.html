@@ -1,27 +1,30 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
+
 {% block page_content %}
+    <script language="javascript">
+        page_reload('detail');
+    </script>
 
     <div data-role="header" class="newsfeed-header" data-position="inline">
         <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
         <h1>게시글</h1>
     </div>
 
-    <div data-role="content">
+    <div data-role="content" class="css-page-box">
         <div class="detail-box">
             <table>
                 <tr>
-                    <td rowspan="2">
-                        <div class="detail-user-image">
-                            <img src="{% static article.student.get_image %}
-                            " width="70" height="70" alt="default image"/>
+                    <td rowspan="2" class="detail-user-image user-image">
+                        <div class="image">
+                            <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="70"/>
                         </div>
                     </td>
-                    <td>
+                    <td class="article-user-id">
                         <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student }}</a>
                     </td>
                     <td rowspan="2">
-                        <label class="article-time">{{ article.datetime }}</label>
+                        <label class="article-time">{{ article.get_datetime }}</label>
                     </td>
                 </tr>
                 <tr>
@@ -29,39 +32,51 @@
                         <label>{{ article.category }}</label>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="article-content">
-                            <p class="div-fill">{{ article.content }}</p>
-                        </div>
-                    </td>
-                </tr>
             </table>
-        </div>
 
-        {% if article.get_comments %}
-            <div class="comment-box" id="newsfeed-body">
-                {% for comment in article.get_comments %}
-                    {% include "comment_box.html" with comment=comment %}
-                {% endfor %}
+            <div class="detail-content">
+                <p class="div-fill">{{ article.content }}</p>
             </div>
-        {% endif %}
+
+            {% if article.get_comments %}
+                <div class="comment-box">
+                    {% for comment in article.get_comments %}
+                        {% include "comment_box.html" with comment=comment %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
 
     <div data-role="footer" data-position="fixed" data-fullscreen="true">
         <div data-role="navbar">
             <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <ul>
-                    <li>
-                        {{ form.content }}
-                    </li>
-                    <li>
-                        <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
-                        <input type="hidden" name="next" value="/" />
-                    </li>
-                </ul>
+                <table>
+                    <tr>
+                        <td class="comment-image user-image">
+                            <div class="image">
+                                <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40"/>
+                            </div>
+                        </td>
+                        <td class="comment-input">
+                            {{ form.content }}
+                        </td>
+                        <td class="comment-submit">
+                            <input readonly class="comment-write" value="등록" type="text" onclick="$(this).closest('form').submit()"/>
+                            <input type="hidden" name="next" value="/" />
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
+        });
+    </script>
 {% endblock %}

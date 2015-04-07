@@ -4,8 +4,10 @@
     <table>
         <tr>
             <td rowspan="2">
-                <div class="profile-imgbox">
-                    <img src="{{ MEDIA_URL }}{{ student.get_image }}" width="120" height="120"/>
+                <div class="profile-imgbox user-image">
+                    <div class="image">
+                        <img src="{{ MEDIA_URL }}{{ student.get_image }}" width="120"/>
+                    </div>
                 </div>
             </td>
             <td>
@@ -13,8 +15,8 @@
             </td>
         </tr>
         <tr>
-            <td class="has_image">
-                <img src="{% static "img/person.png" %}" width="20"/>
+            <td>
+{#                <img src="{% static "img/person.png" %}" width="20"/>#}
                 <label>{{ student.get_phone }}</label>
             </td>
         </tr>
