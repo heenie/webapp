@@ -4,20 +4,19 @@
 
     {% if not user.is_authenticated %}
         <script language="javascript">
-            login_warning();
+            setAlert("로그인 페이지로 이동", "로그인 에러", "/login");
         </script>
     {% endif %}
 
     <script language="javascript">
-        page_reload('home');
+        var type = 'home';
+        page_reload(type);
     </script>
 
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% for article, item in view.get_list %}
-            {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
-        {% endfor %}
+        {% include "newsfeed_articles.html" with articles=articles %}
     </div>
 
     {% include "newsfeed_footer.html" with page="newsfeed" %}

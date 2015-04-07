@@ -7,12 +7,25 @@
         {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
     {% endfor %}
 
-    {% for field in trade %}
-        {{ field }}
-        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
-    {% endfor %}
+    <table>
+        <tr>
+            <td colspan="2">
+                {{ trade.now_num }}
+                {% for error in trade.now_num.errors %}<p>{{ error }}</p>{% endfor %}
+            </td>
+            <td colspan="2">
+                {{ trade.total_num }}
+                {% for error in trade.total_num.errors %}<p>{{ error }}</p>{% endfor %}
+            </td>
+        </tr>
+    </table>
 
-    {% include "write_doc.html" with doc=doc %}
+    {% for field in trade %}
+        {% if not '_num' in field.name %}
+            {{ field }}
+            {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+        {% endif %}
+    {% endfor %}
 
     <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
 {% endblock %}
@@ -20,6 +33,7 @@
 {% block sub_script %}
     <script type="text/javascript">
         $(document).ready(function(){
+            $('#id_title').attr('placeholder', '물품');
             $('#id_link').attr('placeholder', '출처');
             $('#id_time').attr('placeholder', '제한 시간');
 

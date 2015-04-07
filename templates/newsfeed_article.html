@@ -1,60 +1,35 @@
 {% load staticfiles %}
-<div class="newsfeed-article-box">
-    <table>
-        <tr>
-            <td rowspan="2" class="article-user-image user-image">
-                <div class="image">
-                    {% if article.category %}
-                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50"/>
-                    {% else %}
-                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}" width="50"/>
-                    {% endif %}
-                </div>
-            </td>
-            <td rowspan="2" class="article-arrow">
-                <img src="{% static "img/play106.png" %}" height="20"/>
-            </td>
-            <td class="article-content article-user-id">
-                {% if article.category %}
-                    <a href="{% url "mypage" article.student.id %}">
-                        {{ article.student }}
-                    </a>
-                {% else %}
-                    <a href="{% url "mypage" article.article.student.id %}">
-                        {{ article.article.student }}
-                    </a>
-                {% endif %}
+<div class="article-box">
+    <div class="article-head">
+        <table>
+            <tr>
+                <td rowspan="2" class="article-user-image">
+                    <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50" height="50" alt="default image"/>
+                </td>
+                <td>
+                    <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student.get_name }}</a>
+                </td>
+                <td rowspan="2">
+                    <label class="article-time">{{ article.datetime }}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>{{ article.category }}</label>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-            </td>
-        </tr>
-        <tr>
-            <td class="article-content">
-                {% if article.category %}
-                    {{ article.category }}
-                    <label class="article-time">
-                        {{ article.get_datetime }}
-                    </label>
-                {% else %}
-                    {{ article.article.category }}
-                    <label class="article-time">
-                        {{ article.article.get_datetime }}
-                    </label>
-                {% endif %}
+    <div class="article-content">
+        {% if url %}
+            <p class="div-fill">{{ article.content }}</p>
+        {% else %}
+            <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
+        {% endif %}
+    </div>
 
-            </td>
-        </tr>
-        <tr>
-            <td class="article-comment">
-                <div class="sm-icon">
-                    <img src="{% static "img/default_profile.jpg" %}" width="20" height="20"/>
-                </div>
-                <label for="sm-icon">9</label>
-            </td>
-            <td></td>
-            <td class="article-content article-paragraph">
-                {% block content %}
-                {% endblock %}
-            </td>
-        </tr>
-    </table>
+    <div class="article-foot">
+        {% include "newsfeed_comment.html" with article=article %}
+    </div>
 </div>
