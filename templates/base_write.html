@@ -2,19 +2,6 @@
 {% load staticfiles %}
 
 {% block page_content %}
-    <script language="javascript">
-        var type;
-        {% if form.type == 'car' %}
-            type = '1';
-        {% elif form.type == 'house' %}
-            type = '2';
-        {% elif form.type == 'store' %}
-            type = '3';
-        {% else %}
-            type = '0';
-        {% endif %}
-        page_reload(type);
-    </script>
     <div>
         <div data-role="header" data-fullscreen="true">
             <div data-role="navbar">
