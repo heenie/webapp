@@ -143,21 +143,17 @@ html head+body .ui-body-a.ui-focus {
 #search-table tr td .ui-select .ui-btn {
     border: 1px solid #e2c4e1 !important;
 }
-.comment-input input::-webkit-input-placeholder,
 .search-content input::-webkit-input-placeholder {
     color: #e2c4e1;
 }
-.comment-input input:-moz-placeholder,
 .search-content input:-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.comment-input input::-moz-placeholder,
 .search-content input::-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.comment-input input:-ms-input-placeholder,
 .search-content input:-ms-input-placeholder {
    color: #e2c4e1;
 }

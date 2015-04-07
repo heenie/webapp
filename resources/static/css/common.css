@@ -22,10 +22,6 @@ input {
     min-height: 100% !important;
 }
 
-#wrapper {
-    position: relative;
-}
-
 #footer {
 	font-family: Light;
 	font-size: 80%;
@@ -71,6 +67,11 @@ input {
 	font-size: 90%;
 	font-family: Regular;
 	text-align: center;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
 }
 
 .css-page-box {

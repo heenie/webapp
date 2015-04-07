@@ -4,7 +4,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
     height: 100%;
-    min-height: 600px;
 }
 
 /*
@@ -208,27 +207,12 @@
     border-spacing: 0px !important;
 }
 .detail-user-image {
-    width: 90px;
     height: 70px;
     text-align: center;
     vertical-align: middle;
 }
 .detail-user-image img {
     border-radius: 35px;
-}
-.comment-input {
-    width: 90% !important;
-}
-.comment-input div {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.comment-submit {
-    width: 10% !important;
-}
-.comment-submit div input {
-    text-align: center;
-    cursor: pointer;
 }
 
 

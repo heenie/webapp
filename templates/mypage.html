@@ -20,8 +20,8 @@
         {#            </div>#}
         {#        </div>#}
         <div>
-            {% for article, item in view.get_list %}
-                {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
+            {% for article in my_articles %}
+                {% include "newsfeed_articles.html" with articles=my_articles %}
             {% endfor %}
         </div>
 
