@@ -96,8 +96,6 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
 
-LOGOUT_URL = 'http://127.0.0.1:8000/'
-
 FILE_CHARSET = 'utf-8'
 
 DEFAULT_PROFILE = 'img/default_profile.jpg'

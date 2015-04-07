@@ -262,6 +262,7 @@ html body .ui-group-theme-a a:visited {
     background-color: white !important;
 }
 #tabs_container,
+.profile-box table,
 .article-content {
     background-color: white;
 }
