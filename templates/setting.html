@@ -6,9 +6,6 @@
         page_reload('edit');
     </script>
     <div id="newsfeed-body">
-        <script language="javascript">
-            reload();
-        </script>
         <div class="setting-body">
             {% include "logo.html" %}
             <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
@@ -17,10 +14,8 @@
                     <table>
                         <tr>
                             <td colspan="2">
-                                <div class="profile-imgbox">
-                                    <div class="image">
-                                        <img src="{{ MEDIA_URL }}{{ form.get_image}}" width="120"/>
-                                    </div>
+                                <div class="setting-imgbox">
+                                    <img src="{{ MEDIA_URL }}{{ form.get_image}}" width="120" height="120"/>
                                 </div>
                             </td>
                         </tr>

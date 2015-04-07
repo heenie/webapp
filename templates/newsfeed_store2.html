@@ -3,7 +3,7 @@
     <table>
         <tr>
             <td rowspan="2" class="article-box-button">
-                <a href="#">양도</a>
+                <label>1 / 2</label>
             </td>
             <td rowspan="4" class="divider">
             </td>
@@ -11,24 +11,21 @@
                 <img src="{% static "img/sample.jpg" %}" width="50"/>
             </td>
             <td>
-                <label>{{ article.title }}</label>
+                <label>식탁, 전기밥솥</label>
             </td>
         </tr>
         <tr>
             <td class="has_image">
-{#                <img src="{% static "img/person.png" %}" width="20"/>#}
-                <label>양도 : {{ article.sell_mon }} / {{ article.sell_deposit }}</label>
+                <img src="{% static "img/person.png" %}" width="20"/>
+                <label>10000원, 20000원</label>
             </td>
         </tr>
         <tr>
             <td rowspan="2" class="article-box-button">
-                <a href="#">
-                    {% if article.roommate %}집순이
-                    {% else %}집돌이
-                    {% endif %}</a>
+                <a href="#">BUY</a>
             </td>
             <td>
-                <label>집순이 : 작은방 20/50, 큰방 25/50</label>
+                <label>연락주세여</label>
             </td>
         </tr>
         <tr>

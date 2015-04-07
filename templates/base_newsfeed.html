@@ -9,27 +9,93 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/newsfeed.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/jquery.mobile-1.4.5.min.css" %}"/>
     <link rel='stylesheet' type='text/css' href="{% static "css/tabulous.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/alert.css" %}"/>
     <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="{% static "js/jquery.mobile-1.4.5.min.js" %}"></script>
     <title>욉앱</title>
 
     <script language="javascript">
-        function login_warning() {
-            alert("로그인을 하십시오");
-            location.href='/login'
-        }
+
         function page_reload(location) {
             if(!window.location.hash || window.location.href.indexOf('#'+location) == -1) {
                 window.location = window.location + '#'+ location;
                 window.location.reload();
             }
-        function reload() {
-            if(!window.location.hash) {
-                window.location = window.location + '#loaded';
-                window.location.reload();
+        }
+
+        var ALERT_TITLE="외부거지들을 위한 SNS";
+        var ALERT_BUTTON_TEXT;
+        var ALERT_TEXT;
+        var ALERT_LINK;
+
+        if (document.getElementById) {
+            window.alert = function (txt) {
+                createCustomAlert(txt);
             }
         }
+
+        function createCustomAlert(txt) {
+            d = document;
+
+            if (d.getElementById("modalContainer")) return;
+
+            mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
+            mObj.id = "modalContainer";
+            mObj.style.height = d.documentElement.scrollHeight + "px";
+
+            alertObj = mObj.appendChild(d.createElement("div"));
+            alertObj.id = "alertBox";
+            if (d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+            alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth) / 2 + "px";
+            alertObj.style.visiblity = "visible";
+
+            h1 = alertObj.appendChild(d.createElement("h1"));
+            h1.appendChild(d.createTextNode(ALERT_TITLE));
+
+            msg = alertObj.appendChild(d.createElement("p"));
+            //msg.appendChild(d.createTextNode(txt));
+            msg.innerHTML = txt;
+
+            btn = alertObj.appendChild(d.createElement("a"));
+            btn.id = "closeBtn";
+            btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+            btn.href = "#";
+            btn.focus();
+            btn.onclick = function () {
+                removeCustomAlert();
+                location.href = ALERT_LINK;
+                return false;
+            }
+
+            alertObj.style.display = "block";
+        }
+
+        function removeCustomAlert() {
+            document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
+        }
+
+        function setAlert(Button, Text, Link) {
+            if(Title == null)
+                ALERT_TITLE = "undefined";
+            else
+                ALERT_TITLE=Title;
+            if(Button == null)
+                ALERT_BUTTON_TEXT = "undefined";
+            else
+                ALERT_BUTTON_TEXT=Button;
+            if(Text == null)
+                ALERT_TEXT = "undefined";
+            else
+                ALERT_TEXT=Text;
+            if(Link == null)
+                ALERT_LINK = "/";
+            else
+                ALERT_LINK=Link;
+            alert(ALERT_TEXT);
+        }
+
+
     </script>
 
 </head>

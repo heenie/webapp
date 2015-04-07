@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date, timedelta
-from django.utils.timesince import timesince
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -44,23 +43,14 @@ class Category(models.Model):
 class Article(models.Model):
     datetime = models.DateTimeField(auto_now=True)
     student = models.ForeignKey(Student)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, null=True)
     content = models.TextField()
 
     def __str__(self):
         return "게시글" + str(self.id)
 
-    def get_datetime(self):
-        return get_date(self.datetime)
-
     def get_comments(self):
         return Comment.objects.filter(article=self)
-
-        # def get_main_image(self):
-        #     if self.entryfile_set.all().exists():
-        #         return self.entryfile_set.all()[0].file
-        #     else:
-        #         return None
 
 
 class Trade(models.Model):
@@ -116,15 +106,3 @@ class Comment(models.Model):
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
 
-    def get_datetime(self):
-        return get_date(self.datetime)
-
-
-def get_date(time):
-    if(time.date() + timedelta(days=1)) == date.today():
-        diff = timesince(time)
-        if diff == '0분':
-            return '방금 전'
-        return '%s 전' % timesince(time).split(',')[0]
-    else:
-        return time.date() + timedelta(days=1)
