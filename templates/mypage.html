@@ -8,22 +8,11 @@
 
     <div data-role="header" class="newsfeed-header" data-position="inline">
         <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
-        <h1>{{ student }}</h1>
+        <h1 id="profile">{{ student }}</h1>
     </div>
 
     <div id="newsfeed-body">
         {% include "profile.html" %}
-        {#        <div style="width: 500px; height: 120px; margin: 30px">#}
-        {#            <div style="float: left; width: 150px; height: 120px; text-align: center; vertical-align: middle">#}
-        {#                <img src="{{ student.get_image.url }}" width="120" height="120" alt="default image"/>#}
-        {#            </div>#}
-        {##}
-        {#            <div style="float: left; width: 350px; height: 120px; vertical-align: middle">#}
-        {#                <p>이름(학번) : {{ student }}</p>#}
-        {#                <p>휴대전화 : {{ student.get_phone }}</p>#}
-        {#                <p>이메일 : {{ student.user.email }}</p>#}
-        {#            </div>#}
-        {#        </div>#}
         <div>
             {% for article, item in view.get_list %}
                 {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
@@ -32,4 +21,19 @@
 
         {% include "newsfeed_footer.html" with page="mypage" %}
     </div>
+{% endblock %}
+
+{% block script %}
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function(){#}
+{#            $('.profile-box').hide();#}
+{##}
+{#            $('#profile').click(function() {#}
+{#                if ($('.profile-box').is(':hidden'))#}
+{#                    $('.profile-box').show();#}
+{#                else#}
+{#                    ($('.profile-box').hide());#}
+{#            });#}
+{#        });#}
+{#    </script>#}
 {% endblock %}

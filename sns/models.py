@@ -20,10 +20,13 @@ class Student(models.Model):
     image = models.ImageField(upload_to="profile", null=True, blank=True)
 
     def __str__(self):
-        return self.get_name() + "(" + self.user.get_username() + ")"
+        return self.get_name()
 
     def get_name(self):
         return self.user.last_name + self.user.first_name
+
+    def get_stunum(self):
+        return self.user.get_username()
 
     def get_phone(self):
         phone = self.phone if self.is_public else "010-xxxx-xxxx"
@@ -110,10 +113,10 @@ class Comment(models.Model):
 
 
 def get_date(time):
-    if(time.date() + timedelta(days=1)) == date.today():
+    if time.date() == date.today():
         diff = timesince(time)
         if diff == '0분':
             return '방금 전'
         return '%s 전' % timesince(time).split(',')[0]
     else:
-        return time.date() + timedelta(days=1)
+        return time.date()

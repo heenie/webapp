@@ -315,22 +315,34 @@ tr .medium-text-field .ui-input-text {
 /*
  * profile
  */
+#profile {
+    cursor: pointer;
+}
 .profile-box {
-    margin: 30px;
+    margin: 10px;
 }
 .profile-box table {
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
 }
+.up-arrow {
+    height: 30px;
+    text-align: center;
+}
 .profile-imgbox {
+    width: 140px;
     height: 120px;
     padding: 10px;
 }
 .profile-imgbox .image {
     width: 120px;
     height: 120px;
+    margin-left: 10px;
     border-radius: 60px;
+}
+.profile-icon-box {
+    display: flex;
 }
 
 
