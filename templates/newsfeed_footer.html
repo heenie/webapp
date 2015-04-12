@@ -2,7 +2,7 @@
     <div data-role="navbar">
         <ul>
             <li>
-                <a href="{% url "write-default" %}">글쓰기</a>
+                <a href="{% url "write" 'default' %}">글쓰기</a>
             </li>
 
             {% if user.is_authenticated %}

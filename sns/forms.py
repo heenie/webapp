@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from sns.models import *
-from sns.multi import MultiFileField
+from multiupload.fields import MultiFileField
 
 
 class SearchForm(forms.ModelForm):
@@ -128,4 +128,4 @@ class WriteForm(forms.ModelForm):
 
 
 class DocumentForm(forms.Form):
-    docfile = MultiFileField(max_num=10, min_num=0, maximum_file_size=1024*1024*5)
+    docfile = MultiFileField(max_num=10, min_num=0, max_file_size=1024*1024*5, required=False)

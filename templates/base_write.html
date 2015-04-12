@@ -7,7 +7,7 @@
             <div data-role="navbar">
                 <ul class="write-header">
                     {% for item in form.cate %}
-                        <li><a href="/write-{{ item.type }}" class="
+                        <li><a href="/write\{{ item.type }}" class="
                         {% if form.type == item.type %}
                             tabulous_active
                         {% else %}
@@ -35,7 +35,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{% url "newsfeed" %}" id="write-submit">
+                            <a href="" id="write-submit">
                                 <img src="{% static "img/correct7.png" %}" width="30"/>
                             </a>
                         </li>
