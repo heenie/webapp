@@ -15,7 +15,7 @@ table {
     text-align: center;
     vertical-align: middle;
 }
-.user-image .image {
+.image {
     overflow: hidden;
     vertical-align: middle;
 }
@@ -174,7 +174,15 @@ table {
     margin: 10px;
     border-radius: 50px;
 }
-
+.newsfeed-image {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+.newsfeed-image .image img {
+    width: 100%;
+    height: auto;
+}
 
 /*
  * article_detail

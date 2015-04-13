@@ -110,6 +110,13 @@
                     $(this).attr("width", 100);
                 }
             });
+
+            $('.newsfeed-image .image img').each(function() {
+                var img = $(this);
+                if (img.height() < 100) {
+                    img.attr("height", 100);
+                }
+            });
         }
     </script>
 

@@ -7,7 +7,5 @@
     {% else %}
         <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
     {% endif %}
-    {% if imgs %}
-        {% include "newsfeed_image.html" with imgs=imgs %}
-    {% endif %}
+
 {% endblock %}

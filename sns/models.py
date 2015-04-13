@@ -59,6 +59,18 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
+    def img_width(self):
+        return 100 / Image.objects.filter(article=self).__len__()
+
+    def get_images(self):
+        imgs = []
+        if Image.objects.filter(article=self).exists():
+            for img in Image.objects.filter(article=self):
+                imgs.append(img.image)
+            return imgs
+        else:
+            return None
+
 
 class Trade(models.Model):
     fee = models.CharField(max_length=100)
