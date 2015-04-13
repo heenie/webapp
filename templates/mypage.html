@@ -9,8 +9,8 @@
     <div id="newsfeed-body">
         {% include "profile.html" %}
         <div>
-            {% for article, item in view.get_list %}
-                {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
+            {% for item in get_list %}
+                {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
             {% endfor %}
         </div>
 
@@ -19,16 +19,16 @@
 {% endblock %}
 
 {% block script %}
-{#    <script type="text/javascript">#}
-{#        $(document).ready(function(){#}
-{#            $('.profile-box').hide();#}
-{##}
-{#            $('#profile').click(function() {#}
-{#                if ($('.profile-box').is(':hidden'))#}
-{#                    $('.profile-box').show();#}
-{#                else#}
-{#                    ($('.profile-box').hide());#}
-{#            });#}
-{#        });#}
-{#    </script>#}
+    {#    <script type="text/javascript">#}
+    {#        $(document).ready(function(){#}
+    {#            $('.profile-box').hide();#}
+    {##}
+    {#            $('#profile').click(function() {#}
+    {#                if ($('.profile-box').is(':hidden'))#}
+    {#                    $('.profile-box').show();#}
+    {#                else#}
+    {#                    ($('.profile-box').hide());#}
+    {#            });#}
+    {#        });#}
+    {#    </script>#}
 {% endblock %}

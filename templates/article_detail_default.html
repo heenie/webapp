@@ -1,0 +1,21 @@
+{% extends 'article_detail.html' %}
+{% load staticfiles %}
+
+{% block detail %}
+
+    <div class="detail-content">
+        <p class="div-fill">{{ article.content }}</p>
+
+        {% if image %}
+            {% include "newsfeed_image.html" with imgs=image %}
+        {% endif %}
+    </div>
+
+    {% if article.get_comments %}
+        <div class="comment-box">
+            {% for comment in article.get_comments %}
+                {% include "comment_box.html" with comment=comment %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

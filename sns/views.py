@@ -25,11 +25,8 @@ class Newsfeed(ListView):
     def get_context_data(self, **kwargs):
         context = super(Newsfeed, self).get_context_data(**kwargs)
         context.update({"search_form": SearchForm(self.request.GET)})
+        context['get_list'] = get_lists(Article.objects.all().order_by('-datetime'))
         return context
-
-    def get_list(self):
-        articles = Article.objects.all().order_by('-datetime')
-        return get_lists(articles)
 
     def get_queryset(self):
         category_param = self.request.GET.get('category')
@@ -52,7 +49,21 @@ class ArticleView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleView, self).get_context_data(**kwargs)
-        context.update({"article": Article.objects.get(id=self.kwargs['pk'])})
+        article = Article.objects.get(id=self.kwargs['pk'])
+        context['article'] = article
+        if Image.objects.filter(article=article).exists():
+            context['image'] = Image.objects.filter(article=article)
+        if Car.objects.filter(article=article).exists():
+            context['board'] = Car.objects.get(article=article)
+            self.template_name = 'article_detail_car.html'
+        elif House.objects.filter(article=article).exists():
+            context['board'] = House.objects.get(article=article)
+            self.template_name = 'article_detail_house.html'
+        elif Store.objects.filter(article=article).exists():
+            context['board'] = Store.objects.get(article=article)
+            self.template_name = 'article_detail_store.html'
+        else:
+            self.template_name = 'article_detail_default.html'
         return context
 
     def form_valid(self, form):
@@ -113,11 +124,8 @@ class MyPage(ListView):
         context = super(MyPage, self).get_context_data(**kwargs)
         context.update({"search_form": SearchForm(self.request.GET)})
         context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
+        context['get_list'] = get_lists(Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime'))
         return context
-
-    def get_list(self):
-        articles = Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime')
-        return get_lists(articles)
 
     def get_queryset(self):
         category_param = self.request.GET.get('category')
@@ -246,12 +254,20 @@ def loginuser(request):
 def get_lists(articles):
     array = []
     for article in articles:
+        list = {}
+        if Image.objects.filter(article=article).exists():
+            list['image'] = Image.objects.filter(article=article)
         if Car.objects.filter(article=article).exists():
-            array.append(Car.objects.get(article=article))
+            list['board'] = Car.objects.get(article=article)
+            list['type'] = 'car'
         elif House.objects.filter(article=article).exists():
-            array.append(House.objects.get(article=article))
+            list['board'] = House.objects.get(article=article)
+            list['type'] = 'house'
         elif Store.objects.filter(article=article).exists():
-            array.append(Store.objects.get(article=article))
+            list['board'] = Store.objects.get(article=article)
+            list['type'] = 'store'
         else:
-            array.append(article)
-    return zip(articles, array)
+            list['board'] = article
+            list['type'] = 'default'
+        array.append(list)
+    return array

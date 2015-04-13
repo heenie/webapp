@@ -146,7 +146,9 @@ table {
 .article-title {
     font-size: 110%;
 }
-.image-td, .link, .fee {
+.image-td,
+.link,
+.fee {
     text-align: center;
 }
 .image-td img {
@@ -161,17 +163,17 @@ table {
     font-weight: normal !important;
     text-decoration: none !important;
 }
-/*.article-head {*/
-    /*padding: 10px 5px 5px 5px;*/
-/*}*/
-/*.article-head table {*/
-    /*width: 100%;*/
-    /*padding: 2px;*/
-    /*border-spacing: 0px !important;*/
-/*}*/
-/*.article-foot {*/
-    /*padding: 10px;*/
-/*}*/
+.article-image {
+    height: 120px;
+    margin: 10px;
+    display: flex;
+}
+.article-image .image {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 50px;
+}
 
 
 /*
@@ -192,6 +194,15 @@ table {
     width: 70px;
     height: 70px;
     border-radius: 35px;
+}
+.detail-table {
+    text-align: center;
+}
+.detail-table tr td label {
+    width: auto;
+}
+.detail-table tr .image-td {
+    display: -webkit-inline-box;
 }
 .comment-image {
     width: 60px;

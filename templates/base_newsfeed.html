@@ -95,7 +95,22 @@
             alert(ALERT_TEXT);
         }
 
+        function resize_image() {
+            $('.article-image').each(function() {
+                var full = $(this).width();
+                var width = $(this).find('.image').length * 120;
+                $(this).css("width", width).css("margin-left", (full - width) / 2);
+            });
 
+            $('.article-image .image img').each(function() {
+                var img = $(this);
+                if (img.width() >= img.height()) {
+                    $(this).attr("height", 100).css("margin-left", - (img.width() / 4));
+                } else {
+                    $(this).attr("width", 100);
+                }
+            });
+        }
     </script>
 
 </head>

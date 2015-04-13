@@ -2,10 +2,6 @@
 {% load staticfiles %}
 
 {% block page_content %}
-    <script language="javascript">
-        page_reload('detail');
-    </script>
-
     <div data-role="header" class="newsfeed-header" data-position="inline">
         <a role="button" href="{% url "newsfeed" %}" id="back-button" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
         <h1>게시글</h1>
@@ -34,23 +30,15 @@
                 </tr>
             </table>
 
-            <div class="detail-content">
-                <p class="div-fill">{{ article.content }}</p>
-            </div>
+            {% block detail %}
+            {% endblock %}
 
-            {% if article.get_comments %}
-                <div class="comment-box">
-                    {% for comment in article.get_comments %}
-                        {% include "comment_box.html" with comment=comment %}
-                    {% endfor %}
-                </div>
-            {% endif %}
         </div>
     </div>
 
     <div data-role="footer" data-position="fixed" data-fullscreen="true">
         <div data-role="navbar">
-            <form action="{% url "article" article.id %}" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table>
                     <tr>
@@ -76,6 +64,7 @@
 {% block script %}
     <script type="text/javascript">
         $(document).ready(function(){
+            resize_image();
             $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
         });
     </script>

@@ -2,9 +2,12 @@
 {% load staticfiles %}
 
 {% block content %}
-    {% if url %}#}
+    {% if url %}
         <p class="div-fill">{{ article.content }}</p>
     {% else %}
         <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
+    {% endif %}
+    {% if imgs %}
+        {% include "newsfeed_image.html" with imgs=imgs %}
     {% endif %}
 {% endblock %}

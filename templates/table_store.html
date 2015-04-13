@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<table>
+    <tr>
+        <td class="image-td article-title">
+            <img src="{% static "img/marks.png" %}" width="15"/>
+            <a href="{% url "article" board.article.id %}">{{ board.title }}</a>
+            <img src="{% static "img/marks2.png" %}" width="15"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="link">
+            <label><a href="{{ board.link }}">{{ board.link }}</a></label>
+        </td>
+    </tr>
+</table>

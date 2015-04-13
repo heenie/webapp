@@ -59,12 +59,6 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
-        # def get_main_image(self):
-        #     if self.entryfile_set.all().exists():
-        #         return self.entryfile_set.all()[0].file
-        #     else:
-        #         return None
-
 
 class Trade(models.Model):
     fee = models.CharField(max_length=100)
@@ -97,6 +91,9 @@ class House(models.Model):
 class Image(models.Model):
     image = models.FileField(upload_to='documents/%Y/%m/%d', null=True, blank=True)
     article = models.ForeignKey(Article)
+
+    def get_image(self):
+        return self.image
 
 
 class Comment(models.Model):

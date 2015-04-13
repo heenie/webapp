@@ -11,8 +11,8 @@
     {% include "newsfeed_header.html" %}
 
     <div id="newsfeed-body">
-        {% for article, item in view.get_list %}
-            {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
+        {% for item in get_list %}
+            {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
         {% endfor %}
     </div>
 
@@ -33,6 +33,8 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
+            resize_image();
+
             $('#search-table').removeClass('showleft').addClass('hideleft');
 
             $('#write-submit').click(function() {
@@ -43,6 +45,15 @@
                 $('#content').val(content);
                 $(this).closest('form').submit();
             });
+
+            $(window).resize(function() {
+                clearTimeout(this.id);
+                this.id = setTimeout(doneResizing, 500);
+            });
+
+            function doneResizing(){
+                resize_image();
+            }
         });
     </script>
 {% endblock %}

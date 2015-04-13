@@ -2,42 +2,5 @@
 {% load staticfiles %}
 
 {% block content %}
-    <table>
-        <tr>
-            <td class="image-td article-title">
-                <img src="{% static "img/marks.png" %}" width="15"/>
-                <a href="{% url "article" article.id %}">{{ article.title }}</a>
-                <img src="{% static "img/marks2.png" %}" width="15"/>
-            </td>
-        </tr>
-        <tr>
-            <td class="link">
-                <a href="{{ article.link }}">{{ article.link }}</a>
-            </td>
-        </tr>
-{#        <tr>#}
-{#            <td class="image-td">#}
-{#                <img src="{% static "img/agreement.png" %}" width="30"/>#}
-{#            </td>#}
-{#            <td>#}
-{#                <label>{{ article.title }}</label>#}
-{#            </td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td class="image-td">#}
-{#                <img src="{% static "img/label11.png" %}" width="30"/>#}
-{#            </td>#}
-{#            <td>#}
-{#                <label>{{ article.trade.fee }}</label>#}
-{#            </td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td class="image-td">#}
-{#                <img src="{% static "img/forward18.png" %}" width="20"/>#}
-{#            </td>#}
-{#            <td>#}
-{#                <a href="{{ article.link }}">{{ article.link }}</a>#}
-{#            </td>#}
-{#        </tr>#}
-    </table>
+    {% include "table_store.html" with board=article %}
 {% endblock %}
