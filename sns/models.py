@@ -65,14 +65,14 @@ class Car(models.Model):
     depart = models.CharField(max_length=50)
     destination = models.CharField(max_length=50)
     transportation = models.CharField(max_length=50)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 
 class Store(models.Model):
     title = models.CharField(max_length=50)
     link = models.URLField(null=True)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 

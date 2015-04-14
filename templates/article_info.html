@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <td rowspan="2" class="{{ type }}-user-image">
+            <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="{{ size }}" height="{{ size }}" alt="default image"/>
+        </td>
+        <td>
+{#            <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student }}</a>#}
+            <a>{{ article.student }}</a>
+        </td>
+        <td rowspan="2">
+            <label class="article-time">{{ article.datetime }}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>{{ article.category }}</label>
+        </td>
+    </tr>
+</table>
