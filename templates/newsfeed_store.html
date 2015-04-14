@@ -1,37 +1,6 @@
+{% extends 'newsfeed_article.html' %}
 {% load staticfiles %}
-<div class="article-box">
-    <table>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#" id="store-num">0 / 0</a>
-            </td>
-            <td rowspan="4" class="divider">
-            </td>
-            <td rowspan="4" class="article-main-image">
-                <img src="{% static "img/default_profile.jpg" %}" width="50"/>
-            </td>
-            <td>
-                <label id="store-title">볶음밥 공구</label>
-            </td>
-        </tr>
-        <tr>
-            <td class="has_image">
-                <img src="{% static "img/person.png" %}" width="20"/>
-                <label id="store-fee">한봉에 만원</label>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">JOIN</a>
-            </td>
-            <td>
-                <label id="store-link">www.naver.com</label>
-            </td>
-        </tr>
-        <tr>
-            <td class="article-bottom">
-                {% include "newsfeed_comment.html" %}
-            </td>
-        </tr>
-    </table>
-</div>
+
+{% block content %}
+    {% include "table_store.html" with board=article %}
+{% endblock %}

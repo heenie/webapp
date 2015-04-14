@@ -8,9 +8,7 @@
 #button,
 .newsfeed-header,
 .tabulous_active,
-.ui-navbar form ul li,
-.ui-navbar form ul .ui-block-b .ui-input-text,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
+.ui-navbar,
 .input-readonly,
 .ui-header form #id_category-button:hover,
 .login-icon {
@@ -45,6 +43,7 @@ html .ui-alt-icon .ui-radio-off:after,
     background: #ca98c9 !important;
     border:1px solid #ca98c9 !important;
 }
+.link a,
 .logo-small,
 .logo-text {
     color: #ca98c9 !important;
@@ -143,18 +142,18 @@ html head+body .ui-body-a.ui-focus {
 #search-table tr td .ui-select .ui-btn {
     border: 1px solid #e2c4e1 !important;
 }
-.search-content input::-webkit-input-placeholder {
+.light-placeholder::-webkit-input-placeholder {
     color: #e2c4e1;
 }
-.search-content input:-moz-placeholder {
+.light-placeholder:-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.search-content input::-moz-placeholder {
+.light-placeholder::-moz-placeholder {
    color: #e2c4e1;
    opacity:  1;
 }
-.search-content input:-ms-input-placeholder {
+.light-placeholder:-ms-input-placeholder {
    color: #e2c4e1;
 }
 
@@ -162,7 +161,9 @@ html head+body .ui-body-a.ui-focus {
 /*
  * dark
  */
-.article-user-id,
+.article-title a,
+.article-user-id a,
+.comment-user-id a,
 .div-fill,
 .article-box table tr td a,
 .write-category #id_category-button,
@@ -182,8 +183,8 @@ html head+body .ui-body-a.ui-focus {
 .article-button,
 .car-time div,
 .tabulous_active,
-.ui-navbar form ul .ui-block-b .ui-input-text .comment-write,
-.search-content {
+.comment-submit div input,
+.light-placeholder {
    color: white !important;
 }
 #write-container textarea,
@@ -261,7 +262,8 @@ html body .ui-group-theme-a a:visited {
     background-color: white !important;
 }
 #tabs_container,
-.article-box {
+.profile-box table,
+.article-content {
     background-color: white;
 }
 
@@ -289,24 +291,8 @@ html body .ui-group-theme-a a:visited {
 .light-font {
     color: #fafafa;
 }
-#write-container textarea::-webkit-input-placeholder,
-#write-container input::-webkit-input-placeholder {
-    color: #fafafa;
-}
-#write-container textarea:-moz-placeholder,
-#write-container input:-moz-placeholder {
-   color: #fafafa;
-   opacity:  1;
-}
-#write-container textarea::-moz-placeholder,
-#write-container input::-moz-placeholder {
-   color: #fafafa;
-   opacity:  1;
-}
-#write-container textarea:-ms-input-placeholder,
-#write-container input:-ms-input-placeholder {
-   color: #fafafa;
-}
-#newsfeed-body, .newsfeed-page {
+#newsfeed-body,
+.newsfeed-page,
+.comment-box {
 	background-color: #f3f3f3;
 }

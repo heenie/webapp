@@ -2,22 +2,23 @@
     <div data-role="navbar">
         <ul>
             <li>
-                {#                <a href="write" data-rel="dialog">글쓰기</a>#}
-                <a href="{% url "write-default" %}">글쓰기</a>
+                <a href="{% url "write" 'default' %}">글쓰기</a>
             </li>
-            <li>
+
             {% if user.is_authenticated %}
-                {% if page == "newsfeed" %}
-                    <a href="{% url "mypage" user.student.id %}" >마이페이지</a>
-                {% else %}
-                    <a href="{% url "newsfeed" %}">뉴스피드</a>
-                {% endif %}
+                <li>
+                    {% if page == "newsfeed" %}
+                        <a href="{% url "mypage" user.student.id %}" >마이페이지</a>
+                    {% else %}
+                        <a href="{% url "newsfeed" %}">뉴스피드</a>
+                    {% endif %}
+                </li>
             {% endif %}
-            </li>
+
             {% if user.is_authenticated %}
-            <li>
-                <a href="{% url "setting" user.id %}" >설정</a>
-            </li>
+                <li>
+                    <a href="{% url "setting" user.id %}" >설정</a>
+                </li>
             {% endif %}
         </ul>
     </div>

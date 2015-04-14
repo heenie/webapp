@@ -1,0 +1,13 @@
+<tr>
+    <td></td>
+    <td></td>
+    <td>
+        <div class="newsfeed-image image">
+            {% for img in imgs %}
+                <div class="image" style="width: {{ w }}%;">
+                    <img src="{{ MEDIA_URL }}{{ img }}"/>
+                </div>
+            {% endfor %}
+        </div>
+    </td>
+</tr>

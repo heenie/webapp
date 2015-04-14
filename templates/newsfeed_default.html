@@ -1,35 +1,10 @@
+{% extends 'newsfeed_article.html' %}
 {% load staticfiles %}
-<div class="article-box">
-    <div class="article-head">
-        <table>
-            <tr>
-                <td rowspan="2" class="article-user-image">
-                    <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50" height="50" alt="default image"/>
-                </td>
-                <td>
-                    <a href="{% url "mypage" article.student.id %}" class="article-user-id">{{ article.student.get_name }}</a>
-                </td>
-                <td rowspan="2">
-                    <label class="article-time">{{ article.datetime }}</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{ article.category }}</label>
-                </td>
-            </tr>
-        </table>
-    </div>
 
-    <div class="article-content">
-        {% if url %}
-            <p class="div-fill">{{ article.content }}</p>
-        {% else %}
-            <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
-        {% endif %}
-    </div>
-
-    <div class="article-foot">
-        {% include "newsfeed_comment.html" with article=article %}
-    </div>
-</div>
+{% block content %}
+    {% if url %}
+        <p class="div-fill">{{ article.content }}</p>
+    {% else %}
+        <a href="{% url "article" article.id %}" class="div-fill">{{ article.content }}</a>
+    {% endif %}
+{% endblock %}

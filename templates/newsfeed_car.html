@@ -1,38 +1,6 @@
+{% extends 'newsfeed_article.html' %}
 {% load staticfiles %}
-<div class="article-box">
-    <table class="article-box-car">
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">{{ article.trade.now_num }} / {{ article.trade.total_num }}</a>
-            </td>
-            <td rowspan="4" class="divider">
-            </td>
-            <td rowspan="3">
-                <label>{{ article.depart }}</label>
-            </td>
-            <td rowspan="3" class="car-arrow">
-                <img src="{% static "img/car_arrow3.png" %}" width="50"/>
-            </td>
-            <td rowspan="3">
-                <label>150223 14:00<br>{{ article.transportation }}</label>
-            </td>
-            <td rowspan="3" class="car-arrow">
-                <img src="{% static "img/car_arrow3.png" %}" width="50"/>
-            </td>
-            <td rowspan="3">
-                <label>{{ article.destination }}</label>
-            </td>
-        </tr>
-        <tr></tr>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">JOIN</a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5" class="article-bottom">
-                {% include "newsfeed_comment.html" %}
-            </td>
-        </tr>
-    </table>
-</div>
+
+{% block content %}
+    {% include "table_car.html" with board=article %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<div class="newsfeed-article-box">
+    <table>
+        <tr>
+            <td rowspan="2" class="article-user-image user-image">
+                <div class="image">
+                    {% if article.category %}
+                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50"/>
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}" width="50"/>
+                    {% endif %}
+                </div>
+            </td>
+            <td rowspan="2" class="article-arrow">
+                <img src="{% static "img/play106.png" %}" height="20"/>
+            </td>
+            <td class="article-content article-user-id">
+                {% if article.category %}
+                    <a href="{% url "mypage" article.student.id %}">
+                        {{ article.student }}
+                    </a>
+                {% else %}
+                    <a href="{% url "mypage" article.article.student.id %}">
+                        {{ article.article.student }}
+                    </a>
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td class="article-content">
+                {% if article.category %}
+                    {{ article.category }}
+                    <label class="article-time">
+                        {{ article.get_datetime }}
+                    </label>
+                {% else %}
+                    {{ article.article.category }}
+                    <label class="article-time">
+                        {{ article.article.get_datetime }}
+                    </label>
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td class="article-comment">
+                <div class="sm-icon">
+                    <img src="{% static "img/default_profile.jpg" %}" width="20" height="20"/>
+                </div>
+                <label for="sm-icon">9</label>
+            </td>
+            <td></td>
+            <td class="article-content article-paragraph">
+                {% block content %}
+                {% endblock %}
+            </td>
+        </tr>
+
+        {% if article.get_images %}
+            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width %}
+        {% elif article.article.get_images %}
+            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width %}
+        {% endif %}
+    </table>
+</div>

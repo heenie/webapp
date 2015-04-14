@@ -1,17 +1,12 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
-{% load notifications_tags %}
 {% block page_content %}
 
     {% if not user.is_authenticated %}
         <script language="javascript">
-            login_warning();
+            setAlert("로그인 페이지로 이동", "로그인 에러", "/login");
         </script>
     {% endif %}
-
-    <script language="javascript">
-        page_reload('home');
-    </script>
 
     {% include "newsfeed_header.html" %}
 
@@ -21,8 +16,8 @@
                 {% include 'notice.html' %}
             {% endfor %}
         </ul>
-        {% for article, item in view.get_list %}
-            {% include "newsfeed_"|add:article.category.type|add:".html" with article=item %}
+        {% for item in get_list %}
+            {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
         {% endfor %}
     </div>
 
@@ -43,6 +38,8 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
+            resize_image();
+
             $('#search-table').removeClass('showleft').addClass('hideleft');
 
             $('#write-submit').click(function() {
@@ -52,6 +49,11 @@
                         + $('#memo').val();
                 $('#content').val(content);
                 $(this).closest('form').submit();
+            });
+
+            $(window).resize(function() {
+                clearTimeout(this.id);
+                this.id = setTimeout(resize_image, 200);
             });
         });
     </script>

@@ -2,14 +2,16 @@
 <div class="comment-profile">
     <table>
         <tr>
-            <td rowspan="2" class="comment-image">
-                <img src="{% static comment.student.get_image %}" width="50" height="50" alt="default image"/>
+            <td rowspan="2" class="article-user-image user-image">
+                <div class="image">
+                    <img src="{{ MEDIA_URL }}{{ comment.student.get_image}}" width="50"/>
+                </div>
+            </td>
+            <td class="comment-user-id">
+                <a href="{% url "mypage" comment.student.id %}">{{ article.student }}</a>
             </td>
             <td>
-                <a href="{% url "mypage" comment.student.id %}" class="article-user-id comment-user-id">{{ article.student }}</a>
-            </td>
-            <td>
-                <label class="article-time">{{ comment.datetime }}</label>
+                <label class="article-time">{{ comment.get_datetime }}</label>
             </td>
         </tr>
         <tr>

@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<table class="article-box-car">
+    <tr>
+        <td class="article-title">
+            <a href="{% url "article" board.article.id %}">{{ board.depart }}</a>
+        </td>
+        <td class="car-arrow">
+            <img src="{% static "img/car_arrow3.png" %}" width="30"/>
+        </td>
+        <td class="car-arrow">
+            <img src="{% static "img/car_arrow3.png" %}" width="30"/>
+        </td>
+        <td class="article-title">
+            <a href="{% url "article" board.article.id %}">{{ board.destination }}</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <label>{{ board.trade.time }} ( {{ board.transportation }} )</label>
+        </td>
+    </tr>
+</table>

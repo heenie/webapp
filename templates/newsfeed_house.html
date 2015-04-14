@@ -1,40 +1,6 @@
+{% extends 'newsfeed_article.html' %}
 {% load staticfiles %}
-<div class="article-box">
-    <table>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">양도</a>
-            </td>
-            <td rowspan="4" class="divider">
-            </td>
-            <td rowspan="4" class="article-main-image">
-                <img src="{% static "img/sample.jpg" %}" width="50"/>
-            </td>
-            <td>
-                <label>{{ article.title }}</label>
-            </td>
-        </tr>
-        <tr>
-            <td class="has_image">
-{#                <img src="{% static "img/person.png" %}" width="20"/>#}
-                <label>양도 : {{ article.sell_mon }} / {{ article.sell_deposit }}</label>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="2" class="article-box-button">
-                <a href="#">
-                    {% if article.roommate %}집순이
-                    {% else %}집돌이
-                    {% endif %}</a>
-            </td>
-            <td>
-                <label>집순이 : 작은방 20/50, 큰방 25/50</label>
-            </td>
-        </tr>
-        <tr>
-            <td class="article-bottom">
-                {% include "newsfeed_comment.html" %}
-            </td>
-        </tr>
-    </table>
-</div>
+
+{% block content %}
+    {% include "table_house.html" with board=article %}
+{% endblock %}

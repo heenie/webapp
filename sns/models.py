@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+from datetime import datetime, date, timedelta
+from django.utils.timesince import timesince
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -19,10 +20,13 @@ class Student(models.Model):
     image = models.ImageField(upload_to="profile", null=True, blank=True)
 
     def __str__(self):
-        return self.get_name() + "(" + self.user.get_username() + ")"
+        return self.get_name()
 
     def get_name(self):
         return self.user.last_name + self.user.first_name
+
+    def get_stunum(self):
+        return self.user.get_username()
 
     def get_phone(self):
         phone = self.phone if self.is_public else "010-xxxx-xxxx"
@@ -43,21 +47,34 @@ class Category(models.Model):
 class Article(models.Model):
     datetime = models.DateTimeField(auto_now=True)
     student = models.ForeignKey(Student)
-    category = models.ForeignKey(Category, null=True)
+    category = models.ForeignKey(Category)
     content = models.TextField()
 
     def __str__(self):
         return "게시글" + str(self.id)
 
+    def get_datetime(self):
+        return get_date(self.datetime)
+
     def get_comments(self):
         return Comment.objects.filter(article=self)
+
+    def img_width(self):
+        return 100 / Image.objects.filter(article=self).__len__()
+
+    def get_images(self):
+        imgs = []
+        if Image.objects.filter(article=self).exists():
+            for img in Image.objects.filter(article=self):
+                imgs.append(img.image)
+            return imgs
+        else:
+            return None
 
 
 class Trade(models.Model):
     fee = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
-    now_num = models.IntegerField(null=True, blank=True)
-    total_num = models.IntegerField(null=True, blank=True)
     memo = models.TextField(null=True, blank=True)
 
 
@@ -79,22 +96,16 @@ class Store(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
-    sell_mon = models.IntegerField(null=True, blank=True)
-    sell_deposit = models.IntegerField(null=True, blank=True)
-    roommate = models.BooleanField(default=True)
-    room_mon = models.IntegerField(null=True, blank=True)
-    room_deposit = models.IntegerField(null=True, blank=True)
-    time = models.CharField(max_length=100)
-    memo = models.TextField()
-    article = models.OneToOneField(Article, default=None)
+    trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to="./image", null=True, blank=True)
-    article = models.ForeignKey("Article")
+    image = models.FileField(upload_to='documents/%Y/%m/%d', null=True, blank=True)
+    article = models.ForeignKey(Article)
 
-    def __str__(self):
-        return "사진" + str(self.id) + "(" + str(self.article) + ")"
+    def get_image(self):
+        return self.image
 
 
 class Comment(models.Model):
@@ -106,3 +117,15 @@ class Comment(models.Model):
     def __str__(self):
         return "댓글" + str(self.id) + "(" + str(self.article) + ")"
 
+    def get_datetime(self):
+        return get_date(self.datetime)
+
+
+def get_date(time):
+    if time.date() == date.today():
+        diff = timesince(time)
+        if diff == '0분':
+            return '방금 전'
+        return '%s 전' % timesince(time).split(',')[0]
+    else:
+        return time.date()
