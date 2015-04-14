@@ -168,7 +168,7 @@ html head+body .ui-body-a.ui-focus {
 .article-box table tr td a,
 .write-category #id_category-button,
 .write-button {
-    color: #333 !important;
+    color: #333333 !important;
 }
 
 
@@ -185,7 +185,7 @@ html head+body .ui-body-a.ui-focus {
 .tabulous_active,
 .comment-submit div input,
 .light-placeholder {
-   color: white !important;
+   color: #ffffff !important;
 }
 #write-container textarea,
 #write-container label,
@@ -253,18 +253,18 @@ html body .ui-group-theme-a a,
 html .ui-bar-a a:visited,
 html .ui-body-a a:visited,
 html body .ui-group-theme-a a:visited {
-    color: white;
+    color: #ffffff;
 }
 #write-content {
-    border-color: white !important;
+    border-color: #ffffff !important;
 }
 .write-header, .write-main {
-    background-color: white !important;
+    background-color: #ffffff !important;
 }
 #tabs_container,
 .profile-box table,
 .article-content {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 /* transparent */

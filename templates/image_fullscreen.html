@@ -1,0 +1,24 @@
+{% extends 'base_newsfeed.html' %}
+{% load staticfiles %}
+
+{% block page_content %}
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for img in imgs %}
+                <div class="swiper-slide">Slide 1</div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static "js/swiper.min.js" %}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+    </script>
+{% endblock %}
