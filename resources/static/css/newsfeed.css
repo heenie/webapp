@@ -163,25 +163,10 @@ table {
     font-weight: normal !important;
     text-decoration: none !important;
 }
-.article-image {
-    height: 120px;
-    margin: 10px;
-    display: flex;
-}
-.article-image .image {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border-radius: 50px;
-}
 .newsfeed-image {
     width: 100%;
     height: 100px;
     display: flex;
-}
-.newsfeed-image .image img {
-    width: 100%;
-    height: auto;
 }
 
 /*

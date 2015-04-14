@@ -48,12 +48,8 @@
 
             $(window).resize(function() {
                 clearTimeout(this.id);
-                this.id = setTimeout(doneResizing, 500);
+                this.id = setTimeout(resize_image, 200);
             });
-
-            function doneResizing(){
-                resize_image();
-            }
         });
     </script>
 {% endblock %}
