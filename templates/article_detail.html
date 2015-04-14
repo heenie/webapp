@@ -66,6 +66,11 @@
         $(document).ready(function(){
             resize_image();
             $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
+
+            $(window).resize(function() {
+                clearTimeout(this.id);
+                this.id = setTimeout(resize_image, 200);
+            });
         });
     </script>
 {% endblock %}

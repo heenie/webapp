@@ -19,8 +19,8 @@
             </tr>
         </table>
 
-        {% if image %}
-            {% include "newsfeed_image.html" with imgs=image %}
+        {% if board.article.get_images %}
+            {% include "newsfeed_image.html" with imgs=board.article.get_images w=board.article.img_width %}
         {% endif %}
     </div>
 

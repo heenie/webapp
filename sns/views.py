@@ -51,8 +51,6 @@ class ArticleView(CreateView):
         context = super(ArticleView, self).get_context_data(**kwargs)
         article = Article.objects.get(id=self.kwargs['pk'])
         context['article'] = article
-        if Image.objects.filter(article=article).exists():
-            context['image'] = Image.objects.filter(article=article)
         if Car.objects.filter(article=article).exists():
             context['board'] = Car.objects.get(article=article)
             self.template_name = 'article_detail_car.html'
@@ -255,8 +253,6 @@ def get_lists(articles):
     array = []
     for article in articles:
         list = {}
-        if Image.objects.filter(article=article).exists():
-            list['image'] = Image.objects.filter(article=article)
         if Car.objects.filter(article=article).exists():
             list['board'] = Car.objects.get(article=article)
             list['type'] = 'car'

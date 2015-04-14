@@ -168,6 +168,10 @@ table {
     height: 100px;
     display: flex;
 }
+.newsfeed-image .image img {
+    width: 100%;
+    height: auto;
+}
 
 /*
  * article_detail
