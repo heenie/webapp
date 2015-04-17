@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     # url(r'^personal_change', PersonalView.as_view(template_name="personal_change.html")),
     # url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
     url(r'^setting/(?P<pk>\d+)$', SettingView.as_view(), name="setting"),
+    url(r'^swipe/(?P<pk>\d+)', SwipeView.as_view(template_name='image_fullscreen.html'), name="swipe"),
 )
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

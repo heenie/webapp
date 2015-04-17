@@ -91,6 +91,13 @@ class SettingsView(UpdateView):
     #     return context
 
 
+class SwipeView(ListView):
+    context_object_name = 'imgs'
+
+    def get_queryset(self):
+        return Article.objects.get(id=self.kwargs['pk']).get_images()
+
+
 def comment_del(request, comment_id):
     Comment.objects.filter(id=comment_id).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

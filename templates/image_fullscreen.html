@@ -1,24 +1,49 @@
-{% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 
-{% block page_content %}
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            {% for img in imgs %}
-                <div class="swiper-slide">Slide 1</div>
-            {% endfor %}
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="kr" class="swiper-html">
+<head>
+    <meta charset="utf-8">
+    <title>이미지뷰</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "css/image.css" %}"/>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-pagination"></div>
 
-{% block script %}
-    <script src="{% static "js/swiper.min.js" %}"></script>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true
-        });
-    </script>
-{% endblock %}
+    <div class="swiper-wrapper">
+        {% for img in imgs %}
+            <div class="swiper-slide">
+                <img src="{{ MEDIA_URL }}{{ img }}" class="swiper-img"/>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static "js/swiper.min.js" %}"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+
+    function resize() {
+        var win_w = window.innerWidth, win_h = window.innerHeight;
+        var image = document.getElementsByClassName('swiper-img');
+        for (var i = 0; i < image.length; i++) {
+            if (image[i].naturalHeight > image[i].naturalWidth) {
+                image[i].setAttribute("height", win_h + "px");
+            } else {
+                image[i].setAttribute("width", win_w + "px");
+                var margin = win_h / 2 - image[i].clientHeight / 2;
+                image[i].style.marginTop = margin + "px";
+            }
+        }
+    }
+    resize();
+
+    window.addEventListener("resize", resize);
+</script>
+</body>
+</html>

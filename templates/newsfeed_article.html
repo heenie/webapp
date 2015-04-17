@@ -58,9 +58,9 @@
         </tr>
 
         {% if article.get_images %}
-            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width %}
+            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width id=article.id %}
         {% elif article.article.get_images %}
-            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width %}
+            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width id=article.article.id %}
         {% endif %}
     </table>
 </div>
