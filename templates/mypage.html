@@ -19,16 +19,14 @@
 {% endblock %}
 
 {% block script %}
-{#        <script type="text/javascript">#}
-{#            $(document).ready(function(){#}
-{#                $('.profile-box').hide();#}
-{##}
-{#                $('#profile').click(function() {#}
-{#                    if ($('.profile-box').is(':hidden'))#}
-{#                        $('.profile-box').show();#}
-{#                    else#}
-{#                        ($('.profile-box').hide());#}
-{#                });#}
-{#            });#}
-{#        </script>#}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            resize_image();
+
+            $(window).resize(function() {
+                clearTimeout(this.id);
+                this.id = setTimeout(resize_image, 200);
+            });
+        });
+    </script>
 {% endblock %}
