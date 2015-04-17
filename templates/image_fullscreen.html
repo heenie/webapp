@@ -4,12 +4,13 @@
 <html lang="kr" class="swiper-html">
 <head>
     <meta charset="utf-8">
-    <title>이미지뷰</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static "css/image.css" %}"/>
 </head>
 <body>
 <div class="swiper-container">
+        <a role="button" href="{{ request.META.HTTP_REFERER }}" id="back-button"></a>
+
     <div class="swiper-pagination"></div>
 
     <div class="swiper-wrapper">
@@ -28,7 +29,7 @@
         paginationClickable: true
     });
 
-    function resize() {
+    function resize_full() {
         var win_w = window.innerWidth, win_h = window.innerHeight;
         var image = document.getElementsByClassName('swiper-img');
         for (var i = 0; i < image.length; i++) {
@@ -41,9 +42,10 @@
             }
         }
     }
-    resize();
 
-    window.addEventListener("resize", resize);
+    resize_full();
+
+    window.addEventListener("resize", resize_full);
 </script>
 </body>
 </html>

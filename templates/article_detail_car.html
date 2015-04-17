@@ -20,7 +20,7 @@
         </table>
 
         {% if board.article.get_images %}
-            {% include "newsfeed_image.html" with imgs=board.article.get_images w=board.article.img_width %}
+            {% include "newsfeed_image.html" with imgs=board.article.get_images w=board.article.img_width id=board.article.id %}
         {% endif %}
     </div>
 
