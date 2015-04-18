@@ -6,26 +6,38 @@
     </div>
     <table>
         <tr>
-            <td rowspan="3" class="profile-imgbox user-image">
+            <td rowspan="4" class="profile-imgbox user-image">
                 <div class="image">
                     <img src="{{ MEDIA_URL }}{{ student.get_image }}" width="120"/>
                 </div>
             </td>
-            <td>
-                <label>{{ student }}</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>{{ student.get_stunum }}</label>
+            <td colspan="2">
+                <label>{{ student }} {{  student.get_stunum }}</label>
             </td>
         </tr>
         <tr>
             <td class="profile-icon-box">
                 <img src="{% static "img/home147.png" %}" width="20" height="20"/>
             </td>
+            <td>
+                <label>{{ student.get_phone }}</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="profile-icon-box">
+                <img src="{% static "img/home147.png" %}" width="20" height="20"/>
+            </td>
+            <td>
+                <label>{{ student.user.email }}</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="profile-icon-box">
+                <img src="{% static "img/home147.png" %}" width="20" height="20"/>
+            </td>
+            <td>
+                <label>{{ student.area }}</label>
+            </td>
         </tr>
     </table>
 </div>
-{#{{ student.get_phone }}#}
-{#        <p>{{ student.user.email }}</p>#}
