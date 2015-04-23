@@ -23,6 +23,12 @@
         $(document).ready(function(){
             resize_image();
 
+            $('#profile-img').each(function() {
+                var prof = $(this);
+                resize_user_img(prof, 120);
+            });
+
+
             $(window).resize(function() {
                 clearTimeout(this.id);
                 this.id = setTimeout(resize_image, 200);

@@ -5,9 +5,9 @@
             <td rowspan="2" class="article-user-image user-image">
                 <div class="image">
                     {% if article.category %}
-                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50"/>
+                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}"/>
                     {% else %}
-                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}" width="50"/>
+                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}"/>
                     {% endif %}
                 </div>
             </td>

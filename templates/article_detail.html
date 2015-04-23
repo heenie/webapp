@@ -13,7 +13,7 @@
                 <tr>
                     <td rowspan="2" class="detail-user-image user-image">
                         <div class="image">
-                            <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="70"/>
+                            <img src="{{ MEDIA_URL }}{{ article.student.get_image}}"/>
                         </div>
                     </td>
                     <td class="article-user-id">
@@ -44,7 +44,7 @@
                     <tr>
                         <td class="comment-image user-image">
                             <div class="image">
-                                <img src="{{ MEDIA_URL }}{{ view.get_user_image }}" width="40"/>
+                                <img src="{{ MEDIA_URL }}{{ view.get_user_image }}"/>
                             </div>
                         </td>
                         <td class="comment-input">
@@ -66,6 +66,16 @@
         $(document).ready(function(){
             resize_image();
             $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
+
+            $('.detail-user-image .image img').each(function() {
+                var img = $(this);
+                resize_user_img(img, 70);
+            });
+
+            $('.comment-image .image img').each(function() {
+                var img = $(this);
+                resize_user_img(img, 40);
+            });
 
             $(window).resize(function() {
                 clearTimeout(this.id);

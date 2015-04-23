@@ -116,6 +116,23 @@
 
 <link rel='stylesheet' type='text/css' href="{% static "css/tabulous.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/alert.css" %}"/>
+<script type="text/javascript">
+    function resize_user_img(img, size) {
+        if (img.height() > img.width()) {
+            img.attr('width', size + 'px').css('margin-top', - ((img.height() / 2 ) - (size / 2)) + 'px');
+        } else {
+            img.attr('height', size + 'px').css('margin-left', - ((img.width() / 2) - (size / 2)) + 'px');
+        }
+    }
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.article-user-image .image img').each(function() {
+                var img = $(this);
+                resize_user_img(img, 50);
+            });
+        });
+    </script>
 {% block script %}
 {% endblock %}
 
