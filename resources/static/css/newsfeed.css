@@ -333,6 +333,7 @@ tr .medium-text-field .ui-input-text {
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
+    padding: 10px;
 }
 .up-arrow {
     height: 30px;
