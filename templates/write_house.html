@@ -21,16 +21,7 @@
 {% block sub_script %}
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#id_time').attr('placeholder', '계약기간');
-
-            $('#write-submit').click(function() {
-                var content =
-                        $('#id_title').val() + ','
-                        + $('span').text() + ','
-                        + $('#id_memo').val();
-                $('#id_content').val(content);
-                $('#write-submit').closest('form').submit();
-            });
+            $('.ui-select').addClass('write-border');
         });
     </script>
 {% endblock %}

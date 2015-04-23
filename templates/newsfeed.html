@@ -21,16 +21,6 @@
 {% endblock %}
 
 {% block script %}
-    <script language="javascript">
-        function search_show() {
-            $('#default').removeClass('showleft').addClass('make_transist').addClass('hideleft');
-            $('#search-table').addClass('make_transist').addClass('showleft');
-        }
-        function default_show() {
-            $('#search-table').removeClass('showleft').addClass('make_transist').addClass('hideleft');
-            $('#default').addClass('make_transist').addClass('showleft');
-        }
-    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             resize_image();
@@ -48,7 +38,7 @@
 
             $(window).resize(function() {
                 clearTimeout(this.id);
-                this.id = setTimeout(resize_image, 200);
+                this.id = setTimeout(resize_window, 200);
             });
         });
     </script>

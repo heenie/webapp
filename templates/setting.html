@@ -73,14 +73,7 @@
 
 {% block script %}
     <script src="{% static "js/icheck.js" %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank');
-            $('label').removeClass();
-
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_flat-pink'
-            });
-        });
+    <script>
+        setting_ready();
     </script>
 {% endblock %}

@@ -35,21 +35,4 @@
 {% endblock %}
 
 {% block sub_script %}
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#id_depart').attr('placeholder', '출발');
-            $('#id_destination').attr('placeholder', '도착');
-            $('#id_transportation').attr('placeholder', '예) 택시');
-            $('#id_time').attr('placeholder', '출발 시간');
-
-            $('#write-submit').click(function() {
-                var content =
-                        $('#id_depart').val() + ','
-                        + $('#id_destination').val() + ','
-                        + $('#id_memo').val();
-                $('#id_content').val(content);
-                $('#write-submit').closest('form').submit();
-            });
-        });
-    </script>
 {% endblock %}

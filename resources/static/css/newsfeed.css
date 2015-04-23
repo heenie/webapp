@@ -227,8 +227,7 @@ table {
  * comment
  */
 .comment-box {
-    width: 90%;
-    margin-left: 5%;
+    margin: 20px 0 20px 0;
     border-radius: 7px;
     padding: 5px;
 }
@@ -332,9 +331,10 @@ tr .medium-text-field .ui-input-text {
     margin: 10px;
 }
 .profile-box table {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    position: relative;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
     padding: 10px;
 }
 .up-arrow {

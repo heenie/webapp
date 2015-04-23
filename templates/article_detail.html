@@ -67,19 +67,11 @@
             resize_image();
             $('#id_content').addClass('light-placeholder').attr('placeholder', '댓글을 입력해보세요 !');
 
-            $('.detail-user-image .image img').each(function() {
-                var img = $(this);
-                resize_user_img(img, 70);
-            });
-
-            $('.comment-image .image img').each(function() {
-                var img = $(this);
-                resize_user_img(img, 40);
-            });
+            detail_resize();
 
             $(window).resize(function() {
                 clearTimeout(this.id);
-                this.id = setTimeout(resize_image, 200);
+                this.id = setTimeout(resize_window, 200);
             });
         });
     </script>

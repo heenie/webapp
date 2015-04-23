@@ -50,16 +50,8 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
     <script type="text/javascript" src="{% static "js/tabulous.js" %}"></script>
     <script type="text/javascript" src="{% static "js/js.js" %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('input').addClass('light-placeholder');
-            $('textarea').addClass('write-border light-placeholder');
-
-            $('.ui-select').addClass('write-border');
-            $('#id_title').attr('placeholder', '제목');
-            $('#id_fee').attr('placeholder', '가격 정보');
-            $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
-        });
+    <script>
+        write("{{ form.type }}");
     </script>
     {% block sub_script %}
     {% endblock %}

@@ -92,16 +92,6 @@
                 ALERT_LINK=Link;
             alert(ALERT_TEXT);
         }
-
-        function resize_image() {
-            $('.newsfeed-image .image img').each(function() {
-                var img = $(this);
-                img.css("width", "100%").css("height", "auto");
-                if (img.height() < 100) {
-                    img.css("height", "100px").css("width", "auto");
-                }
-            });
-        }
     </script>
 
 </head>
@@ -116,23 +106,22 @@
 
 <link rel='stylesheet' type='text/css' href="{% static "css/tabulous.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/alert.css" %}"/>
+<script src="{% static "js/custom.js" %}"></script>
 <script type="text/javascript">
-    function resize_user_img(img, size) {
-        if (img.height() > img.width()) {
-            img.attr('width', size + 'px').css('margin-top', - ((img.height() / 2 ) - (size / 2)) + 'px');
-        } else {
-            img.attr('height', size + 'px').css('margin-left', - ((img.width() / 2) - (size / 2)) + 'px');
-        }
-    }
-</script>
-<script type="text/javascript">
-        $(document).ready(function(){
-            $('.article-user-image .image img').each(function() {
-                var img = $(this);
-                resize_user_img(img, 50);
-            });
+    $(document).ready(function(){
+        $('.article-user-image .image img').each(function() {
+            var img = $(this);
+            resize_user_img(img, 50);
         });
-    </script>
+
+        resize_wrapper();
+
+        $(window).resize(function() {
+            clearTimeout(this.id);
+            this.id = setTimeout(resize_window, 200);
+        });
+    });
+</script>
 {% block script %}
 {% endblock %}
 
