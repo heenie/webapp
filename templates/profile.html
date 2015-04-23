@@ -2,7 +2,7 @@
 
 <div class="profile-box">
     <div class="up-arrow">
-        <img src="{% static "img/up.png" %}" height="30"/>
+        <img src="{% static "img/up.png" %}" height="20"/>
     </div>
     <table>
         <tr>
@@ -12,12 +12,12 @@
                 </div>
             </td>
             <td colspan="2">
-                <label>{{ student }} {{  student.get_stunum }}</label>
+                <label>{{ student }} ( {{ student.get_stunum }} )</label>
             </td>
         </tr>
         <tr>
             <td class="profile-icon-box">
-                <img src="{% static "img/home147.png" %}" width="20" height="20"/>
+                <img src="{% static "img/auricular6.png" %}" width="20" height="20"/>
             </td>
             <td>
                 <label>{{ student.get_phone }}</label>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td class="profile-icon-box">
-                <img src="{% static "img/home147.png" %}" width="20" height="20"/>
+                <img src="{% static "img/envelope54.png" %}" width="20" height="20"/>
             </td>
             <td>
                 <label>{{ student.user.email }}</label>
