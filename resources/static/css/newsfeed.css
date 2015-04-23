@@ -123,6 +123,8 @@ table {
     word-wrap: break-word;
 }
 .article-comment {
+    width: 50px;
+    padding: 0px 10px 0px 10px;
     display: inline-flex;
 }
 .article-comment .sm-icon {
