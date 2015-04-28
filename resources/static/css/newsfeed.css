@@ -195,7 +195,7 @@ table {
     border-radius: 35px;
 }
 .detail-table {
-    text-align: center;
+    /*text-align: center;*/
 }
 .detail-table tr td label {
     width: auto;
