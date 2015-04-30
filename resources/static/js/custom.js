@@ -104,23 +104,6 @@ function write(type) {
     }
 }
 
-function resize_full() {
-    var win_w = window.innerWidth, win_h = window.innerHeight;
-    var image = document.getElementsByClassName('swiper-img');
-    for (var i = 0; i < image.length; i++) {
-        if (image[i].naturalHeight > image[i].naturalWidth) {
-            image[i].setAttribute("height", win_h + "px");
-            if (image[i].clientWidth == win_w) {
-                image[i].setAttribute("width", win_w * image[i].clientHeight / image[i].naturalHeight + "px");
-            }
-        } else {
-            image[i].setAttribute("width", win_w + "px");
-            var margin = win_h / 2 - image[i].clientHeight / 2;
-            image[i].style.marginTop = margin + "px";
-        }
-    }
-}
-
 function setting_ready() {
     $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank');
     $('label').removeClass();
