@@ -16,6 +16,11 @@ $(function(){
         { value: '카풀' },
         { value: '택시' },
     ];
+    var houses = [
+        { value: '정투룸' },
+        { value: '미투룸' },
+        { value: '원룸' },
+    ];
 
     $('#id_depart').autocomplete({
         lookup: places,
@@ -35,6 +40,13 @@ $(function(){
         lookup: trans,
         onSelect: function (suggestion) {
             $('#id_transportation').html(suggestion.value);
+        }
+    });
+
+    $('.house-title').autocomplete({
+        lookup: houses,
+        onSelect: function (suggestion) {
+            $('.house-title').html(suggestion.value);
         }
     });
 

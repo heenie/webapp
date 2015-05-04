@@ -65,7 +65,7 @@ function write(type) {
     } else if (type == 'car') {
         $('#id_depart').attr('placeholder', '출발');
         $('#id_destination').attr('placeholder', '도착');
-        $('#id_transportation').attr('placeholder', '예) 택시');
+        $('#id_transportation').attr('placeholder', '예) 카풀');
         $('#id_time').attr('placeholder', '출발 시간');
 
         $('#write-submit').click(function() {
@@ -90,7 +90,7 @@ function write(type) {
         });
 
     } else if (type == 'store') {
-        $('#id_link').attr('placeholder', '출처');
+        $('#id_link').attr('placeholder', '링크');
         $('#id_time').attr('placeholder', '제한 시간');
 
         $('#write-submit').click(function() {
@@ -124,6 +124,5 @@ function default_show() {
 
 function swiper(selected, form) {
     form.find('#image_id').val(selected);
-    //alert('sel : ' + selected);
     form.submit();
 }
