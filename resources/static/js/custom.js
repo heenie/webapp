@@ -121,3 +121,9 @@ function default_show() {
     $('#search-table').removeClass('showleft').addClass('make_transist').addClass('hideleft');
     $('#default').addClass('make_transist').addClass('showleft');
 }
+
+function swiper(selected, form) {
+    form.find('#image_id').val(selected);
+    //alert('sel : ' + selected);
+    form.submit();
+}

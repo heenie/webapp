@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/image.css" %}"/>
 </head>
 <body>
+{{ pk }}
 <div class="swiper-container">
     <a role="button" href="{{ request.META.HTTP_REFERER }}" id="back-button"></a>
 
@@ -16,7 +17,7 @@
     <div class="swiper-wrapper">
         {% for img in imgs %}
             <div class="swiper-slide">
-                <img src="{{ MEDIA_URL }}{{ img }}" class="swiper-img"/>
+                <img src="{{ MEDIA_URL }}{{ img.get_image }}" class="swiper-img" {% if pk == img.id %}id="selected-img"{% else %}id={{ img.id }}{% endif %}/>
             </div>
         {% endfor %}
     </div>

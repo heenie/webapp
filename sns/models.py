@@ -66,7 +66,7 @@ class Article(models.Model):
         imgs = []
         if Image.objects.filter(article=self).exists():
             for img in Image.objects.filter(article=self):
-                imgs.append(img.image)
+                imgs.append(img)
             return imgs
         else:
             return None

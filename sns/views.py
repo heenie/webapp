@@ -92,7 +92,13 @@ class SettingsView(UpdateView):
 
 
 class SwipeView(ListView):
+    template_name = 'image_fullscreen.html'
     context_object_name = 'imgs'
+
+    def get_context_data(self, **kwargs):
+        context = super(SwipeView, self).get_context_data(**kwargs)
+        context['pk'] = self.request.GET['image_id'] + '/'
+        return context
 
     def get_queryset(self):
         return Article.objects.get(id=self.kwargs['pk']).get_images()
@@ -163,7 +169,7 @@ class WriteView(CreateView):
         type = self.kwargs['type']
         form.type = type
 
-        if type != 'default':
+        if type == 'car' or type == 'house' or type == 'store':
             self.template_name = 'write_' + type + '.html'
             form.type = type
             forms['trade'] = TradeForm()
@@ -185,7 +191,7 @@ class WriteView(CreateView):
         type = self.kwargs['type']
         valid = doc_form.is_valid()
 
-        if type != 'default':
+        if type == 'car' or type == 'house' or type == 'store':
             self.template_name = 'write_' + type + '.html'
             form.type = type
             trade_form = TradeForm(request.POST)

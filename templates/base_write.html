@@ -1,6 +1,12 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static "css/autocom.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery.autocomplete.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/currency-autocomplete.js" %}"></script>
+{% endblock %}
+
 {% block page_content %}
     <div>
         <div data-role="header" data-fullscreen="true">
@@ -52,6 +58,13 @@
     <script type="text/javascript" src="{% static "js/js.js" %}"></script>
     <script>
         write("{{ form.type }}");
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.autocomplete-suggestions').css('width', 'auto').css('min-width', '312px');
+
+
+        });
     </script>
     {% block sub_script %}
     {% endblock %}

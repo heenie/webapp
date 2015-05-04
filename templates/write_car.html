@@ -1,6 +1,10 @@
 {% extends 'base_write.html' %}
 {% load staticfiles %}
 
+{% block subhead %}
+
+{% endblock %}
+
 {% block tab_container %}
     <table>
         <tr>
@@ -32,7 +36,4 @@
     {% include "write_doc.html" with doc=doc %}
 
     <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
-{% endblock %}
-
-{% block sub_script %}
 {% endblock %}
