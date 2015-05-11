@@ -1,11 +1,26 @@
 a:active,a:focus {
 	outline: expression(hideFocus='true');
 }
+
+#list {
+    width: 100%;
+    padding-left: 0 !important;
+    display: inline-flex;
+}
+#list li {
+    width: 50%;
+    margin: 0 15px 0 15px;
+}
+
+#list li .ui-radio label {
+    height: auto;
+    line-height: 20px !important;
+}
+
 #write-container textarea {
     background: transparent;
     min-height: 200px;
 }
-
 
 #write-container table {
     width: 100%;

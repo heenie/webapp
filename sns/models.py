@@ -15,7 +15,7 @@ class Area(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(User)
     phone = models.CharField(max_length=20, null=True, blank=True)
-    is_public = models.BooleanField(default=False)
+    is_public = models.BooleanField(default=True)
     area = models.ForeignKey(Area)
     image = models.ImageField(upload_to="profile", null=True, blank=True)
 
@@ -97,6 +97,11 @@ class House(models.Model):
     title = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
     trade = models.OneToOneField(Trade)
+    article = models.OneToOneField(Article)
+
+
+class Lost(models.Model):
+    is_lost = models.BooleanField(default=False)
     article = models.OneToOneField(Article)
 
 

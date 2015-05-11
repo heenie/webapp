@@ -1,0 +1,20 @@
+{% extends 'article_detail.html' %}
+{% load staticfiles %}
+
+{% block detail %}
+    <div class="detail-content">
+        {% include "table_lost.html" with board=board %}
+
+        {% if board.article.get_images %}
+            {% include "newsfeed_image.html" with imgs=board.article.get_images w=board.article.img_width id=board.article.id %}
+        {% endif %}
+    </div>
+
+    {% if board.article.get_comments %}
+        <div class="comment-box">
+            {% for comment in board.article.get_comments %}
+                {% include "comment_box.html" with comment=comment %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

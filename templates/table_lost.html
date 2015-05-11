@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<table>
+    <tr>
+        <td class="image-td article-title">
+            <img src="{% static "img/marks.png" %}" width="15"/>
+            <a href="{% url "article" board.article.id %}">
+                {% if board.is_lost %}
+                    잃어버렸어요 ㅜㅜ
+                {% else %}
+                    주웠어요 !
+                {% endif %}
+            </a>
+            <img src="{% static "img/marks2.png" %}" width="15"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="fee">
+            <label>{{ board.article.content }}</label>
+        </td>
+    </tr>
+</table>

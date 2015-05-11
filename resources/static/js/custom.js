@@ -101,16 +101,13 @@ function write(type) {
             $('#id_content').val(content);
             $('#write-submit').closest('form').submit();
         });
+    } else if (type == 'lost') {
+        $('#write-submit').click(function() {
+            var value = $('#line-radio-2').hasClass('ui-radio-on');
+            $('#id_is_lost').val(value);
+            $('#write-submit').closest('form').submit();
+        });
     }
-}
-
-function setting_ready() {
-    $('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank');
-    $('label').removeClass();
-
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-pink'
-    });
 }
 
 function search_show() {
@@ -125,4 +122,81 @@ function default_show() {
 function swiper(selected, form) {
     form.find('#image_id').val(selected);
     form.submit();
+}
+
+function join_ready() {
+    $('#id_last_name').addClass('short-text-field');
+    $('#id_first_name').addClass('short-text-field');
+    $('#id_username').addClass('text-field').attr('placeholder', '학번');
+    $('#id_password1').addClass('text-field');
+    $('#id_password2').addClass('text-field');
+    $('#id_phone').addClass('text-field');
+    $('#id_email').addClass('text-field');
+
+    $('.text-field').each(function() {
+        $(this).wrap('<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"></div>');
+    });
+
+    $('#id_area').wrap('<div id="area-div" class="ui-btn ui-icon-carat-d ui-btn-icon-right ui-shadow ui-first-child"></div>');
+    $('<span>-------</span>').insertBefore("#id_area");
+    $('#area-div').wrap('<div class="ui-select"></div>');
+
+    $('#id_is_public').addClass('is-public').val('true');
+    $('<label for="id_is_public" id="public-label" class="is-public ui-btn ui-btn-inherit ui-btn-icon-left ui-checkbox-on" style="font-weight: 100;">휴대폰 번호 공개</label>').insertBefore("#id_is_public");
+    $('.is-public').wrapAll('<div class="ui-checkbox"></div>');
+
+    $('.ui-checkbox label').click(function() {
+        var is = $('#id_is_public');
+        var label = $('#public-label');
+
+        if (label.hasClass('ui-checkbox-off')) {
+            is.val('true');
+            label.removeClass('ui-checkbox-off').addClass('ui-checkbox-on');
+            return;
+        } else {
+            is.val('false');
+            label.removeClass('ui-checkbox-on').addClass('ui-checkbox-off');
+            return;
+        }
+    });
+
+    $('#id_area').change(function() {
+        var selected = $('#id_area').val();
+        var areas = document.getElementsByTagName('option');
+        alert(areas[selected]);
+        //$('#area-div span').text(areas[selected].text());
+    });
+}
+
+function setting_ready() {
+    $('#id_last_name').attr('type', 'hidden');
+    $('#id_first_name').attr('type', 'hidden');
+    $('#id_username').attr('type', 'hidden');
+    $('#id_password1').addClass('text-field');
+    $('#id_password2').addClass('text-field');
+    $('#id_phone').addClass('text-field');
+    $('#id_email').addClass('text-field');
+
+    $('<label for="id_is_public" style="font-weight: 100;">휴대폰 번호 공개</label>').insertBefore("#id_is_public");
+
+    //$('.ui-checkbox label').click(function() {
+    //    var is = $('#id_is_public');
+    //    var label = $('#public-label');
+    //
+    //    if (label.hasClass('ui-checkbox-off')) {
+    //        is.val('true');
+    //        label.removeClass('ui-checkbox-off').addClass('ui-checkbox-on');
+    //        return;
+    //    } else {
+    //        is.val('false');
+    //        label.removeClass('ui-checkbox-on').addClass('ui-checkbox-off');
+    //        return;
+    //    }
+    //});
+    //$('.ui-checkbox').removeClass('ui-checkbox').addClass('setting-blank');
+    //$('label').removeClass();
+    //
+    //$('input').iCheck({
+    //    checkboxClass: 'icheckbox_flat-pink'
+    //});
 }

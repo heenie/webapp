@@ -37,14 +37,14 @@ class JoinForm(UserCreationForm):
         for field_name, field in self.fields.items():
             if field_name == "last_name" or field_name == "first_name":
                 field.widget.attrs['class'] = 'short-text-field'
-            elif field_name == "phone":
-                field.widget.attrs['class'] = 'medium-text-field'
+            # elif field_name == "phone":
+            #     field.widget.attrs['class'] = 'medium-text-field'
             elif field_name == "is_public":
                 field.widget.attrs['class'] = 'check-box'
-            elif field_name == "area":
-                field.widget.attrs['class'] = 'drop-down'
-            else:
-                field.widget.attrs['class'] = 'text-field'
+            # elif field_name == "area":
+            #     field.widget.attrs['class'] = 'drop-down'
+            # else:
+            #     field.widget.attrs['class'] = 'text-field'
             field.widget.attrs['placeholder'] = field.label
 
     def save(self, commit=False):
@@ -114,6 +114,13 @@ class StoreForm(forms.ModelForm):
         model = Store
         fields = '__all__'
         exclude = ['article', 'trade']
+
+
+class LostForm(forms.ModelForm):
+    class Meta:
+        model = Lost
+        fields = '__all__'
+        exclude = ['article']
 
 
 class WriteForm(forms.ModelForm):

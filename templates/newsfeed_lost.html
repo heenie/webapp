@@ -1,0 +1,6 @@
+{% extends 'newsfeed_article.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% include "table_lost.html" with board=article %}
+{% endblock %}

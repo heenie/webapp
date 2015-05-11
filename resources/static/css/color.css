@@ -54,7 +54,8 @@ html .ui-alt-icon .ui-radio-off:after,
  * main dark color
  */
 .tabulous_inactive:hover,
-#tabs li a:hover,#tabs2 li a:hover,#tabs3 li a:hover,#tabs4 li a:hover,#tabs5 li a:hover {
+#tabs li a:hover,#tabs2 li a:hover,#tabs3 li a:hover,#tabs4 li a:hover,#tabs5 li a:hover,
+#list li .ui-radio label {
 	background: #af6cae !important;
 }
 
@@ -111,7 +112,8 @@ html body div.ui-slider-track.ui-body-b .ui-btn-active {
     /*background-color: #af6cae;*/
     background-color: #bb82ba;
 }
-.tabulous_inactive {
+.tabulous_inactive,
+#list li .ui-radio label:hover {
     background-color: #bb82ba !important;
 }
 .ui-page-theme-a .ui-btn:focus,
@@ -175,6 +177,9 @@ html head+body .ui-body-a.ui-focus {
 /*
  * white
  */
+.white-input div input {
+    background: #ffffff;
+}
 #button,
 .header,
 .header h1,
