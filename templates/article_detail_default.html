@@ -7,7 +7,7 @@
         <p class="div-fill">{{ article.content }}</p>
 
         {% if article.get_images %}
-            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width %}
+            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width id=article.id %}
         {% endif %}
     </div>
 

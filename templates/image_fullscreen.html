@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="kr" class="swiper-html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "css/image.css" %}"/>
+</head>
+<body>
+{{ pk }}
+<div class="swiper-container">
+    <a role="button" href="{{ request.META.HTTP_REFERER }}" id="back-button"></a>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-wrapper">
+        {% for img in imgs %}
+            <div class="swiper-slide">
+                <img src="{{ MEDIA_URL }}{{ img.get_image }}" class="swiper-img" {% if pk == img.id %}id="selected-img"{% else %}id={{ img.id }}{% endif %}/>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static "js/swiper.min.js" %}"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+
+    function resize_full() {
+        var win_w = window.innerWidth, win_h = window.innerHeight;
+        var image = document.getElementsByClassName('swiper-img');
+        for (var i = 0; i < image.length; i++) {
+            if (image[i].naturalHeight > image[i].naturalWidth) {
+                image[i].setAttribute("height", win_h + "px");
+                if (image[i].clientWidth == win_w) {
+                    image[i].setAttribute("width", win_w * image[i].clientHeight / image[i].naturalHeight + "px");
+                }
+            } else {
+                image[i].setAttribute("width", win_w + "px");
+                var margin = win_h / 2 - image[i].clientHeight / 2;
+                image[i].style.marginTop = margin + "px";
+            }
+        }
+    }
+
+    resize_full();
+
+    window.addEventListener("resize", resize_full);
+</script>
+</body>
+</html>

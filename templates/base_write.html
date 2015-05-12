@@ -1,6 +1,12 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static "css/autocom.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery.autocomplete.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/currency-autocomplete.js" %}"></script>
+{% endblock %}
+
 {% block page_content %}
     <div>
         <div data-role="header" data-fullscreen="true">
@@ -50,16 +56,11 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
     <script type="text/javascript" src="{% static "js/tabulous.js" %}"></script>
     <script type="text/javascript" src="{% static "js/js.js" %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('input').addClass('light-placeholder');
-            $('textarea').addClass('write-border light-placeholder');
-
-            $('.ui-select').addClass('write-border');
-            $('#id_title').attr('placeholder', '제목');
-            $('#id_fee').attr('placeholder', '가격 정보');
-            $('#id_memo').attr('placeholder', '기타 사항').addClass('write-border');
-        });
+    <script>
+        write("{{ form.type }}");
+    </script>
+    <script>
+        $('.autocomplete-suggestions').css('width', 'auto').css('min-width', '200px');
     </script>
     {% block sub_script %}
     {% endblock %}

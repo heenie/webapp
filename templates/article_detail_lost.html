@@ -3,21 +3,7 @@
 
 {% block detail %}
     <div class="detail-content">
-        {% include "table_car.html" with board=board %}
-
-        <table class="detail-table">
-            <tr>
-                <td class="image-td">
-                    <img src="{% static "img/label11.png" %}" width="20"/>
-                    <label>{{ board.trade.fee }}</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>{{ board.trade.memo }}</label>
-                </td>
-            </tr>
-        </table>
+        {% include "table_lost.html" with board=board %}
 
         {% if board.article.get_images %}
             {% include "newsfeed_image.html" with imgs=board.article.get_images w=board.article.img_width id=board.article.id %}

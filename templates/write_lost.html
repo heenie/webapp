@@ -1,0 +1,27 @@
+{% extends 'base_write.html' %}
+{% load staticfiles %}
+
+{% block tab_container %}
+    <ul id="list">
+        <li>
+            <input type="radio" id="line-radio-1" name="line-radio" checked>
+            <label for="line-radio-1">주웠어요 !!!</label>
+        </li>
+        <li>
+            <input type="radio" id="line-radio-2" name="line-radio">
+            <label for="line-radio-2">잃어버렸어요 ㅜ_ㅜ</label>
+        </li>
+    </ul>
+
+    <input type="checkbox" id="test">
+    <label for="test">테스트중</label>
+
+    <input type="hidden" id="id_is_lost" name="is_lost" value="false">
+
+    {% for field in form %}
+        {{ field }}
+        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+    {% endfor %}
+
+    {% include "write_doc.html" with doc=doc %}
+{% endblock %}

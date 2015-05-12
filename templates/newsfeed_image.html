@@ -2,12 +2,14 @@
     <td></td>
     <td></td>
     <td>
-        <div class="newsfeed-image image">
+        <form action="{% url "swipe" id %}" method="get" class="newsfeed-image image">
+            {% csrf_token %}
+            <input type="hidden" id="image_id" name="image_id" value="0"/>
             {% for img in imgs %}
                 <div class="image" style="width: {{ w }}%;">
-                    <img src="{{ MEDIA_URL }}{{ img }}"/>
+                    <a onclick="javascript:swiper({{ img.id }}, $(this).closest('form'));"><img src="{{ MEDIA_URL }}{{ img.get_image }}"/></a>
                 </div>
             {% endfor %}
-        </div>
+        </form>
     </td>
 </tr>

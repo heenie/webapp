@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-import notifications
 from sns.views import *
 from django.contrib.auth.views import login, logout, password_change, password_change_done
 from webapp import settings
@@ -21,8 +20,6 @@ urlpatterns = patterns('',
     url(r'^article/(?P<pk>\d+)$', ArticleView.as_view(), name="article"),
     url(r'^comment-delete/(?P<comment_id>\d+)$', 'sns.views.comment_del', name="comment-delete"),
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
-
-
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
     url(r'^logout/$', logout, {'template_name': 'index.html'}, name="logout",),
@@ -31,6 +28,7 @@ urlpatterns = patterns('',
     # url(r'^personal_change', PersonalView.as_view(template_name="personal_change.html")),
     # url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
     url(r'^setting/(?P<pk>\d+)$', SettingView.as_view(), name="setting"),
+    url(r'^swipe/(?P<pk>\d+)$', SwipeView.as_view(), name="swipe"),
 
     url('^inbox/notifications/', include(notifications.urls)),
 )

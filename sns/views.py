@@ -60,6 +60,9 @@ class ArticleView(CreateView):
         elif Store.objects.filter(article=article).exists():
             context['board'] = Store.objects.get(article=article)
             self.template_name = 'article_detail_store.html'
+        elif Lost.objects.filter(article=article).exists():
+            context['board'] = Lost.objects.get(article=article)
+            self.template_name = 'article_detail_lost.html'
         else:
             self.template_name = 'article_detail_default.html'
         return context
@@ -89,6 +92,19 @@ class SettingsView(UpdateView):
     #     context = super(SettingsView, self).get_context_data()
     #     context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
     #     return context
+
+
+class SwipeView(ListView):
+    template_name = 'image_fullscreen.html'
+    context_object_name = 'imgs'
+
+    def get_context_data(self, **kwargs):
+        context = super(SwipeView, self).get_context_data(**kwargs)
+        context['pk'] = self.request.GET['image_id'] + '/'
+        return context
+
+    def get_queryset(self):
+        return Article.objects.get(id=self.kwargs['pk']).get_images()
 
 
 def comment_del(request, comment_id):
@@ -156,16 +172,19 @@ class WriteView(CreateView):
         type = self.kwargs['type']
         form.type = type
 
-        if type != 'default':
+        if type == 'car' or type == 'house' or type == 'store' or type == 'lost':
             self.template_name = 'write_' + type + '.html'
-            form.type = type
-            forms['trade'] = TradeForm()
+            if type != 'lost':
+                forms['trade'] = TradeForm()
+
             if type == 'car':
-                forms['car'] = CarForm()
+                forms[type] = CarForm()
             elif type == 'house':
-                forms['house'] = HouseForm()
+                forms[type] = HouseForm()
             elif type == 'store':
-                forms['store'] = StoreForm()
+                forms[type] = StoreForm()
+            elif type == 'lost':
+                forms[type] = LostForm()
         return render(request, self.template_name, forms)
 
     def post(self, request, *args, **kwargs):
@@ -176,21 +195,26 @@ class WriteView(CreateView):
 
         forms = {'form': form, 'doc': doc_form}
         type = self.kwargs['type']
-        valid = doc_form.is_valid()
+        valid = form.is_valid() and doc_form.is_valid()
 
-        if type != 'default':
+        if type == 'car' or type == 'house' or type == 'store' or type == 'lost':
             self.template_name = 'write_' + type + '.html'
             form.type = type
-            trade_form = TradeForm(request.POST)
-            forms['trade'] = trade_form
+            if type != 'lost':
+                trade_form = TradeForm(request.POST)
+                forms['trade'] = trade_form
             if type == 'car':
                 extra_form = CarForm(request.POST)
             elif type == 'house':
                 extra_form = HouseForm(request.POST)
             elif type == 'store':
                 extra_form = StoreForm(request.POST)
+            elif type == 'lost':
+                extra_form = LostForm(request.POST)
             forms[type] = extra_form
-            valid = doc_form.is_valid() and trade_form.is_valid() and extra_form.is_valid()
+            valid = valid and extra_form.is_valid()
+            if type != 'lost':
+                valid = valid and trade_form.is_valid()
 
         if valid:
             article = form.save(commit=False)
@@ -201,10 +225,13 @@ class WriteView(CreateView):
                 file = Image(image=file, article=article)
                 file.save()
             if type != 'default':
-                trade = trade_form.save(commit=False)
-                trade.save()
+                if type != 'lost':
+                    trade = trade_form.save(commit=False)
+                    trade.save()
+
                 extra = extra_form.save(commit=False)
-                extra.trade = trade
+                if type != 'lost':
+                    extra.trade = trade
                 extra.article = article
                 extra.save()
             return redirect('newsfeed')
@@ -262,6 +289,9 @@ def get_lists(articles):
         elif Store.objects.filter(article=article).exists():
             list['board'] = Store.objects.get(article=article)
             list['type'] = 'store'
+        elif Lost.objects.filter(article=article).exists():
+            list['board'] = Lost.objects.get(article=article)
+            list['type'] = 'lost'
         else:
             list['board'] = article
             list['type'] = 'default'

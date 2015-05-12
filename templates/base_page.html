@@ -6,12 +6,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.mobile-1.4.5.min.css" %}"/>
     <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
     <title>욉앱</title>
 </head>
 
 <body class="base-page-body">
-<div data-role="page" class="css-page-body" id="page">
+<div data-role="page" class="css-page-body ui-page-theme-a" id="page">
     {% block page_content_parent %}
     <div id="wrapper">
         {% block page_content %}
@@ -20,5 +21,9 @@
     </div>
     {% endblock %}
 </div>
+
+{% block script %}
+{% endblock %}
+
 </body>
 </html>

@@ -16,21 +16,3 @@
 
     <input type="hidden" id="id_content" name="{{ form.content.name }}"/>
 {% endblock %}
-
-{% block sub_script %}
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#id_link').attr('placeholder', '출처');
-            $('#id_time').attr('placeholder', '제한 시간');
-
-            $('#write-submit').click(function() {
-                var content =
-                        $('#id_title').val() + ','
-                        + $('#id_link').val() + ','
-                        + $('#id_memo').val();
-                $('#id_content').val(content);
-                $('#write-submit').closest('form').submit();
-            });
-        });
-    </script>
-{% endblock %}

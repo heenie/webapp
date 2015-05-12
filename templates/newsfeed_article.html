@@ -5,9 +5,9 @@
             <td rowspan="2" class="article-user-image user-image">
                 <div class="image">
                     {% if article.category %}
-                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}" width="50"/>
+                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}"/>
                     {% else %}
-                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}" width="50"/>
+                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}"/>
                     {% endif %}
                 </div>
             </td>
@@ -46,7 +46,7 @@
         <tr>
             <td class="article-comment">
                 <div class="sm-icon">
-                    <img src="{% static "img/default_profile.jpg" %}" width="20" height="20"/>
+                    <img src="{% static "img/conversation8.png" %}" width="20" height="20"/>
                 </div>
                 <label for="sm-icon">9</label>
             </td>
@@ -58,9 +58,9 @@
         </tr>
 
         {% if article.get_images %}
-            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width %}
+            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width id=article.id %}
         {% elif article.article.get_images %}
-            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width %}
+            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width id=article.article.id %}
         {% endif %}
     </table>
 </div>
