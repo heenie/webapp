@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+import notifications
 from sns.views import *
 from django.contrib.auth.views import login, logout, password_change, password_change_done
 from webapp import settings
@@ -29,6 +30,8 @@ urlpatterns = patterns('',
     # url(r'^password_change/done', password_change_done, {'template_name': 'password_change_done.html'}),
     url(r'^setting/(?P<pk>\d+)$', SettingView.as_view(), name="setting"),
     url(r'^swipe/(?P<pk>\d+)$', SwipeView.as_view(), name="swipe"),
+
+    url('^inbox/notifications/', include(notifications.urls)),
 )
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

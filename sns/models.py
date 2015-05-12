@@ -59,6 +59,9 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
+    def get_num_comments(self):
+        return Comment.objects.filter(article=self).count()
+
     def img_width(self):
         return 100 / Image.objects.filter(article=self).__len__()
 
@@ -82,21 +85,21 @@ class Car(models.Model):
     depart = models.CharField(max_length=50)
     destination = models.CharField(max_length=50)
     transportation = models.CharField(max_length=50)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 
 class Store(models.Model):
     title = models.CharField(max_length=50)
     link = models.URLField(null=True)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 
 class House(models.Model):
     title = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 

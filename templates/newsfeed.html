@@ -1,5 +1,6 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
+{% load notifications_tags %}
 {% block page_content %}
 
     {% if not user.is_authenticated %}
@@ -10,6 +11,13 @@
 
     {% include "newsfeed_header.html" %}
 
+    <div class="notice-box">
+        <ul class="notifications">
+            {% for notice in user.notifications.all %}
+                {% include 'notice.html' %}
+            {% endfor %}
+        </ul>
+    </div>
     <div id="newsfeed-body">
         {% for item in get_list %}
             {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
@@ -39,6 +47,21 @@
             $(window).resize(function() {
                 clearTimeout(this.id);
                 this.id = setTimeout(resize_window, 200);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.notice-box').hide();
+
+            $('#notice').click(function() {
+                if ($('.notice-box').is(':hidden')) {
+                    $('.notice-box').show();
+                    $('#unread').text(' ');
+                    {{ user.notifications.mark_all_as_read  }}
+                    }
+                else
+                    ($('.notice-box').hide());
             });
         });
     </script>
