@@ -1,5 +1,6 @@
 {% extends 'base_newsfeed.html' %}
 {% load staticfiles %}
+{% load notifications_tags %}
 {% block page_content %}
 
     {% if not user.is_authenticated %}
@@ -12,7 +13,7 @@
 
     <div class="notice-box">
         <ul class="notifications">
-            {% for notice in user.notifications.unread %}
+            {% for notice in user.notifications.all %}
                 {% include 'notice.html' %}
             {% endfor %}
         </ul>
@@ -54,9 +55,11 @@
             $('.notice-box').hide();
 
             $('#notice').click(function() {
-                if ($('.notice-box').is(':hidden'))
+                if ($('.notice-box').is(':hidden')) {
                     $('.notice-box').show();
-
+                    $('#unread').text(' ');
+                    {{ user.notifications.mark_all_as_read  }}
+                    }
                 else
                     ($('.notice-box').hide());
             });

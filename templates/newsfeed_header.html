@@ -15,7 +15,7 @@
                         <img id="notice" src="{% static "img/chat26.png" %}" width="30"/>
                         {% notifications_unread as unread_count %}
                         {% if unread_count %}
-                            <strong>{{ unread_count }}</strong>
+                            <strong id="unread">{{ unread_count }}</strong>
                         {% endif %}
 
                     </div>
