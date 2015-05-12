@@ -9,7 +9,7 @@
                 <form method="post" class="white-input">
                     {% csrf_token %}
 
-                    <div class="profile-imgbox">
+                    <div class="profile-imgbox user-image" style="margin-left: 80px;">
                         <div class="image">
                             <img src="{{ MEDIA_URL }}{{ form.get_image}}" width="120"/>
                         </div>
@@ -23,47 +23,6 @@
                             <span style="color: lightcoral">{{ error }}</span>
                         {% endfor %}
                     {% endfor %}
-
-{#                    <table>#}
-                        {#                        <tr>#}
-                        {#                            <td colspan="2">#}
-                        {#                                <div class="profile-imgbox">#}
-                        {#                                    <div class="image">#}
-                        {#                                        <img src="{{ MEDIA_URL }}{{ form.get_image}}" width="120"/>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </td>#}
-                        {#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2"><input readonly value="{{ form.last_name.value }} {{ form.first_name.value }}" class="input-readonly"/></td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2"><input readonly value="{{ form.username.value }}" class="input-readonly"/></td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2" class="white-input">{{ form.password1 }}</td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2" class="white-input">{{ form.password2 }}</td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td class="medium-text-field">#}
-{#                                <div style="position: relative; overflow: inherit;" class="white-input">#}
-{#                                    {{ form.phone }}#}
-{#                                    <div class="check-box">#}
-{#                                        {{ form.is_public }}#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </td>#}
-                            {#                                                        <td class="check-box">{{ form.is_public }}</td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2" class="white-input">{{ form.email }}</td>#}
-{#                        </tr>#}
-{#                        <tr>#}
-{#                            <td colspan="2">{{ form.area }}</td>#}
-{#                        </tr>#}
-{#                    </table>#}
 
                     <div data-role="footer" data-position="fixed" data-fullscreen="true">
                         <div data-role="navbar">
