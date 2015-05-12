@@ -8,7 +8,7 @@
                 </div>
             </td>
             <td class="comment-user-id">
-                <a href="{% url "mypage" comment.student.id %}">{{ article.student }}</a>
+                <a href="{% url "mypage" comment.student.id %}">{{ comment.student }}</a>
             </td>
             <td>
                 <label class="article-time">{{ comment.get_datetime }}</label>

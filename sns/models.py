@@ -59,6 +59,9 @@ class Article(models.Model):
     def get_comments(self):
         return Comment.objects.filter(article=self)
 
+    def get_num_comments(self):
+        return Comment.objects.filter(article=self).count()
+
     def img_width(self):
         return 100 / Image.objects.filter(article=self).__len__()
 
@@ -96,7 +99,7 @@ class Store(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=50)
     area = models.ForeignKey(Area)
-    trade = models.OneToOneField(Trade)
+    trade = models.OneToOneField(Trade, default=None)
     article = models.OneToOneField(Article)
 
 

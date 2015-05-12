@@ -10,12 +10,14 @@
 
     {% include "newsfeed_header.html" %}
 
-    <div id="newsfeed-body">
+    <div class="notice-box">
         <ul class="notifications">
             {% for notice in user.notifications.unread %}
                 {% include 'notice.html' %}
             {% endfor %}
         </ul>
+    </div>
+    <div id="newsfeed-body">
         {% for item in get_list %}
             {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
         {% endfor %}
@@ -44,6 +46,19 @@
             $(window).resize(function() {
                 clearTimeout(this.id);
                 this.id = setTimeout(resize_window, 200);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.notice-box').hide();
+
+            $('#notice').click(function() {
+                if ($('.notice-box').is(':hidden'))
+                    $('.notice-box').show();
+
+                else
+                    ($('.notice-box').hide());
             });
         });
     </script>

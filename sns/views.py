@@ -11,6 +11,7 @@ from sns.forms import *
 from sns.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
+from notifications import notify
 
 
 def index(request):
@@ -70,6 +71,12 @@ class ArticleView(CreateView):
     def form_valid(self, form):
         form.instance.student = self.request.user.student
         form.instance.article = Article.objects.get(id=self.kwargs['pk'])
+        user = self.request.user
+        article = form.instance.article
+        content = form.instance.content
+        verb = user.student.get_name() + '님이 회원님의 게시글에 댓글을 남겼습니다. ' + content
+        # if user != article.student.user:
+        notify.send(user, recipient=article.student.user, verb=verb, action_object=article)
         return super(ArticleView, self).form_valid(form)
 
     def get_success_url(self):
