@@ -1,23 +1,14 @@
-{% load url from future %}
+{#{% load url from future %}#}
+{% load staticfiles %}
 <div class="alert alert-block alert-{{ notice.level }}">
-  <a class="close pull-right" href="{% url 'notifications:mark_as_read' notice.slug %}">
-    <i class="icon-close"></i>
-  </a>
-
-  <h4>
-    <i class="icon-mail{% if notice.unread %}-alt{% endif %}"></i>
-{#    {{ notice.actor }}#}
-    {{ notice.verb }} {{ notice.timesince }}
-{#    {% if notice.target %}#}
-{#      of {{ notice.target }}#}
-{#    {% endif %}#}
-  </h4>
-
-{#  <p>{{ notice.timesince }}</p>#}
-
-  <div class="notice-actions">
-    {% for action in notice.data.actions %}
-      <a class="btn" href="{{ action.href }}">{{ action.title }}</a>
-    {% endfor %}
-  </div>
+    <a class="close pull-right" href="{% url 'notifications:mark_as_read' notice.slug %}">
+        <i class="icon-close"></i>
+    </a>
+    <h4>
+        <i class="icon-mail{% if notice.unread %}-alt{% endif %}"></i>
+        {{ notice.verb }}   {{ notice.timesince }}
+        {% if notice.target %}
+            <a href="{% url "article" notice.target.id %}" class="div-fill">{{ notice.description }}</a>
+        {% endif %}
+    </h4>
 </div>
