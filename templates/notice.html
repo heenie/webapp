@@ -1,0 +1,14 @@
+{#{% load url from future %}#}
+{% load staticfiles %}
+<div class="alert alert-block alert-{{ notice.level }}">
+    <a class="close pull-right" href="{% url 'notifications:mark_as_read' notice.slug %}">
+        <i class="icon-close"></i>
+    </a>
+    <h4>
+        <i class="icon-mail{% if notice.unread %}-alt{% endif %}"></i>
+        {{ notice.verb }}   {{ notice.timesince }}
+        {% if notice.target %}
+            <a href="{% url "article" notice.target.id %}" class="div-fill">{{ notice.description }}</a>
+        {% endif %}
+    </h4>
+</div>
