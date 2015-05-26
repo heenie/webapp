@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<div class="newsfeed-article-box">
+    <table>
+        <tr>
+            <td rowspan="2" class="article-user-image user-image">
+                <div class="image">
+                    {% if article.category %}
+                        <img src="{{ MEDIA_URL }}{{ article.student.get_image}}"/>
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}{{ article.article.student.get_image}}"/>
+                    {% endif %}
+                </div>
+            </td>
+            <td rowspan="2" class="article-arrow">
+                <img src="{% static "img/play106.png" %}" height="20"/>
+            </td>
+            <td class="article-content article-user-id">
+                {% if article.category %}
+                    <a href="{% url "mypage" article.student.id %}">
+                        {{ article.student }}
+                    </a>
+                {% else %}
+                    <a href="{% url "mypage" article.article.student.id %}">
+                        {{ article.article.student }}
+                    </a>
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td class="article-content">
+                {% if article.category %}
+                    {{ article.category }}
+                    <label class="article-time">
+                        {{ article.get_datetime }}
+                    </label>
+                {% else %}
+                    {{ article.article.category }}
+                    <label class="article-time">
+                        {{ article.article.get_datetime }}
+                    </label>
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td class="article-comment">
+                <div class="sm-icon">
+                    <img src="{% static "img/chat90_.png" %}" width="20" height="20"/>
+                </div>
+                <label for="sm-icon">
+                    {% if article.category %}
+                        {{ article.get_num_comments }}
+                    {% else %}
+                        {{ article.article.get_num_comments }}
+                    {% endif %}</label>
+            </td>
+            <td></td>
+            <td class="article-content article-paragraph">
+                {% block content %}
+                {% endblock %}
+            </td>
+        </tr>
+
+        {% if article.get_images %}
+            {% include "newsfeed_image.html" with imgs=article.get_images w=article.img_width id=article.id %}
+        {% elif article.article.get_images %}
+            {% include "newsfeed_image.html" with imgs=article.article.get_images w=article.article.img_width id=article.article.id %}
+        {% endif %}
+    </table>
+</div>

@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load notifications_tags %}
+
+<form method="get">
+    <div data-role="header" data-fullscreen="true">
+        <div data-role="navbar">
+            <ul id="default">
+                <li>
+                    <div class="header-button">
+                        <img src="{% static "img/zoom22.png" %}" width="30" onclick="search_show()"/>
+                    </div>
+                </li>
+                <li>
+                    <div class="header-button">
+                        <img id="notice" src="{% static "img/chat26.png" %}" width="30"/>
+                        {% notifications_unread as unread_count %}
+                        {% if unread_count %}
+                            <strong id="unread">{{ unread_count }}</strong>
+                        {% endif %}
+
+                    </div>
+                </li>
+                <li>
+                    <div class="header-button">
+                        <img src="{% static "img/menu18.png" %}" width="30" onclick="icon()"/>
+                    </div>
+                </li>
+            </ul>
+            <table id="search-table">
+                <tr>
+                    <td>
+                        <div class="header-button">
+                            <img src="{% static "img/arrow395.png" %}" width="30" onclick="default_show()"/>
+                        </div>
+                    </td>
+                    <td class="search-category">
+                        {{ search_form.category }}
+                    </td>
+                    <td class="search-content">
+                        <input name="{{ search_form.content.name }}" placeholder="필요한 것을 검색해보세요 !" class="light-placeholder"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

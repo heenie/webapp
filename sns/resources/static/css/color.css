@@ -1,0 +1,336 @@
+/*
+ * main color
+ */
+#page,
+.base-page-body,
+.css-page-body,
+.header,
+#button,
+.newsfeed-header,
+.tabulous_active,
+.ui-navbar,
+.input-readonly,
+.ui-header form #id_category-button:hover,
+.login-icon {
+    background-color: #ca98c9 !important;
+}
+.car-time div,
+.ui-page-theme-a .ui-btn,
+html .ui-bar-a .ui-btn,
+html .ui-body-a .ui-btn,
+html body .ui-group-theme-a .ui-btn,
+html head+body .ui-btn.ui-btn-a,
+.ui-page-theme-a .ui-btn:visited,
+html .ui-bar-a .ui-btn:visited,
+html .ui-body-a .ui-btn:visited,
+html body .ui-group-theme-a .ui-btn:visited,
+html head+body .ui-btn.ui-btn-a:visited,
+.ui-btn-icon-left:after,
+.ui-btn-icon-right:after,
+.ui-btn-icon-top:after,
+.ui-btn-icon-bottom:after,
+.ui-btn-icon-notext:after,
+.ui-alt-icon.ui-btn:after,
+.ui-alt-icon .ui-btn:after,
+html .ui-alt-icon.ui-checkbox-off:after,
+html .ui-alt-icon.ui-radio-off:after,
+html .ui-alt-icon .ui-checkbox-off:after,
+html .ui-alt-icon .ui-radio-off:after,
+.ui-btn.ui-checkbox-off:after,
+::-webkit-scrollbar {
+    background-color: #ca98c9;
+}
+.search-content {
+    background: #ca98c9 !important;
+    border:1px solid #ca98c9 !important;
+}
+#icon-table a,
+.link a,
+.logo-small,
+.logo-text {
+    color: #ca98c9 !important;
+}
+body {
+    scrollbar-base-color: #ca98c9;
+    scrollbar-3dlight-color: #ca98c9;
+    scrollbar-highlight-color: #ca98c9;
+    scrollbar-track-color: #ca98c9;
+    scrollbar-shadow-color: #ca98c9;
+    scrollbar-dark-shadow-color: #ca98c9;
+}
+
+
+/*
+ * main dark color
+ */
+.tabulous_inactive:hover,
+#tabs li a:hover,#tabs2 li a:hover,#tabs3 li a:hover,#tabs4 li a:hover,#tabs5 li a:hover,
+#list li .ui-radio label {
+	background: #af6cae !important;
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+    background-color: #af6cae;
+}
+
+
+/*
+ * main hover color
+ */
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
+.ui-page-theme-a .ui-btn:hover,
+html .ui-bar-a .ui-btn:hover,
+html .ui-body-a .ui-btn:hover,
+html body .ui-group-theme-a .ui-btn:hover,
+html head+body .ui-btn.ui-btn-a:hover,
+.ui-page-theme-a .ui-btn.ui-btn-active,
+html .ui-bar-a .ui-btn.ui-btn-active,
+html .ui-body-a .ui-btn.ui-btn-active,
+html body .ui-group-theme-a .ui-btn.ui-btn-active,
+html head+body .ui-btn.ui-btn-a.ui-btn-active,
+.ui-page-theme-a .ui-checkbox-on:after,
+html .ui-bar-a .ui-checkbox-on:after,
+html .ui-body-a .ui-checkbox-on:after,
+html body .ui-group-theme-a .ui-checkbox-on:after,
+.ui-btn.ui-checkbox-on.ui-btn-a:after,
+.ui-page-theme-a .ui-flipswitch-active,
+html .ui-bar-a .ui-flipswitch-active,
+html .ui-body-a .ui-flipswitch-active,
+html body .ui-group-theme-a .ui-flipswitch-active,
+html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active,
+.ui-page-theme-a .ui-slider-track .ui-btn-active,
+html .ui-bar-a .ui-slider-track .ui-btn-active,
+html .ui-body-a .ui-slider-track .ui-btn-active,
+html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
+html body div.ui-slider-track.ui-body-a .ui-btn-active,
+.ui-page-theme-b .ui-btn.ui-btn-active,
+html .ui-bar-b .ui-btn.ui-btn-active,
+html .ui-body-b .ui-btn.ui-btn-active,
+html body .ui-group-theme-b .ui-btn.ui-btn-active,
+html head+body .ui-btn.ui-btn-b.ui-btn-active,
+.ui-page-theme-b .ui-checkbox-on:after,
+html .ui-bar-b .ui-checkbox-on:after,
+html .ui-body-b .ui-checkbox-on:after,
+html body .ui-group-theme-b .ui-checkbox-on:after,
+.ui-btn.ui-checkbox-on.ui-btn-b:after,
+.ui-page-theme-b .ui-flipswitch-active,
+html .ui-bar-b .ui-flipswitch-active,
+html .ui-body-b .ui-flipswitch-active,
+html body .ui-group-theme-b .ui-flipswitch-active,
+html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active,
+.ui-page-theme-b .ui-slider-track .ui-btn-active,
+html .ui-bar-b .ui-slider-track .ui-btn-active,
+html .ui-body-b .ui-slider-track .ui-btn-active,
+html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
+html body div.ui-slider-track.ui-body-b .ui-btn-active,
+::-webkit-scrollbar-thumb {
+    /*background-color: #af6cae;*/
+    background-color: #bb82ba;
+}
+.tabulous_inactive,
+#list li .ui-radio label:hover {
+    background-color: #bb82ba !important;
+}
+.ui-page-theme-a .ui-btn:focus,
+html .ui-bar-a .ui-btn:focus,
+html .ui-body-a .ui-btn:focus,
+html body .ui-group-theme-a .ui-btn:focus,
+html head+body .ui-btn.ui-btn-a:focus,
+.ui-page-theme-a .ui-focus,
+html .ui-bar-a .ui-focus,
+html .ui-body-a .ui-focus,
+html body .ui-group-theme-a .ui-focus,
+html head+body .ui-btn-a.ui-focus,
+html head+body .ui-body-a.ui-focus {
+    -webkit-box-shadow:0 0 12px #bb82ba;
+    -moz-box-shadow:0 0 12px #bb82ba;
+    box-shadow:0 0 12px #bb82ba
+}
+#help, .alert, .comment-del {
+    color: #bb82ba !important;
+}
+body {
+    scrollbar-face-color: #bb82ba;
+    scrollbar-arrow-color: #bb82ba;
+}
+
+
+/*
+ * main light
+ */
+.write-border,
+#write-container input,
+#search-table tr td .ui-select .ui-btn {
+    border: 1px solid #e2c4e1 !important;
+}
+.light-placeholder::-webkit-input-placeholder {
+    color: #e2c4e1;
+}
+.light-placeholder:-moz-placeholder {
+   color: #e2c4e1;
+   opacity:  1;
+}
+.light-placeholder::-moz-placeholder {
+   color: #e2c4e1;
+   opacity:  1;
+}
+.light-placeholder:-ms-input-placeholder {
+   color: #e2c4e1;
+}
+
+
+/*
+ * dark
+ */
+.article-title a,
+.article-user-id a,
+.comment-user-id a,
+.div-fill,
+.article-box table tr td a,
+.write-category #id_category-button,
+.write-button {
+    color: #333333 !important;
+}
+
+
+/*
+ * white
+ */
+.white-input div input {
+    background: #ffffff;
+}
+#button,
+.header,
+.header h1,
+.css-page-footer,
+.input-readonly,
+.article-button,
+.car-time div,
+.tabulous_active,
+.comment-submit div input,
+.light-placeholder,
+.pagination a:hover {
+   color: #ffffff !important;
+}
+#write-container textarea,
+#write-container label,
+#write-container input,
+.ui-page-theme-a .ui-btn,
+html .ui-bar-a .ui-btn,
+html .ui-body-a .ui-btn,
+html body .ui-group-theme-a .ui-btn,
+html head+body .ui-btn.ui-btn-a,
+.ui-page-theme-a .ui-btn:visited,
+html .ui-bar-a .ui-btn:visited,
+html .ui-body-a .ui-btn:visited,
+html body .ui-group-theme-a .ui-btn:visited,
+html head+body .ui-btn.ui-btn-a:visited,
+.ui-page-theme-a .ui-btn:hover,
+html .ui-bar-a .ui-btn:hover,
+html .ui-body-a .ui-btn:hover,
+html body .ui-group-theme-a .ui-btn:hover,
+html head+body .ui-btn.ui-btn-a:hover,
+.ui-page-theme-a .ui-btn.ui-btn-active,
+html .ui-bar-a .ui-btn.ui-btn-active,
+html .ui-body-a .ui-btn.ui-btn-active,
+html body .ui-group-theme-a .ui-btn.ui-btn-active,
+html head+body .ui-btn.ui-btn-a.ui-btn-active,
+.ui-page-theme-a .ui-checkbox-on:after,
+html .ui-bar-a .ui-checkbox-on:after,
+html .ui-body-a .ui-checkbox-on:after,
+html body .ui-group-theme-a .ui-checkbox-on:after,
+.ui-btn.ui-checkbox-on.ui-btn-a:after,
+.ui-page-theme-a .ui-flipswitch-active,
+html .ui-bar-a .ui-flipswitch-active,
+html .ui-body-a .ui-flipswitch-active,
+html body .ui-group-theme-a .ui-flipswitch-active,
+html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active,
+.ui-page-theme-a .ui-slider-track .ui-btn-active,
+html .ui-bar-a .ui-slider-track .ui-btn-active,
+html .ui-body-a .ui-slider-track .ui-btn-active,
+html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
+html body div.ui-slider-track.ui-body-a .ui-btn-active,
+.ui-page-theme-b .ui-btn.ui-btn-active,
+html .ui-bar-b .ui-btn.ui-btn-active,
+html .ui-body-b .ui-btn.ui-btn-active,
+html body .ui-group-theme-b .ui-btn.ui-btn-active,
+html head+body .ui-btn.ui-btn-b.ui-btn-active,
+.ui-page-theme-b .ui-checkbox-on:after,
+html .ui-bar-b .ui-checkbox-on:after,
+html .ui-body-b .ui-checkbox-on:after,
+html body .ui-group-theme-b .ui-checkbox-on:after,
+.ui-btn.ui-checkbox-on.ui-btn-b:after,
+.ui-page-theme-b .ui-flipswitch-active,
+html .ui-bar-b .ui-flipswitch-active,
+html .ui-body-b .ui-flipswitch-active,
+html body .ui-group-theme-b .ui-flipswitch-active,
+html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active,
+.ui-page-theme-b .ui-slider-track .ui-btn-active,
+html .ui-bar-b .ui-slider-track .ui-btn-active,
+html .ui-body-b .ui-slider-track .ui-btn-active,
+html body .ui-group-theme-b .ui-slider-track .ui-btn-active,
+html body div.ui-slider-track.ui-body-b .ui-btn-active,
+.ui-page-theme-a a,
+html .ui-bar-a a,
+html .ui-body-a a,
+html body .ui-group-theme-a a,
+.ui-page-theme-a a:visited,
+html .ui-bar-a a:visited,
+html .ui-body-a a:visited,
+html body .ui-group-theme-a a:visited,
+.pagination .current {
+    color: #ffffff;
+}
+#write-content {
+    border-color: #ffffff !important;
+}
+.write-header, .write-main {
+    background-color: #ffffff !important;
+}
+#tabs_container,
+.profile-box table,
+.article-content {
+    background-color: #ffffff;
+}
+
+/* transparent */
+.write-footer {
+    border-color: transparent !important;
+}
+.write-category #id_category-button {
+	background-color: transparent !important;
+}
+
+/*divider*/
+.divider {
+    background-color: #e6e6e6 !important;
+}
+
+/*
+ * gray
+ */
+.css-page-box {
+    background-color: #fafafa;
+}
+.tabulous_inactive,
+#tabs li a,#tabs2 li a,#tabs3 li a,#tabs4 li a,#tabs5 li a,
+.light-font {
+    color: #fafafa;
+}
+.confirm-wrapper,
+#newsfeed-body,
+.newsfeed-page,
+.comment-box {
+	background-color: #f3f3f3;
+}
+.notice-box {
+    scrollbar-base-color: #f3f3f3;
+    scrollbar-3dlight-color: #f3f3f3;
+    scrollbar-highlight-color: #f3f3f3;
+    scrollbar-track-color: #f3f3f3;
+    scrollbar-shadow-color: #f3f3f3;
+    scrollbar-dark-shadow-color: #f3f3f3;
+}
+.pagination a {
+    color: #f3f3f3;
+}

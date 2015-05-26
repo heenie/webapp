@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'multiupload',
     'notifications',
     'sns',
+    'linuxhackers',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,7 +89,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "resources", "static"),
+    # os.path.join(BASE_DIR, "resources", "../sns/static"),
+    os.path.join(BASE_DIR, "sns", "resources/static"),
+    os.path.join(BASE_DIR, "linuxhackers", "resources/static"),
 )
 
 MEDIA_URL = '/media/'
@@ -96,11 +99,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "resources/media/")
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "templates"),
+    os.path.join(BASE_DIR, "sns", "templates"),
+    os.path.join(BASE_DIR, "linuxhackers", "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += ("django.core.context_processors.request",)
 
 FILE_CHARSET = 'utf-8'
-
-DEFAULT_PROFILE = 'img/default_profile.jpg'

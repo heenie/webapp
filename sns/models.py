@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, date, timedelta
+from datetime import date
 from django.utils.timesince import timesince
 from django.contrib.auth.models import User
 from django.db import models

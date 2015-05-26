@@ -1,0 +1,11 @@
+{% extends 'newsfeed_article.html' %}
+{% load staticfiles %}
+{% load tag %}
+
+{% block content %}
+    {% if url %}
+        <p class="div-fill">{{ article.content }}</p>
+    {% else %}
+        <a href="{% url "article" article.id %}" class="div-fill">{{ article.content|truncate_chars:120 }}</a>
+    {% endif %}
+{% endblock %}

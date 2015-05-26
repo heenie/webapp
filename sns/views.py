@@ -12,10 +12,15 @@ from sns.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
 from notifications import notify
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
     return render_to_response('index.html', None)
+
+
+def icon(request):
+    return render_to_response('icon.html', None)
 
 
 class Newsfeed(ListView):
@@ -26,7 +31,8 @@ class Newsfeed(ListView):
     def get_context_data(self, **kwargs):
         context = super(Newsfeed, self).get_context_data(**kwargs)
         context.update({"search_form": SearchForm(self.request.GET)})
-        context['get_list'] = get_lists(Article.objects.all().order_by('-datetime'))
+        # lists = get_lists(Article.objects.all().order_by('-datetime'), self.request.GET.get('page'))
+        context['get_list'], context['pages'] = get_lists(Article.objects.all().order_by('-datetime'), self.request.GET.get('page'))
         return context
 
     def get_queryset(self):
@@ -81,6 +87,12 @@ class ArticleView(CreateView):
 
     def get_success_url(self):
         return reverse('article', kwargs={'pk': self.kwargs['pk']})
+
+
+class ArticleDelete(DeleteView):
+    template_name = 'article_confirm_delete.html'
+    model = Article
+    success_url = '/newsfeed'
 
 
 class CommentDelete(DeleteView):
@@ -145,7 +157,7 @@ class MyPage(ListView):
         context = super(MyPage, self).get_context_data(**kwargs)
         context.update({"search_form": SearchForm(self.request.GET)})
         context.update({"student": Student.objects.get(id=self.kwargs['pk'])})
-        context['get_list'] = get_lists(Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime'))
+        context['get_list'], context['pages'] = get_lists(Article.objects.filter(student__id=self.kwargs['pk']).order_by('-datetime'), self.request.GET.get('page'))
         return context
 
     def get_queryset(self):
@@ -283,7 +295,7 @@ def loginuser(request):
     return username
 
 
-def get_lists(articles):
+def get_lists(articles, page):
     array = []
     for article in articles:
         list = {}
@@ -303,4 +315,19 @@ def get_lists(articles):
             list['board'] = article
             list['type'] = 'default'
         array.append(list)
-    return array
+
+    first = 1
+    paginator = Paginator(array, 3)
+    try:
+        array = paginator.page(page)
+        first = int((int(page) - 1) / int(10)) * 10 + 1
+    except PageNotAnInteger:
+        array = paginator.page(1)
+    except EmptyPage:
+        array = paginator.page(paginator.num_pages)
+        # array = paginator.page(1)
+
+    last = first + 10
+    if paginator.num_pages < last:
+        last = paginator.num_pages + 1
+    return array, range(first, last)

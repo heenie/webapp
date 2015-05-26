@@ -1,0 +1,100 @@
+{% extends 'base_recruit.html' %}
+{% load staticfiles %}
+{% load tag %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/clockface.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-datepicker3.min.css" %}"/>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-title">
+        리눅스해커스 지원서 작성 <small>2015년 1학기 말 리크루팅</small>
+    </h3>
+
+    <div class="portlet box purple ">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i> *는 필수 입력 사항입니다
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form method="post" class="form-horizontal" role="form">
+                {% csrf_token %}
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">성별</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="sex">
+                                <option>남</option>
+                                <option>여</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {% for field in form %}
+                        {% if field.name != 'is_female' %}
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">{{ field.label }}</label>
+                                <div class="col-md-9">
+                                    {% if field.name == 'birth' %}
+                                        <input class="form-control input-lg form-control-inline date-picker" id="id_birth" name="birth" size="16" type="text" value=""/>
+                                    {% else %}
+                                        {{ field|addcss:'form-control input-lg' }}
+                                    {% endif %}
+                                    {% for error in field.errors %}
+                                        <span class="help-block">
+                                            <div class="alert alert-danger">
+                                                <strong>*</strong> {{ error }}
+                                            </div>
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <input type="hidden" id="id_is_female" name="is_female" value="false"/>
+
+                    <div class="form-actions right1">
+                        <button type="button" class="btn default">취소</button>
+                        <button type="submit" class="btn green">제출</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_script %}
+    <script type="text/javascript" src="{% static "js/bootstrap-datepicker.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/clockface.js" %}"></script>
+    <script src="{% static "js/components-pickers.js" %}"></script>
+{% endblock %}
+
+{% block sub_script %}
+    <script>
+        jQuery(document).ready(function() {
+            // initiate layout and plugins
+            //Metronic.init(); // init metronic core components
+            //Layout.init(); // init current layout
+            //QuickSidebar.init(); // init quick sidebar
+            //Demo.init(); // init demo features
+            ComponentsPickers.init();
+
+            $('#id_username').attr('placeholder', '예) 21500123');
+            $('#id_phone').attr('placeholder', '예) 010-1234-1234');
+            $('#id_major').attr('placeholder', '예) 전산전자');
+            $('#id_birth').attr('placeholder', '클릭하세요');
+
+            $('#sex').change(function() {
+                var selected = $('#sex').val();
+                if (selected == 0) {
+                    $('#id_is_female').val('false');
+                } else {
+                    $('#id_is_female').val('true');
+                }
+            });
+        });
+    </script>
+{% endblock %}

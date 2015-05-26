@@ -1,0 +1,80 @@
+{% extends 'base_recruit.html' %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        {% include 'no_user.html' with url='recruit-login' %}
+    {% else %}
+        <div class="portlet box purple">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>{{ user }} 로그인
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                이름
+                            </th>
+                            <th>
+                                학번
+                            </th>
+                            <th>
+                                성별
+                            </th>
+                            <th>
+                                생년월일
+                            </th>
+                            <th>
+                                연락처
+                            </th>
+                            <th>
+                                전공
+                            </th>
+                            <th>
+                                학기 수
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for person in recruit %}
+                            <tr>
+                                <td>
+                                    {{ person.id }}
+                                </td>
+                                <td>
+                                    <a href="{% url "recruit-detail" person.id %}">{{ person.name }}</a>
+                                </td>
+                                <td>
+                                    {{ person.username }}
+                                </td>
+                                <td>
+                                    {% if person.is_female %}여{% else %}남{% endif %}
+                                </td>
+                                <td>
+                                    {{ person.birth }}
+                                </td>
+                                <td>
+                                    {{ person.phone }}
+                                </td>
+                                <td>
+                                    {{ person.major }}
+                                </td>
+                                <td>
+                                    {{ person.semester }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

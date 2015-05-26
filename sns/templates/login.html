@@ -1,0 +1,51 @@
+{% extends "base_page.html" %}
+
+{% block page_content %}
+    <div data-role="main" class="css-page-box">
+        {% include "logo.html" %}
+        <div data-role="logo" data-type="vertical">
+            <p align="center" class="title">
+                <b class="font-title">로그인</b>
+            </p>
+        </div>
+
+        <div data-role="controlgroup" data-type="vertical" class="css-btn-box">
+            <form method="post" action=".">{% csrf_token %}
+                {% if form.errors %}
+                    <p class="font-version" id="help" class="alert">[학번 또는 비밀번호를 확인해주세요]</p>
+                {% endif %}
+                <div align="center">
+                    <table border="0" style="border-spacing: 0px !important;">
+                        {% load staticfiles %}
+                        <tr>
+                            <th>
+                                <div class="login-icon">
+                                    <img src="{% static "img/user60.png" %}" alt="id_img" width="50" height="50">
+                                </div>
+                            </th>
+                            <td>
+                                <input type="{{ form.username.type }}" name="{{ form.username.name }}" class="login-input" placeholder="아이디"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="login-icon">
+                                    <img src="{% static "img/private6.png" %}" alt="pw_img" width="50" height="50">
+                                </div>
+                            </th>
+                            <td>
+                                <input type="password" name="{{ form.password.name }}" class="login-input" placeholder="비밀번호"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div align="center"><input id="button" align="center" class="login-btn css-submit" type="submit" value="Login"/></div>
+                <input type="hidden" name="next" value="/newsfeed"/>
+            </form>
+            <div align="center"><a id="help" href="/join">[비밀번호를 까먹었어요]</a></div>
+
+        </div>
+    </div>
+
+    {% include "footer.html" %}
+{% endblock %}

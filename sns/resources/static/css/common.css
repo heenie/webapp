@@ -1,0 +1,210 @@
+@import url('font.css');
+@import url('color.css');
+/*@import url('normalize.css');*/
+
+html, body {
+	min-height: 100%;
+    min-width: 350px;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+input {
+	position: relative;
+	border: none;
+}
+
+#page {
+    min-width: 350px;
+    min-height: 100% !important;
+}
+
+#wrapper {
+    position: relative;
+}
+
+#footer {
+	font-family: Light;
+	font-size: 80%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#back-button {
+    background-color: transparent !important;
+    padding: 2px !important;
+	cursor: pointer;
+}
+
+#button {
+	width: 300px;
+	heignt: 40px;
+	cursor: pointer;
+	padding: 10px;
+	font-size: 105%;
+	font-family: Light;
+	text-align: center;
+}
+
+#form {
+	text-align:center;
+	position: relative;
+	width: 90%;
+	height: auto;
+	left: 50%;
+	margin-left: -45%;
+}
+
+#help {
+	font-size: 90%;
+	font-family: Regular;
+	text-align: center;
+}
+
+.css-page-box {
+	height: 100%;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+	margin: 10px;
+}
+.css-btn-box {
+	width: 300px;
+	margin: 0 auto !important;
+	padding-bottom: 50px;
+}
+.css-btn-box table {
+    border-spacing: 0px !important;
+}
+
+.header {
+	width: 100%;
+	height: 30px;
+	font-family: Bold;
+	font-size: 90%;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+}
+.text-field {
+    width: 270px;
+    margin: 5px;
+}
+.short-text-field {
+    width: 120px;
+    margin-left: 5px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+}
+.medium-text-field {
+    width: 230px;
+    margin: 5px;
+}
+.text-field,
+.short-text-field,
+.medium-text-field {
+    height: 40px;
+    padding: 0 10px 0 10px;
+    font-size: 1em;
+    font-family: Light;
+}
+.check-box {
+    vertical-align: middle;
+    width: 20px;
+}
+
+
+.transition {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
+}
+.make_transist {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+.hideleft {
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	-o-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+.showleft {
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	-o-transform: translateX(0px);
+	-ms-transform: translateX(0px);
+	transform: translateX(0px);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
+}
+
+.hidescaleup {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+.showscaleup {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
+}

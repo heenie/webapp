@@ -19,7 +19,9 @@ urlpatterns = patterns('',
     url(r'^write/(?P<type>\w+)', WriteView.as_view(), name="write"),
     url(r'^mypage/(?P<pk>\d+)$', MyPage.as_view(template_name="mypage.html"), name="mypage"),
     url(r'^article/(?P<pk>\d+)$', ArticleView.as_view(), name="article"),
+    url(r'^article-delete/(?P<pk>\d+)$', ArticleDelete.as_view(), name="article-delete"),
     url(r'^comment-delete/(?P<comment_id>\d+)$', 'sns.views.comment_del', name="comment-delete"),
+    url(r'^icon$', 'sns.views.icon', name="icon"),
     url(r'^logintest', 'sns.views.LoginTest', name="test"),
     url(r'^login/$', login, {'template_name': 'login.html'}, name="login"),
     url(r'^newsfeed', Newsfeed.as_view(template_name="newsfeed.html"), name="newsfeed"),
@@ -32,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^swipe/(?P<pk>\d+)$', SwipeView.as_view(), name="swipe"),
 
     url('^inbox/notifications/', include(notifications.urls)),
+    url(r'^linuxhackers/', include('linuxhackers.urls')),
 )
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

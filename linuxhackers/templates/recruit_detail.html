@@ -1,0 +1,39 @@
+{% extends 'base_recruit.html' %}
+{% load staticfiles %}
+{% load tag %}
+
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        {% include 'no_user.html' with url='recruit-login' %}
+    {% else %}
+        <h3 class="page-title">
+            리눅스해커스 지원서 작성 <small>2015년 1학기 말 리크루팅</small>
+        </h3>
+
+        <div class="portlet box purple ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> {{ user }} 로그인
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-body">
+                        {% for name, value in object.get_fields %}
+                            <div class="form-group form-section">
+                                <label class="col-md-3 control-label">{{ name }}</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        {{ value }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

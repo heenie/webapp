@@ -1,0 +1,67 @@
+{% extends 'base_newsfeed.html' %}
+{% load staticfiles %}
+{% load notifications_tags %}
+{% block page_content %}
+
+    {% if not user.is_authenticated %}
+        <script language="javascript">
+            setAlert("로그인 페이지로 이동", "로그인 에러", "/login");
+        </script>
+    {% endif %}
+
+    {% include "newsfeed_header.html" %}
+
+    <div id="newsfeed-body">
+        {% include 'notice.html' %}
+
+        {% for item in get_list %}
+            {% include "newsfeed_"|add:item.type|add:".html" with article=item.board imgs=item.image %}
+        {% endfor %}
+    </div>
+
+    {% include 'pagination.html' with list=get_list %}
+    {% include "newsfeed_footer.html" with page="newsfeed" %}
+
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('.article-user-image .image img').each(function() {
+                var img = $(this);
+                resize_user_img(img, 50);
+            });
+
+            resize_window();
+
+            $('#search-table').removeClass('showleft').addClass('hideleft');
+
+            $('#write-submit').click(function() {
+                var content =
+                        $('#depart').val() + ','
+                        + $('#destination').val() + ','
+                        + $('#memo').val();
+                $('#content').val(content);
+                $(this).closest('form').submit();
+            });
+
+            $('.notice-box').hide();
+
+            $('#notice').click(function() {
+                if ($('.notice-box').is(':hidden')) {
+                    $('.notice-box').show();
+                    $('#unread').text(' ');
+                    {{ user.notifications.mark_all_as_read  }}
+                }
+                else
+                    ($('.notice-box').hide());
+            });
+
+            $(window).resize(function() {
+                clearTimeout(this.id);
+                this.id = setTimeout(resize_window, 200);
+            });
+        });
+    </script>
+{% endblock %}
