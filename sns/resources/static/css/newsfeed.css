@@ -398,16 +398,6 @@ tr .medium-text-field .ui-input-text {
     height: 30px;
     border-radius: 30px;
 }
-.notice-icon {
-    display: -webkit-inline-box;
-    padding: 0px !important;
-}
-.notice-icon img {
-    padding: 5px;
-}
-.notice-icon label {
-    width: 235px;
-}
 
 
 /*

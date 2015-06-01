@@ -45,7 +45,7 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-    datetime = models.DateTimeField(auto_now=True)
+    datetime = models.DateTimeField(auto_now_add=True)
     student = models.ForeignKey(Student)
     category = models.ForeignKey(Category)
     content = models.TextField()
@@ -117,7 +117,7 @@ class Image(models.Model):
 
 
 class Comment(models.Model):
-    datetime = models.DateTimeField(auto_now=True)
+    datetime = models.DateTimeField(auto_now_add=True)
     student = models.ForeignKey(Student)
     article = models.ForeignKey(Article)
     content = models.CharField(max_length=400)

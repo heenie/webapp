@@ -1,38 +1,40 @@
-{% load url from future %}
+{#{% load url from future %}#}
 {% load staticfiles %}
 
-{% if user.notifications.all %}
-    <div class="profile-box notice-box">
-        <div class="up-arrow">
-            <img src="{% static "img/up.png" %}" height="20"/>
-        </div>
-        <div class="box">
-            {% for notice in user.notifications.all %}
-                <table>
-                    <tr>
-                        <td rowspan="2" class="notice-img user-image">
-                            <div class="image">
-                                <img src="{% static "img/default_profile.jpg" %}" width="30"/>
-                            </div>
-                        </td>
-                        <td class="notice-icon">
-                            <img src="{% static "img/auricular6.png" %}" width="15"/>
-                            <label>{{ notice.verb }}</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            {{ notice.timesince }}
-                        </td>
-                    </tr>
-                </table>
-            {% endfor %}
-        </div>
+<div class="profile-box notice-box">
+    <div class="up-arrow">
+        <img src="{% static "img/up.png" %}" height="20"/>
     </div>
-{% endif %}
-
-
-
+    <div class="box">
+        {% for notice in user.notifications.all %}
+            <table>
+                <tr>
+                    <td rowspan="3" class="notice-img user-image">
+                        <div class="image">
+                            <img src="{% static "img/default_profile.jpg" %}" width="30"/>
+                        </div>
+                    </td>
+                    <td class="notice-icon">
+                        <label>{{ notice.verb }}</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% if notice.target %}
+                            <a href="{% url "article" notice.target.id %}">{{ notice.description }}</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ notice.timesince }}
+                    </td>
+                </tr>
+            </table>
+        {% endfor %}
+    </div>
+</div>
+{##}
 {#<div class="alert alert-block alert-{{ notice.level }}">#}
 {#    <a class="close pull-right" href="{% url 'notifications:mark_as_read' notice.slug %}">#}
 {#        <i class="icon-close"></i>#}
@@ -40,18 +42,9 @@
 {##}
 {#    <h4>#}
 {#        <i class="icon-mail{% if notice.unread %}-alt{% endif %}"></i>#}
-{#    {{ notice.actor }}#}
-{#        {{ notice.verb }} {{ notice.timesince }}#}
-{#    {% if notice.target %}#}
-{#      of {{ notice.target }}#}
-{#    {% endif %}#}
+{#        {{ notice.verb }}   {{ notice.timesince }}#}
+{#        {% if notice.target %}#}
+{#            <a href="{% url "article" notice.target.id %}" class="div-fill">{{ notice.description }}</a>#}
+{#        {% endif %}#}
 {#    </h4>#}
-{##}
-{#  <p>{{ notice.timesince }}</p>#}
-{##}
-{#    <div class="notice-actions">#}
-{#        {% for action in notice.data.actions %}#}
-{#            <a class="btn" href="{{ action.href }}">{{ action.title }}</a>#}
-{#        {% endfor %}#}
-{#    </div>#}
 {#</div>#}
